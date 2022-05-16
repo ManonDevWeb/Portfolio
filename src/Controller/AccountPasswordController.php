@@ -21,6 +21,8 @@ class AccountPasswordController extends AbstractController
     #[Route('/compte/modifier-mot-de-passe', name: 'app_account_password')]
     public function index(Request $request, UserPasswordHasherInterface $encoder): Response
     {
+        //initialise la notif de modif du mdp
+        $notification = null;
         //récupérer l'utilisateur actuellement connecté
         $user = $this->getUser();
         $form = $this->createForm(ChangePasswordType::class, $user);
@@ -38,12 +40,15 @@ class AccountPasswordController extends AbstractController
 
                 $user->setPassword($password);
                 $this->entityManager->flush();
-
+                $notification = "Votre mot de passe a bien été mis à jour.";
+            } else{
+                $notification = "Le mot de passe actuel saisi est incorrect.";
             }
         }
 
         return $this->render('account/password.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'notification' => $notification
         ]);
     }
 }
