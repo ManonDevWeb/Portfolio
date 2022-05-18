@@ -17,7 +17,7 @@ class Product
     private $name;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $Slug;
+    private $slug;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $illustration;
@@ -54,12 +54,12 @@ class Product
 
     public function getSlug(): ?string
     {
-        return $this->Slug;
+        return $this->slug;
     }
 
-    public function setSlug(string $Slug): self
+    public function setSlug(string $slug): self
     {
-        $this->Slug = $Slug;
+        $this->slug = $slug;
 
         return $this;
     }

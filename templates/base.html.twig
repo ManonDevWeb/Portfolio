@@ -39,13 +39,13 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="">Yeux <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{path('app_product')}}">Nos produits <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Lèvres </a>
+                    <a class="nav-link" href="">Qui sommes-nous ? </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Ongles </a>
+                    <a class="nav-link" href="">Contact </a>
                 </li>
             </ul>
                 {% if app.user %}
@@ -68,7 +68,7 @@
 </header>
 
 <main role="main">
-
+    {% block carousel %}
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -116,6 +116,7 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    {% endblock carousel %}
 
 
     <!-- Marketing messaging and featurettes
