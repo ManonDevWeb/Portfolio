@@ -25,7 +25,7 @@
                             <a href="{{path('app_oneproduct', { 'slug' : product.slug }) }}"><h3>{{ product.name}}</h3></a>
                             <span class="product-subtitle">{{product.subtitle}}</span>
                             
-                            <span class="product-price">{{(product.price /100)|number_format(2,',','.')}}€</span>
+                            <span class="product-price">{{(product.price /100)|number_format(2,',','.')}} €</span>
                         </div>
                         {# {{dump(product)}} #}
                     </div>
