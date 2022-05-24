@@ -80,4 +80,21 @@ class AccountAddressController extends AbstractController
         ]);
     }
 
+
+    #[Route('/compte/supprimer-une-adresse/{id}', name: 'app_account_address_delete')]
+    public function delete($id): Response
+    {
+        //On va chercher la donnée à modifier
+        $address = $this->entityManager->getRepository(Address::class)->findOneById($id);
+
+        //Est-ce que l'adresse existe ? sinon rediriger vers les adresses
+        //Vérifie aussi que le id dans l'url est bien celui de l'utilisateur connecté
+        if($address && $address->getUser() == $this->getUser()){
+            $this->entityManager->remove($address);
+            $this->entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_account_address');
+    }
+
 }
