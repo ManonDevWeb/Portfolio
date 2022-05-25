@@ -13,11 +13,17 @@
     <hr>
     <div class="row">
         <div class="col-12 col-md-6">
-            <b>Choisir mon adresse de livraison</b><br>
-            <b>Choisir mon transporteur</b>
+            {% set formHtml %}
+                {{ form(form) }}
+            {% endset %}
+                {{ formHtml|replace({'[br]' : '<br>'})|raw }}
         </div>
         <div class="col-12 col-md-6">
             <b>Récap de ma commande</b><br>
+            {% for prod in cart %}
+                <img src="uploads/{{ prod.product.illustration }}" height="75px" alt="{{ prod.product.name }}">
+                x {{ product.quantity }}
+            {% endfor %}
             <b>Bouton pour payer</b>
         </div>
     </div>
