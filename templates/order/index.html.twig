@@ -21,6 +21,10 @@
         <div class="col-12 col-md-6">
             <b>Récap de ma commande</b><br>
             {% for prod in cart %}
+                <div class="row">
+                    <div class="col-12 col-4"></div>
+                    <div class="col-12 col-4"></div>
+                </div>
                 <img src="uploads/{{ prod.product.illustration }}" height="75px" alt="{{ prod.product.name }}">
                 x {{ product.quantity }}
             {% endfor %}
