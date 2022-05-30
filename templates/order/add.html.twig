@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Paiement de ma commande{% endblock %}
+
+{% block carousel %}
+    <br><br>
+{% endblock %}
+
+
+{% block content %}
+    <h2>Mon récapitulatif</h2>
+    <p>Vérifiez vos informations avant de payer votre commande.</p>
+    <hr>
+    <div class="row">
+
+        <div class="col-12 col-md-6">
+            <strong>Mon adresse de livraison</strong><br>
+            <div class="form-check mt-4">
+                {{ delivery|raw}}
+            </div>
+            <hr>
+            <strong>Mon transporteur</strong><br>
+            <div class="form-check">
+                {{ carrier.name}} <br>
+                {{ carrier.description}} <br>
+                {{ carrier.price|number_format(2,',','.')}} €
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="text-center">
+                <b>Ma commande</b><br>
+            </div>
+            <div class="order-summary">
+                {% set total = null %}
+                {% for key,prod in cart %}
+                    <div class="row {% if key > 0 %}mt-2{% endif %}">
+                    
+                        <div class="col-12 col-md-2">
+                            <img src="/uploads/{{ prod.product.illustration }}" height="50px" alt="{{ prod.product.name }}">
+                        </div>
+                        <div class="col-12 col-md-8 my-auto">
+                            {{ prod.product.name }}<br>
+                            <small>{{ prod.product.subtitle }}</small>
+                            <br>
+                            x {{ prod.quantity }}
+                        </div>
+                        <div class="col-12 col-md-2 my-auto">
+                            {{ ((prod.product.price * prod.quantity) /100)|number_format(2,',','.') }} €
+                        </div>
+                    </div>
+                    {% set total = total + (prod.product.price * prod.quantity) %}
+                {% endfor %}
+            </div>
+            <hr>
+            <strong>Mon sous-total : </strong>{{ (total /100)|number_format(2,',','.') }} €<br>
+            <strong>Livraison : </strong>{{ carrier.price|number_format(2,',','.') }} €
+            <hr>
+            <strong>Total : </strong>{{ (carrier.price + (total /100))|number_format(2,',','.') }} € <br>
+            <a href="" class="btn btn-success btn-block mt-3">Payer : {{ (carrier.price + (total /100))|number_format(2,',','.') }} €</a>
+        </div>
+    </div>
+{% endblock %}

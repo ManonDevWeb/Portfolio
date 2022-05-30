@@ -12,23 +12,35 @@
     <p>Choisissez vos préférences avant de passer votre commande sur MCMC.</p>
     <hr>
     <div class="row">
+
         <div class="col-12 col-md-6">
             {% set formHtml %}
-                {{ form(form) }}
+                {{ form_start(form, { action:path('app_order_recap') }) }}
+                {{ form_end(form) }}
             {% endset %}
-                {{ formHtml|replace({'[br]' : '<br>'})|raw }}
+            {{ formHtml|replace({'[br]' : '<br>'})|raw }}
         </div>
+
         <div class="col-12 col-md-6">
-            <b>Récap de ma commande</b><br>
-            {% for prod in cart %}
-                <div class="row">
-                    <div class="col-12 col-4"></div>
-                    <div class="col-12 col-4"></div>
-                </div>
-                <img src="uploads/{{ prod.product.illustration }}" height="75px" alt="{{ prod.product.name }}">
-                x {{ product.quantity }}
-            {% endfor %}
-            <b>Bouton pour payer</b>
+            <div class="text-center">
+                <b>Récapitulatif de ma commande</b><br>
+            </div>
+            <div class="order-summary">
+                {% for key,prod in cart %}
+                    <div class="row {% if key > 0 %}mt-2{% endif %}">
+                        <div class="col-12 col-md-2">
+                            <img src="uploads/{{ prod.product.illustration }}" height="75px" alt="{{ prod.product.name }}">
+                        </div>
+                        <div class="col-12 col-md-8 my-auto">
+                            {{ prod.product.name }}<br>
+                            <small>{{ prod.product.subtitle }}</small>
+                        </div>
+                        <div class="col-12 col-md-2 my-auto">
+                            x {{ prod.quantity }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}
