@@ -114,6 +114,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
+    public function getFullname(): string
+    {
+        return $this->getFirstname().' '.$this->getLastname();
+    }
+
     public function getFirstname(): ?string
     {
         return $this->firstname;
@@ -152,7 +157,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             $this->addresses[] = $address;
             $address->setUser($this);
         }
-
         return $this;
     }
 
@@ -164,7 +168,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $address->setUser(null);
             }
         }
-
         return $this;
     }
 
@@ -182,7 +185,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             $this->orders[] = $order;
             $order->setUser($this);
         }
-
         return $this;
     }
 
