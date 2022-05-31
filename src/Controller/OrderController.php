@@ -2,13 +2,11 @@
 
 namespace App\Controller;
 
-use Stripe\Stripe;
 use App\Classe\Cart;
 use App\Entity\Order;
 use DateTimeImmutable;
 use App\Form\OrderType;
 use App\Entity\OrderDetails;
-use Stripe\Checkout\Session;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -95,8 +93,6 @@ class OrderController extends AbstractController
             //Pour chaque produit dans le panier, on veut créer une nouvelle entrée dans OrderDetails
             //Enregistrer mes produits entité OrderDetails()
             //OrderDetails = prix, produits, quantités de ce qui a été ajouté au panier par l'utilisateur
-            $products_for_stripe = [];
-            $YOUR_DOMAIN = 'http://127.0.0.1:8000';
 
             foreach ($cart->getFull() as $product){
                 $orderDetails = new OrderDetails();
@@ -107,50 +103,18 @@ class OrderController extends AbstractController
                 $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
                 //dd($product);
                 $this->entityManager->persist($orderDetails);
-
-                $products_for_stripe[] = [
-                    'price_data' => [
-                        'currency' => 'eur',
-                        'unit_amount' => $product['product']->getPrice(),
-                        'product_data' => [
-                            'name' => $product['product']->getName(),
-                            'images' => [$YOUR_DOMAIN."/uploads/".$product['product']->getIllustration()],
-                        ],
-                    ],
-                    'quantity' => $product['quantity'],
-                ];
             }
 
-            //dd($products_for_stripe);
             //dd($orderDetails);
 
             //Enregistrer dans la bd
             //$this->entityManager->flush();
 
-            //Après avoir installé Stripe
-            Stripe::setApiKey('sk_test_51L5REXLRjiZIOMs1zmLrHD7iHsjh7KXKpK2ETvPu90x2JX975JmoG89QTXn0owbQek3dix62hN6bHalLK1xCP93z004se3cjQh');
-
-
-            $checkout_session = Session::create([
-                //Les différents produits à afficher
-                'payment_method_types' => ['card'],
-                'line_items' => [[
-                    $products_for_stripe
-                ]],
-                'mode' => 'payment',
-                'success_url' => $YOUR_DOMAIN . '/success.html',
-                'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
-            ]);
-
-            //dump($checkout_session->id);
-            //dd($checkout_session);
-
             //Placé dans le if car le form doit être soumis pour avoir accès aux variables carriers...
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
                 'carrier' => $carriers,
-                'delivery' => $delivery_content,
-                'stripe_checkout_session' => $checkout_session->id
+                'delivery' => $delivery_content
             ]);
         }
 
