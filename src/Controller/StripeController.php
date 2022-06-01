@@ -16,6 +16,7 @@ class StripeController extends AbstractController
     public function index(Cart $cart): Response
     {
         $products_for_stripe = [];
+        //A modifier au passage en production (en local, normal qu'il n'y ait pas les images sur stripe)
         $YOUR_DOMAIN = 'http://127.0.0.1:8000';
 
         //Après avoir installé Stripe
@@ -47,10 +48,9 @@ class StripeController extends AbstractController
             'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
         ]);
 
-        $response = new JsonResponse(['id' => $checkout_session->id]);
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
-        return $response;
+        // $response = new JsonResponse(['id' => $checkout_session->id]);
+        // return $response;
+        return $this->redirect($checkout_session->url);;
 
         //dump($checkout_session->id);
         //dd($checkout_session);
