@@ -76,6 +76,11 @@ class OrderController extends AbstractController
             //dd($carriers);
             //Enregistrer ma commande entité Order()
             $order = new Order();
+
+            //Créer un id unique pour chaque commande pour pouvoir le passer au StripeController
+            $reference = $date->format('dmY').'-'.uniqid();
+            $order->setReference($reference);
+
             $order->setUser($this->getUser());
             $order->setCreatedAt($date);
             //On stocke le transporteur
@@ -105,16 +110,18 @@ class OrderController extends AbstractController
                 $this->entityManager->persist($orderDetails);
             }
 
+            //dd($order);
             //dd($orderDetails);
 
             //Enregistrer dans la bd
-            //$this->entityManager->flush();
+            $this->entityManager->flush();
 
             //Placé dans le if car le form doit être soumis pour avoir accès aux variables carriers...
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
                 'carrier' => $carriers,
-                'delivery' => $delivery_content
+                'delivery' => $delivery_content,
+                'reference' => $order->getReference()
             ]);
         }
 
