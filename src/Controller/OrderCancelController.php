@@ -27,7 +27,7 @@ class OrderCancelController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
 
-        //Envoyer un email pour lui indiquer l'échec de paiment
+        //Envoyer un email pour lui indiquer l'échec de paiement
         
         return $this->render('order_cancel/index.html.twig', [
             'order' => $order
