@@ -127,43 +127,45 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
         // line 21
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 21, $this->source); })()));
+        $context['loop'] = [
+          'parent' => $context['_parent'],
+          'index0' => 0,
+          'index'  => 1,
+          'first'  => true,
+        ];
+        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+            $length = count($context['_seq']);
+            $context['loop']['revindex0'] = $length - 1;
+            $context['loop']['revindex'] = $length;
+            $context['loop']['length'] = $length;
+            $context['loop']['last'] = 1 === $length;
+        }
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
             // line 22
             echo "                    <div class=\"col-md-4\">
-                        <div class=\"product-item text-center\">
-                            <a href=\"";
-            // line 24
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_oneproduct", ["slug" => twig_get_attribute($this->env, $this->source, $context["product"], "slug", [], "any", false, false, false, 24)]), "html", null, true);
-            echo "\"><img src=\"uploads/";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "illustration", [], "any", false, false, false, 24), "html", null, true);
-            echo "\" alt=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 24), "html", null, true);
-            echo "\" class=\"img-fluid\"></a>
-                            <a href=\"";
-            // line 25
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_oneproduct", ["slug" => twig_get_attribute($this->env, $this->source, $context["product"], "slug", [], "any", false, false, false, 25)]), "html", null, true);
-            echo "\"><h3>";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 25), "html", null, true);
-            echo "</h3></a>
-                            <span class=\"product-subtitle\">";
-            // line 26
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "subtitle", [], "any", false, false, false, 26), "html", null, true);
-            echo "</span>
-                            
-                            <span class=\"product-price\">";
-            // line 28
-            echo twig_escape_filter($this->env, twig_number_format_filter($this->env, (twig_get_attribute($this->env, $this->source, $context["product"], "price", [], "any", false, false, false, 28) / 100), 2, ",", "."), "html", null, true);
-            echo " €</span>
-                        </div>
                         ";
+            // line 23
+            $this->loadTemplate("product/single_product.html.twig", "product/index.html.twig", 23)->display($context);
+            // line 24
+            echo "                        ";
             // line 31
+            echo "                        ";
+            // line 32
             echo "                    </div>
                 ";
+            ++$context['loop']['index0'];
+            ++$context['loop']['index'];
+            $context['loop']['first'] = false;
+            if (isset($context['loop']['length'])) {
+                --$context['loop']['revindex0'];
+                --$context['loop']['revindex'];
+                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+            }
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 33
+        // line 34
         echo "            </div>
         </div>
     </div>
@@ -192,7 +194,7 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
 
     public function getDebugInfo()
     {
-        return array (  167 => 33,  160 => 31,  155 => 28,  150 => 26,  144 => 25,  136 => 24,  132 => 22,  128 => 21,  123 => 18,  118 => 15,  114 => 13,  111 => 11,  101 => 10,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  169 => 34,  154 => 32,  152 => 31,  150 => 24,  148 => 23,  145 => 22,  128 => 21,  123 => 18,  118 => 15,  114 => 13,  111 => 11,  101 => 10,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -219,13 +221,14 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
             <div class=\"row\">
                 {% for product in products %}
                     <div class=\"col-md-4\">
-                        <div class=\"product-item text-center\">
+                        {% include 'product/single_product.html.twig' %}
+                        {# <div class=\"product-item text-center\">
                             <a href=\"{{path('app_oneproduct', { 'slug' : product.slug }) }}\"><img src=\"uploads/{{product.illustration}}\" alt=\"{{product.name}}\" class=\"img-fluid\"></a>
                             <a href=\"{{path('app_oneproduct', { 'slug' : product.slug }) }}\"><h3>{{ product.name}}</h3></a>
                             <span class=\"product-subtitle\">{{product.subtitle}}</span>
                             
                             <span class=\"product-price\">{{(product.price /100)|number_format(2,',','.')}} €</span>
-                        </div>
+                        </div> #}
                         {# {{dump(product)}} #}
                     </div>
                 {% endfor %}

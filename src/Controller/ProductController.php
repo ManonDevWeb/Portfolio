@@ -53,6 +53,8 @@ class ProductController extends AbstractController
 
         //Récupérer toutes les données d'un seul produit grâce au repository via son slug
         $product = $this->entityManager->getRepository(Product::class)->findOneBySlug($slug);
+        //Afficher les meilleures ventes
+        $products = $this->entityManager->getRepository(Product::class)->findByIsBest(1);
 
         //Redirection vers la page nos-produits si le slug n'existe pas
         if (!$product){
@@ -61,7 +63,8 @@ class ProductController extends AbstractController
 
         // dd($products);
         return $this->render('product/show.html.twig', [
-            'product'=>$product
+            'product' => $product,
+            'products' => $products
         ]
     );
     }

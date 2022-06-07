@@ -58,13 +58,13 @@
             </div>
             <hr>
             <strong>Mon sous-total : </strong>{{ (total /100)|number_format(2,',','.') }} €<br>
-            <strong>Livraison : </strong>{{ carrier.price|number_format(2,',','.') }} €
+            <strong>Livraison : </strong>{{ (carrier.price / 100)|number_format(2,',','.') }} €
             <hr>
-            <strong>Total : </strong>{{ (carrier.price + (total /100))|number_format(2,',','.') }} € <br>
+            <strong>Total : </strong>{{ ((carrier.price / 100) + (total /100))|number_format(2,',','.') }} € <br>
 
             <form action="/commande/create-session/{{ reference }}" method="POST">
                 {# <a href="{{ path('app_stripe_create_session') }}" class="btn btn-success btn-block mt-3" id="checkout-button">Payer : {{ (carrier.price + (total /100))|number_format(2,',','.') }} €</a> #}
-                <button type="submit" class="btn btn-success btn-block mt-3" id="checkout-button">Payer : {{ (carrier.price + (total /100))|number_format(2,',','.') }} €</button>
+                <button type="submit" class="btn btn-success btn-block mt-3" id="checkout-button">Payer : {{ ((carrier.price / 100) + (total /100))|number_format(2,',','.') }} €</button>
             </form>
 
         </div>
