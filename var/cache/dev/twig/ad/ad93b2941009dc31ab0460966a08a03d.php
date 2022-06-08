@@ -92,7 +92,7 @@ class __TwigTemplate_7256a4089555c063bddfef938e88f220 extends Template
     </style>
 
     <div class=\"example-wrapper\">
-        <h1>Mon compte</h1>
+        <h1 class=\"mt-5\">Mon compte</h1>
         Bienvenue dans votre compte, ";
         // line 13
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 13, $this->source); })()), "user", [], "any", false, false, false, 13), "firstname", [], "any", false, false, false, 13), "html", null, true);
@@ -107,7 +107,10 @@ class __TwigTemplate_7256a4089555c063bddfef938e88f220 extends Template
         // line 17
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account_address");
         echo "\">- Gérer mes adresses<br></a>
-        - Mes commandes<br>
+        <a href=\"";
+        // line 18
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account_order");
+        echo "\">- Mes commandes<br></a>
         <hr>
 
     </div>
@@ -132,7 +135,7 @@ class __TwigTemplate_7256a4089555c063bddfef938e88f220 extends Template
 
     public function getDebugInfo()
     {
-        return array (  108 => 17,  104 => 16,  98 => 13,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
+        return array (  112 => 18,  108 => 17,  104 => 16,  98 => 13,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -148,13 +151,13 @@ class __TwigTemplate_7256a4089555c063bddfef938e88f220 extends Template
     </style>
 
     <div class=\"example-wrapper\">
-        <h1>Mon compte</h1>
+        <h1 class=\"mt-5\">Mon compte</h1>
         Bienvenue dans votre compte, {{app.user.firstname}}.<br>C'est dans cet espace que vous allez pouvoir gérer toutes vos informations personnelles.
 
         <hr>
         <a href=\"{{ path('app_account_password') }}\">- Modifier mon mot de passe <br></a>
         <a href=\"{{ path('app_account_address') }}\">- Gérer mes adresses<br></a>
-        - Mes commandes<br>
+        <a href=\"{{ path('app_account_order') }}\">- Mes commandes<br></a>
         <hr>
 
     </div>

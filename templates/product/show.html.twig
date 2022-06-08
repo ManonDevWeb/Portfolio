@@ -2,13 +2,9 @@
 
 {% block title %}{{parent()}}{{product.name}}{% endblock %}
 
-{% block carousel %}
-    <br><br>
-{% endblock carousel %}
-
 {% block content %}
 
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-md-4">
             <img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid">
         </div>

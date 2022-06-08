@@ -26,7 +26,6 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
-            'carousel' => [$this, 'block_carousel'],
             'content' => [$this, 'block_content'],
         ];
     }
@@ -76,28 +75,7 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
 
     }
 
-    // line 5
-    public function block_carousel($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "carousel"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "carousel"));
-
-        // line 6
-        echo "    <br><br>
-";
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
-
-    }
-
-    // line 10
+    // line 6
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -107,26 +85,26 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 11
-        echo "    <div class=\"row\">
+        // line 7
+        echo "    <div class=\"row mt-5\">
         ";
-        // line 13
+        // line 9
         echo "        <div class=\"col-md-3\">
             <h3>Filtrer</h3>
             ";
-        // line 15
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 15, $this->source); })()), 'form');
+        // line 11
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 11, $this->source); })()), 'form');
         echo "
         </div>
         ";
-        // line 18
+        // line 14
         echo "        <div class=\"col-md-9\">
             <h1>Nos produits</h1>
             <div class=\"row\">
                 ";
-        // line 21
+        // line 17
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 21, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 17, $this->source); })()));
         $context['loop'] = [
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -141,16 +119,16 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-            // line 22
+            // line 18
             echo "                    <div class=\"col-md-4\">
                         ";
-            // line 23
-            $this->loadTemplate("product/single_product.html.twig", "product/index.html.twig", 23)->display($context);
-            // line 24
+            // line 19
+            $this->loadTemplate("product/single_product.html.twig", "product/index.html.twig", 19)->display($context);
+            // line 20
             echo "                        ";
-            // line 31
+            // line 27
             echo "                        ";
-            // line 32
+            // line 28
             echo "                    </div>
                 ";
             ++$context['loop']['index0'];
@@ -165,7 +143,7 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 34
+        // line 30
         echo "            </div>
         </div>
     </div>
@@ -194,7 +172,7 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
 
     public function getDebugInfo()
     {
-        return array (  169 => 34,  154 => 32,  152 => 31,  150 => 24,  148 => 23,  145 => 22,  128 => 21,  123 => 18,  118 => 15,  114 => 13,  111 => 11,  101 => 10,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  147 => 30,  132 => 28,  130 => 27,  128 => 20,  126 => 19,  123 => 18,  106 => 17,  101 => 14,  96 => 11,  92 => 9,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -203,13 +181,9 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
 
 {% block title %}{{parent()}}Nos produits{% endblock %}
 
-{% block carousel %}
-    <br><br>
-{% endblock %}
-
 
 {% block content %}
-    <div class=\"row\">
+    <div class=\"row mt-5\">
         {# Filtre #}
         <div class=\"col-md-3\">
             <h3>Filtrer</h3>

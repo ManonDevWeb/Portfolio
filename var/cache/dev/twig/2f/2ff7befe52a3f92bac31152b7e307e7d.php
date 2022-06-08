@@ -29,7 +29,6 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
         $this->blocks = [
             'title' => [$this, 'block_title'],
             'javascript' => [$this, 'block_javascript'],
-            'carousel' => [$this, 'block_carousel'],
             'content' => [$this, 'block_content'],
         ];
     }
@@ -170,10 +169,87 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
 <main role=\"main\">
     ";
         // line 78
-        $this->displayBlock('carousel', $context, $blocks);
-        // line 127
+        if (        $this->hasBlock("carousel", $context, $blocks)) {
+            // line 79
+            echo "    ";
+            // line 80
+            echo "    <div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">
+        <ol class=\"carousel-indicators\">
+            ";
+            // line 82
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["headers"]) || array_key_exists("headers", $context) ? $context["headers"] : (function () { throw new RuntimeError('Variable "headers" does not exist.', 82, $this->source); })()));
+            foreach ($context['_seq'] as $context["key"] => $context["header"]) {
+                // line 83
+                echo "                <li data-target=\"#myCarousel\" data-slide-to=\"";
+                echo twig_escape_filter($this->env, $context["key"], "html", null, true);
+                echo "\" ";
+                if (($context["key"] == 0)) {
+                    echo "class=\"active\"";
+                }
+                echo "></li>
+            ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['key'], $context['header'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 85
+            echo "        </ol>
+        <div class=\"carousel-inner\">
+            ";
+            // line 87
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["headers"]) || array_key_exists("headers", $context) ? $context["headers"] : (function () { throw new RuntimeError('Variable "headers" does not exist.', 87, $this->source); })()));
+            foreach ($context['_seq'] as $context["key"] => $context["header"]) {
+                // line 88
+                echo "            <div class=\"carousel-item ";
+                if (($context["key"] == 0)) {
+                    echo "active";
+                }
+                echo "\" style=\"background: url('/uploads/";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "illustration", [], "any", false, false, false, 88), "html", null, true);
+                echo "'); background-size: cover; background-position: center\">
+                <div class=\"container\">
+                    <div class=\"carousel-caption text-left\">
+                        <h1>";
+                // line 91
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "title", [], "any", false, false, false, 91), "html", null, true);
+                echo "</h1>
+                        <p>";
+                // line 92
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "content", [], "any", false, false, false, 92), "html", null, true);
+                echo "</p>
+                        <p><a class=\"btn btn-lg btn-primary\" href=\"";
+                // line 93
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "btnUrl", [], "any", false, false, false, 93), "html", null, true);
+                echo "\" role=\"button\">";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "btnTitle", [], "any", false, false, false, 93), "html", null, true);
+                echo "</a></p>
+                    </div>
+                </div>
+            </div>
+            ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['key'], $context['header'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 98
+            echo "        </div>
+        <a class=\"carousel-control-prev\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">
+            <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>
+            <span class=\"sr-only\">Previous</span>
+        </a>
+        <a class=\"carousel-control-next\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">
+            <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
+            <span class=\"sr-only\">Next</span>
+        </a>
+    </div>
+    ";
+            // line 109
+            echo "    ";
+        }
+        // line 110
         echo "
-
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
@@ -181,9 +257,9 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
     <div class=\"container marketing\">
 
         ";
-        // line 135
+        // line 117
         $this->displayBlock('content', $context, $blocks);
-        // line 137
+        // line 119
         echo "
     </div><!-- /.container -->
 
@@ -195,7 +271,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
 </main>
 <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
 <script src=\"";
-        // line 147
+        // line 129
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/bootstrap.bundle.js"), "html", null, true);
         echo "\"></script>
 </body>
@@ -247,74 +323,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
 
     }
 
-    // line 78
-    public function block_carousel($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "carousel"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "carousel"));
-
-        // line 79
-        echo "    <div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">
-        <ol class=\"carousel-indicators\">
-            <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>
-            <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>
-            <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>
-        </ol>
-        <div class=\"carousel-inner\">
-            <div class=\"carousel-item active\">
-                <svg class=\"bd-placeholder-img\" width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\"><rect width=\"100%\" height=\"100%\" fill=\"#777\"/></svg>
-                <div class=\"container\">
-                    <div class=\"carousel-caption text-left\">
-                        <h1>Example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">Sign up today</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class=\"carousel-item\">
-                <svg class=\"bd-placeholder-img\" width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\"><rect width=\"100%\" height=\"100%\" fill=\"#777\"/></svg>
-                <div class=\"container\">
-                    <div class=\"carousel-caption\">
-                        <h1>Another example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">Learn more</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class=\"carousel-item\">
-                <svg class=\"bd-placeholder-img\" width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\"><rect width=\"100%\" height=\"100%\" fill=\"#777\"/></svg>
-                <div class=\"container\">
-                    <div class=\"carousel-caption text-right\">
-                        <h1>One more for good measure.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">Browse gallery</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a class=\"carousel-control-prev\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">
-            <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>
-            <span class=\"sr-only\">Previous</span>
-        </a>
-        <a class=\"carousel-control-next\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">
-            <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
-            <span class=\"sr-only\">Next</span>
-        </a>
-    </div>
-    ";
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
-
-    }
-
-    // line 135
+    // line 117
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -324,7 +333,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 136
+        // line 118
         echo "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -346,7 +355,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
 
     public function getDebugInfo()
     {
-        return array (  328 => 136,  318 => 135,  261 => 79,  251 => 78,  241 => 14,  231 => 13,  212 => 9,  199 => 147,  187 => 137,  185 => 135,  175 => 127,  173 => 78,  157 => 65,  153 => 64,  150 => 63,  147 => 62,  140 => 60,  138 => 59,  135 => 58,  126 => 56,  124 => 55,  122 => 54,  110 => 45,  100 => 38,  92 => 33,  72 => 15,  70 => 13,  66 => 12,  62 => 11,  57 => 9,  47 => 1,);
+        return array (  337 => 118,  327 => 117,  317 => 14,  307 => 13,  288 => 9,  275 => 129,  263 => 119,  261 => 117,  252 => 110,  249 => 109,  237 => 98,  224 => 93,  220 => 92,  216 => 91,  205 => 88,  201 => 87,  197 => 85,  184 => 83,  180 => 82,  176 => 80,  174 => 79,  172 => 78,  156 => 65,  152 => 64,  149 => 63,  146 => 62,  139 => 60,  137 => 59,  134 => 58,  125 => 56,  123 => 55,  121 => 54,  109 => 45,  99 => 38,  91 => 33,  71 => 15,  69 => 13,  65 => 12,  61 => 11,  56 => 9,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -428,44 +437,26 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
 </header>
 
 <main role=\"main\">
-    {% block carousel %}
+    {% if block('carousel') is defined %}
+    {# {% block carousel %} #}
     <div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">
         <ol class=\"carousel-indicators\">
-            <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>
-            <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>
-            <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>
+            {% for key,header in headers %}
+                <li data-target=\"#myCarousel\" data-slide-to=\"{{ key }}\" {% if key ==0 %}class=\"active\"{% endif %}></li>
+            {% endfor %}
         </ol>
         <div class=\"carousel-inner\">
-            <div class=\"carousel-item active\">
-                <svg class=\"bd-placeholder-img\" width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\"><rect width=\"100%\" height=\"100%\" fill=\"#777\"/></svg>
+            {% for key,header in headers %}
+            <div class=\"carousel-item {% if key ==0 %}active{% endif %}\" style=\"background: url('/uploads/{{ header.illustration }}'); background-size: cover; background-position: center\">
                 <div class=\"container\">
                     <div class=\"carousel-caption text-left\">
-                        <h1>Example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">Sign up today</a></p>
+                        <h1>{{header.title}}</h1>
+                        <p>{{header.content}}</p>
+                        <p><a class=\"btn btn-lg btn-primary\" href=\"{{ header.btnUrl }}\" role=\"button\">{{header.btnTitle}}</a></p>
                     </div>
                 </div>
             </div>
-            <div class=\"carousel-item\">
-                <svg class=\"bd-placeholder-img\" width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\"><rect width=\"100%\" height=\"100%\" fill=\"#777\"/></svg>
-                <div class=\"container\">
-                    <div class=\"carousel-caption\">
-                        <h1>Another example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">Learn more</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class=\"carousel-item\">
-                <svg class=\"bd-placeholder-img\" width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\"><rect width=\"100%\" height=\"100%\" fill=\"#777\"/></svg>
-                <div class=\"container\">
-                    <div class=\"carousel-caption text-right\">
-                        <h1>One more for good measure.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">Browse gallery</a></p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         <a class=\"carousel-control-prev\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">
             <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>
@@ -476,8 +467,8 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
             <span class=\"sr-only\">Next</span>
         </a>
     </div>
-    {% endblock carousel %}
-
+    {# {% endblock carousel %}  #}
+    {% endif %}
 
     <!-- Marketing messaging and featurettes
     ================================================== -->

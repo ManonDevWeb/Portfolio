@@ -6,13 +6,9 @@
 
 {% block title %}{{parent()}}Paiement de ma commande{% endblock %}
 
-{% block carousel %}
-    <br><br>
-{% endblock %}
-
 
 {% block content %}
-    <h2>Mon récapitulatif</h2>
+    <h2 class="mt-5">Mon récapitulatif</h2>
     <p>Vérifiez vos informations avant de payer votre commande.</p>
     <hr>
     <div class="row">
@@ -27,7 +23,7 @@
             <div class="form-check">
                 {{ carrier.name}} <br>
                 {{ carrier.description}} <br>
-                {{ carrier.price|number_format(2,',','.')}} €
+                {{ (carrier.price / 100)|number_format(2,',','.')}} €
             </div>
         </div>
 
