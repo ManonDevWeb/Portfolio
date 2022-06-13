@@ -26,7 +26,6 @@ class __TwigTemplate_23f6f6aec9d10545145d634d800d15c5 extends Template
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
-            'carousel' => [$this, 'block_carousel'],
             'content' => [$this, 'block_content'],
         ];
     }
@@ -77,24 +76,6 @@ class __TwigTemplate_23f6f6aec9d10545145d634d800d15c5 extends Template
     }
 
     // line 5
-    public function block_carousel($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "carousel"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "carousel"));
-
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
-
-    }
-
-    // line 8
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -104,69 +85,69 @@ class __TwigTemplate_23f6f6aec9d10545145d634d800d15c5 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 9
+        // line 6
         echo "
     <a href=\"";
-        // line 10
+        // line 7
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account_address_add");
         echo "\" class=\"btn btn-info btn-sm float-right mt-3\">Ajouter une adresse</a>
     <h1 class=\"mt-5\">Mes adresses</h1>
     Bienvenue, ";
-        // line 12
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 12, $this->source); })()), "user", [], "any", false, false, false, 12), "firstname", [], "any", false, false, false, 12), "html", null, true);
+        // line 9
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 9, $this->source); })()), "user", [], "any", false, false, false, 9), "firstname", [], "any", false, false, false, 9), "html", null, true);
         echo ".<br>C'est dans cet espace que vous allez pouvoir gérer vos adresses. <br>
     <a href=\"";
-        // line 13
+        // line 10
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account");
         echo "\">Retour</a>
     <hr>
 
     ";
-        // line 17
+        // line 14
         echo "    ";
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "user", [], "any", false, false, false, 17), "addresses", [], "any", false, false, false, 17)) == 0)) {
-            // line 18
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14), "addresses", [], "any", false, false, false, 14)) == 0)) {
+            // line 15
             echo "        <p class=\"text-center\">Vous n'avez pas encore ajouté d'adresse dans votre compte client. Pour en ajouter une, veuillez <a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account_address_add");
             echo "\">cliquer ici</a>.</p>
     ";
         } else {
-            // line 20
+            // line 17
             echo "        <div class=\"row\">
             ";
-            // line 21
+            // line 18
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 21, $this->source); })()), "user", [], "any", false, false, false, 21), "addresses", [], "any", false, false, false, 21));
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 18, $this->source); })()), "user", [], "any", false, false, false, 18), "addresses", [], "any", false, false, false, 18));
             foreach ($context['_seq'] as $context["_key"] => $context["address"]) {
-                // line 22
+                // line 19
                 echo "                    <div class=\"col-12 col-md-4\">
                         <div class=\"card\" style=\"width: 18rem;\">
                             <div class=\"card-body\">
                                 <h5 class=\"card-title\">";
-                // line 25
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["address"], "name", [], "any", false, false, false, 25), "html", null, true);
+                // line 22
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["address"], "name", [], "any", false, false, false, 22), "html", null, true);
                 echo "</h5>
                                 <p class=\"card-text\">
                                     ";
-                // line 27
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["address"], "address", [], "any", false, false, false, 27), "html", null, true);
+                // line 24
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["address"], "address", [], "any", false, false, false, 24), "html", null, true);
                 echo " <br>
                                     ";
-                // line 28
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["address"], "postal", [], "any", false, false, false, 28), "html", null, true);
+                // line 25
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["address"], "postal", [], "any", false, false, false, 25), "html", null, true);
                 echo " - ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["address"], "city", [], "any", false, false, false, 28), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["address"], "city", [], "any", false, false, false, 25), "html", null, true);
                 echo " - ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["address"], "country", [], "any", false, false, false, 28), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["address"], "country", [], "any", false, false, false, 25), "html", null, true);
                 echo "
                                 </p>
                                 <a href=\"";
-                // line 30
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account_address_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["address"], "id", [], "any", false, false, false, 30)]), "html", null, true);
+                // line 27
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account_address_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["address"], "id", [], "any", false, false, false, 27)]), "html", null, true);
                 echo "\" class=\"btn btn-primary\">Modifier</a>
                                 <a href=\"";
-                // line 31
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account_address_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["address"], "id", [], "any", false, false, false, 31)]), "html", null, true);
+                // line 28
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account_address_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["address"], "id", [], "any", false, false, false, 28)]), "html", null, true);
                 echo "\" class=\"btn btn-danger\">Supprimer</a>
                             </div>
                         </div>
@@ -176,7 +157,7 @@ class __TwigTemplate_23f6f6aec9d10545145d634d800d15c5 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['address'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 36
+            // line 33
             echo "        </div>
             
     ";
@@ -201,7 +182,7 @@ class __TwigTemplate_23f6f6aec9d10545145d634d800d15c5 extends Template
 
     public function getDebugInfo()
     {
-        return array (  180 => 36,  169 => 31,  165 => 30,  156 => 28,  152 => 27,  147 => 25,  142 => 22,  138 => 21,  135 => 20,  129 => 18,  126 => 17,  120 => 13,  116 => 12,  111 => 10,  108 => 9,  98 => 8,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  161 => 33,  150 => 28,  146 => 27,  137 => 25,  133 => 24,  128 => 22,  123 => 19,  119 => 18,  116 => 17,  110 => 15,  107 => 14,  101 => 10,  97 => 9,  92 => 7,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -209,9 +190,6 @@ class __TwigTemplate_23f6f6aec9d10545145d634d800d15c5 extends Template
         return new Source("{% extends 'base.html.twig' %}
 
 {% block title %}{{parent()}}Mes adresses{% endblock %}
-
-{% block carousel %}
-{% endblock %}
 
 {% block content %}
 

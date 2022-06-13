@@ -26,7 +26,6 @@ class __TwigTemplate_14763e98dba3d31d958af33aab262971 extends Template
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
-            'carousel' => [$this, 'block_carousel'],
             'content' => [$this, 'block_content'],
         ];
     }
@@ -77,27 +76,6 @@ class __TwigTemplate_14763e98dba3d31d958af33aab262971 extends Template
     }
 
     // line 5
-    public function block_carousel($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "carousel"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "carousel"));
-
-        // line 6
-        echo "    <br><br>
-";
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
-
-    }
-
-    // line 9
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -107,12 +85,12 @@ class __TwigTemplate_14763e98dba3d31d958af33aab262971 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 10
+        // line 6
         echo "
-    <h1>Inscription</h1>
+    <h1 class=\"mt-5\">Inscription</h1>
     ";
-        // line 12
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 12, $this->source); })()), 'form');
+        // line 8
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 8, $this->source); })()), 'form');
         echo "
 
 ";
@@ -136,7 +114,7 @@ class __TwigTemplate_14763e98dba3d31d958af33aab262971 extends Template
 
     public function getDebugInfo()
     {
-        return array (  115 => 12,  111 => 10,  101 => 9,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  93 => 8,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -145,13 +123,9 @@ class __TwigTemplate_14763e98dba3d31d958af33aab262971 extends Template
 
 {% block title %}{{parent()}}S'inscrire{% endblock %}
 
-{% block carousel %}
-    <br><br>
-{% endblock %}
-
 {% block content %}
 
-    <h1>Inscription</h1>
+    <h1 class=\"mt-5\">Inscription</h1>
     {{form(form)}}
 
 {% endblock %}

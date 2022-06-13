@@ -498,17 +498,17 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "2.6.3",
-            "version_normalized": "2.6.3.0",
+            "version": "2.7.0",
+            "version_normalized": "2.7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "527970d22b8ca6472ebd88d7c42e512550bd874e"
+                "reference": "d2088fc50494e4e7441fecca54732245a613eeb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/527970d22b8ca6472ebd88d7c42e512550bd874e",
-                "reference": "527970d22b8ca6472ebd88d7c42e512550bd874e",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/d2088fc50494e4e7441fecca54732245a613eeb6",
+                "reference": "d2088fc50494e4e7441fecca54732245a613eeb6",
                 "shasum": ""
             },
             "require": {
@@ -533,7 +533,7 @@
             },
             "require-dev": {
                 "doctrine/coding-standard": "^9.0",
-                "doctrine/orm": "^2.10 || ^3.0",
+                "doctrine/orm": "^2.11 || ^3.0",
                 "friendsofphp/proxy-manager-lts": "^1.0",
                 "phpunit/phpunit": "^7.5 || ^8.0 || ^9.3 || ^10.0",
                 "psalm/plugin-phpunit": "^0.16.1",
@@ -555,7 +555,7 @@
                 "ext-pdo": "*",
                 "symfony/web-profiler-bundle": "To use the data collector."
             },
-            "time": "2022-04-22T09:59:53+00:00",
+            "time": "2022-06-10T10:55:26+00:00",
             "type": "symfony-bundle",
             "installation-source": "dist",
             "autoload": {
@@ -595,7 +595,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/DoctrineBundle/issues",
-                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.6.3"
+                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.7.0"
             },
             "funding": [
                 {
@@ -1419,17 +1419,17 @@
         },
         {
             "name": "easycorp/easyadmin-bundle",
-            "version": "v4.2.3",
-            "version_normalized": "4.2.3.0",
+            "version": "v4.2.4",
+            "version_normalized": "4.2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/EasyCorp/EasyAdminBundle.git",
-                "reference": "e571633c2560a09c68e03f8e3c0a5906894f1498"
+                "reference": "2d6be29a46724a31207dc2c12904f72c3d76a911"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/e571633c2560a09c68e03f8e3c0a5906894f1498",
-                "reference": "e571633c2560a09c68e03f8e3c0a5906894f1498",
+                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/2d6be29a46724a31207dc2c12904f72c3d76a911",
+                "reference": "2d6be29a46724a31207dc2c12904f72c3d76a911",
                 "shasum": ""
             },
             "require": {
@@ -1466,7 +1466,7 @@
                 "symfony/dom-crawler": "^5.4|^6.0",
                 "symfony/phpunit-bridge": "^5.4|^6.0"
             },
-            "time": "2022-05-25T18:41:55+00:00",
+            "time": "2022-06-10T18:12:09+00:00",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -1498,7 +1498,7 @@
             ],
             "support": {
                 "issues": "https://github.com/EasyCorp/EasyAdminBundle/issues",
-                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v4.2.3"
+                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v4.2.4"
             },
             "funding": [
                 {
@@ -1735,17 +1735,17 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "2.6.0",
-            "version_normalized": "2.6.0.0",
+            "version": "2.7.0",
+            "version_normalized": "2.7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "247918972acd74356b0a91dfaa5adcaec069b6c0"
+                "reference": "5579edf28aee1190a798bfa5be8bc16c563bd524"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/247918972acd74356b0a91dfaa5adcaec069b6c0",
-                "reference": "247918972acd74356b0a91dfaa5adcaec069b6c0",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/5579edf28aee1190a798bfa5be8bc16c563bd524",
+                "reference": "5579edf28aee1190a798bfa5be8bc16c563bd524",
                 "shasum": ""
             },
             "require": {
@@ -1793,7 +1793,7 @@
                 "rollbar/rollbar": "Allow sending log messages to Rollbar",
                 "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
             },
-            "time": "2022-05-10T09:36:00+00:00",
+            "time": "2022-06-09T08:59:12+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1826,7 +1826,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/2.6.0"
+                "source": "https://github.com/Seldaek/monolog/tree/2.7.0"
             },
             "funding": [
                 {
@@ -2319,17 +2319,17 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.5.1",
-            "version_normalized": "1.5.1.0",
+            "version": "1.6.2",
+            "version_normalized": "1.6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "981cc368a216c988e862a75e526b6076987d1b50"
+                "reference": "76150ae7512439b4e6903db834e4a327596b617d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/981cc368a216c988e862a75e526b6076987d1b50",
-                "reference": "981cc368a216c988e862a75e526b6076987d1b50",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/76150ae7512439b4e6903db834e4a327596b617d",
+                "reference": "76150ae7512439b4e6903db834e4a327596b617d",
                 "shasum": ""
             },
             "require": {
@@ -2339,11 +2339,12 @@
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpstan/extension-installer": "^1.0",
                 "phpstan/phpstan": "^1.5",
+                "phpstan/phpstan-phpunit": "^1.1",
                 "phpstan/phpstan-strict-rules": "^1.0",
                 "phpunit/phpunit": "^9.5",
                 "symfony/process": "^5.2"
             },
-            "time": "2022-05-05T11:32:40+00:00",
+            "time": "2022-06-10T09:29:33+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2360,7 +2361,7 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.5.1"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.6.2"
             },
             "install-path": "../phpstan/phpdoc-parser"
         },
@@ -4171,17 +4172,17 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v8.5.0",
-            "version_normalized": "8.5.0.0",
+            "version": "v8.6.0",
+            "version_normalized": "8.6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "e48ebf628d0e97e205f946ecb97fcd2de00f7926"
+                "reference": "d8ce03ae74d012d108f2338214444f24d94c2496"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/e48ebf628d0e97e205f946ecb97fcd2de00f7926",
-                "reference": "e48ebf628d0e97e205f946ecb97fcd2de00f7926",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/d8ce03ae74d012d108f2338214444f24d94c2496",
+                "reference": "d8ce03ae74d012d108f2338214444f24d94c2496",
                 "shasum": ""
             },
             "require": {
@@ -4196,7 +4197,7 @@
                 "phpunit/phpunit": "^5.7 || ^9.0",
                 "squizlabs/php_codesniffer": "^3.3"
             },
-            "time": "2022-06-01T19:17:59+00:00",
+            "time": "2022-06-08T16:13:12+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -4228,7 +4229,7 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v8.5.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v8.6.0"
             },
             "install-path": "../stripe/stripe-php"
         },

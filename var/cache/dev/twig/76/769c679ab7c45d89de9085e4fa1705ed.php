@@ -40,23 +40,12 @@ class __TwigTemplate_dad9a1aea30fb377d517deb41154b9f5 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "@EasyAdmin/crud/field/email.html.twig"));
 
         // line 4
-        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["ea"]) || array_key_exists("ea", $context) ? $context["ea"] : (function () { throw new RuntimeError('Variable "ea" does not exist.', 4, $this->source); })()), "crud", [], "any", false, false, false, 4), "currentAction", [], "any", false, false, false, 4) == "detail")) {
-            // line 5
-            echo "    <a href=\"mailto:";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["field"]) || array_key_exists("field", $context) ? $context["field"] : (function () { throw new RuntimeError('Variable "field" does not exist.', 5, $this->source); })()), "value", [], "any", false, false, false, 5), "html", null, true);
-            echo "\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["field"]) || array_key_exists("field", $context) ? $context["field"] : (function () { throw new RuntimeError('Variable "field" does not exist.', 5, $this->source); })()), "formattedValue", [], "any", false, false, false, 5), "html", null, true);
-            echo "</a>
+        echo "<a href=\"mailto:";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["field"]) || array_key_exists("field", $context) ? $context["field"] : (function () { throw new RuntimeError('Variable "field" does not exist.', 4, $this->source); })()), "value", [], "any", false, false, false, 4), "html", null, true);
+        echo "\">";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["field"]) || array_key_exists("field", $context) ? $context["field"] : (function () { throw new RuntimeError('Variable "field" does not exist.', 4, $this->source); })()), "formattedValue", [], "any", false, false, false, 4), "html", null, true);
+        echo "</a>
 ";
-        } else {
-            // line 7
-            echo "    <a href=\"mailto:";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["field"]) || array_key_exists("field", $context) ? $context["field"] : (function () { throw new RuntimeError('Variable "field" does not exist.', 7, $this->source); })()), "value", [], "any", false, false, false, 7), "html", null, true);
-            echo "\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["field"]) || array_key_exists("field", $context) ? $context["field"] : (function () { throw new RuntimeError('Variable "field" does not exist.', 7, $this->source); })()), "formattedValue", [], "any", false, false, false, 7), "html", null, true);
-            echo "</a>
-";
-        }
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
@@ -77,7 +66,7 @@ class __TwigTemplate_dad9a1aea30fb377d517deb41154b9f5 extends Template
 
     public function getDebugInfo()
     {
-        return array (  53 => 7,  45 => 5,  43 => 4,);
+        return array (  43 => 4,);
     }
 
     public function getSourceContext()
@@ -85,11 +74,7 @@ class __TwigTemplate_dad9a1aea30fb377d517deb41154b9f5 extends Template
         return new Source("{# @var ea \\EasyCorp\\Bundle\\EasyAdminBundle\\Context\\AdminContext #}
 {# @var field \\EasyCorp\\Bundle\\EasyAdminBundle\\Dto\\FieldDto #}
 {# @var entity \\EasyCorp\\Bundle\\EasyAdminBundle\\Dto\\EntityDto #}
-{% if ea.crud.currentAction == 'detail' %}
-    <a href=\"mailto:{{ field.value }}\">{{ field.formattedValue }}</a>
-{% else %}
-    <a href=\"mailto:{{ field.value }}\">{{ field.formattedValue }}</a>
-{% endif %}
+<a href=\"mailto:{{ field.value }}\">{{ field.formattedValue }}</a>
 ", "@EasyAdmin/crud/field/email.html.twig", "C:\\xampp\\htdocs\\mcmc\\vendor\\easycorp\\easyadmin-bundle\\src\\Resources\\views\\crud\\field\\email.html.twig");
     }
 }

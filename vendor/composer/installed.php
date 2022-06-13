@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '6a863d27b99ea4a89252c201338d2568977ab218',
+        'reference' => '9cb19e0d1061e6be1ffba85394bc01c49ae8f6bd',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '6a863d27b99ea4a89252c201338d2568977ab218',
+            'reference' => '9cb19e0d1061e6be1ffba85394bc01c49ae8f6bd',
             'dev_requirement' => false,
         ),
         'doctrine/annotations' => array(
@@ -74,12 +74,12 @@
             'dev_requirement' => false,
         ),
         'doctrine/doctrine-bundle' => array(
-            'pretty_version' => '2.6.3',
-            'version' => '2.6.3.0',
+            'pretty_version' => '2.7.0',
+            'version' => '2.7.0.0',
             'type' => 'symfony-bundle',
             'install_path' => __DIR__ . '/../doctrine/doctrine-bundle',
             'aliases' => array(),
-            'reference' => '527970d22b8ca6472ebd88d7c42e512550bd874e',
+            'reference' => 'd2088fc50494e4e7441fecca54732245a613eeb6',
             'dev_requirement' => false,
         ),
         'doctrine/doctrine-migrations-bundle' => array(
@@ -164,12 +164,12 @@
             'dev_requirement' => false,
         ),
         'easycorp/easyadmin-bundle' => array(
-            'pretty_version' => 'v4.2.3',
-            'version' => '4.2.3.0',
+            'pretty_version' => 'v4.2.4',
+            'version' => '4.2.4.0',
             'type' => 'symfony-bundle',
             'install_path' => __DIR__ . '/../easycorp/easyadmin-bundle',
             'aliases' => array(),
-            'reference' => 'e571633c2560a09c68e03f8e3c0a5906894f1498',
+            'reference' => '2d6be29a46724a31207dc2c12904f72c3d76a911',
             'dev_requirement' => false,
         ),
         'egulias/email-validator' => array(
@@ -200,12 +200,12 @@
             'dev_requirement' => false,
         ),
         'monolog/monolog' => array(
-            'pretty_version' => '2.6.0',
-            'version' => '2.6.0.0',
+            'pretty_version' => '2.7.0',
+            'version' => '2.7.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../monolog/monolog',
             'aliases' => array(),
-            'reference' => '247918972acd74356b0a91dfaa5adcaec069b6c0',
+            'reference' => '5579edf28aee1190a798bfa5be8bc16c563bd524',
             'dev_requirement' => false,
         ),
         'myclabs/deep-copy' => array(
@@ -299,12 +299,12 @@
             'dev_requirement' => true,
         ),
         'phpstan/phpdoc-parser' => array(
-            'pretty_version' => '1.5.1',
-            'version' => '1.5.1.0',
+            'pretty_version' => '1.6.2',
+            'version' => '1.6.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpstan/phpdoc-parser',
             'aliases' => array(),
-            'reference' => '981cc368a216c988e862a75e526b6076987d1b50',
+            'reference' => '76150ae7512439b4e6903db834e4a327596b617d',
             'dev_requirement' => false,
         ),
         'phpunit/php-code-coverage' => array(
@@ -439,8 +439,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0.0 || 2.0.0 || 3.0.0',
-                1 => '1.0|2.0|3.0',
+                0 => '1.0|2.0|3.0',
+                1 => '1.0.0 || 2.0.0 || 3.0.0',
             ),
         ),
         'psr/simple-cache-implementation' => array(
@@ -603,12 +603,12 @@
             'dev_requirement' => false,
         ),
         'stripe/stripe-php' => array(
-            'pretty_version' => 'v8.5.0',
-            'version' => '8.5.0.0',
+            'pretty_version' => 'v8.6.0',
+            'version' => '8.6.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../stripe/stripe-php',
             'aliases' => array(),
-            'reference' => 'e48ebf628d0e97e205f946ecb97fcd2de00f7926',
+            'reference' => 'd8ce03ae74d012d108f2338214444f24d94c2496',
             'dev_requirement' => false,
         ),
         'symfony/apache-pack' => array(
