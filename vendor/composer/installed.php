@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'ab105ddcc46f715fdc5590764e241efb58146856',
+        'reference' => '97a9a050729d84934e76c3335704c1cea02d0a7f',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'ab105ddcc46f715fdc5590764e241efb58146856',
+            'reference' => '97a9a050729d84934e76c3335704c1cea02d0a7f',
             'dev_requirement' => false,
         ),
         'doctrine/annotations' => array(
@@ -600,6 +600,15 @@
             'install_path' => __DIR__ . '/../sensio/framework-extra-bundle',
             'aliases' => array(),
             'reference' => '6bd976c99ef3f78e31c9490a10ba6dd8901076eb',
+            'dev_requirement' => false,
+        ),
+        'sonata-project/exporter' => array(
+            'pretty_version' => '2.13.0',
+            'version' => '2.13.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../sonata-project/exporter',
+            'aliases' => array(),
+            'reference' => 'abbadcd8b821867a2b3c1bb89701bf234443456b',
             'dev_requirement' => false,
         ),
         'stripe/stripe-php' => array(

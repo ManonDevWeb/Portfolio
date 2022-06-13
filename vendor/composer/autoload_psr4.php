@@ -79,6 +79,8 @@ return array(
     'Symfony\\Bridge\\Monolog\\' => array($vendorDir . '/symfony/monolog-bridge'),
     'Symfony\\Bridge\\Doctrine\\' => array($vendorDir . '/symfony/doctrine-bridge'),
     'Stripe\\' => array($vendorDir . '/stripe/stripe-php/lib'),
+    'Sonata\\Exporter\\Bridge\\Symfony\\' => array($vendorDir . '/sonata-project/exporter/src/Bridge/Symfony'),
+    'Sonata\\Exporter\\' => array($vendorDir . '/sonata-project/exporter/src'),
     'Sensio\\Bundle\\FrameworkExtraBundle\\' => array($vendorDir . '/sensio/framework-extra-bundle/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
     'Psr\\Link\\' => array($vendorDir . '/psr/link/src'),
