@@ -87,7 +87,7 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
 
         // line 6
         echo "    <!-- Three columns of text below the carousel -->
-    <h2>Nos meilleures ventes</h2>
+    <h2 class=\"mt-4\">Nos meilleures ventes</h2>
     <p>Découvrez les articles les plus vendus</p>
     <div class=\"row\">
         ";
@@ -205,7 +205,7 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
 
 {% block content %}
     <!-- Three columns of text below the carousel -->
-    <h2>Nos meilleures ventes</h2>
+    <h2 class=\"mt-4\">Nos meilleures ventes</h2>
     <p>Découvrez les articles les plus vendus</p>
     <div class=\"row\">
         {% for product in products %}

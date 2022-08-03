@@ -64,10 +64,14 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
         // line 12
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/css/mcmc.css"), "html", null, true);
         echo "\">
-    ";
+    <link rel=\"icon\" href=\"";
         // line 13
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/logo.png"), "html", null, true);
+        echo "\">
+    ";
+        // line 14
         $this->displayBlock('javascript', $context, $blocks);
-        // line 15
+        // line 16
         echo "
     <style>
         .bd-placeholder-img {
@@ -87,7 +91,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
     </style>
     <!-- Custom styles for this template -->
     <link href=\"";
-        // line 33
+        // line 34
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/css/carousel.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
 </head>
@@ -95,7 +99,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
 <header>
     <nav class=\"navbar navbar-expand-md navbar-dark fixed-top bg-dark\">
         <a class=\"navbar-brand\" href=\"";
-        // line 38
+        // line 39
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
         echo "\">MCMC</a>
         <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
@@ -105,7 +109,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
             <ul class=\"navbar-nav mr-auto\">
                 <li class=\"nav-item active\">
                     <a class=\"nav-link\" href=\"";
-        // line 45
+        // line 46
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_product");
         echo "\">Nos produits <span class=\"sr-only\">(current)</span></a>
                 </li>
@@ -117,42 +121,42 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
                 </li>
             </ul>
             ";
-        // line 54
-        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 54, $this->source); })()), "user", [], "any", false, false, false, 54)) {
-            // line 55
-            echo "                ";
+        // line 55
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 55, $this->source); })()), "user", [], "any", false, false, false, 55)) {
             // line 56
+            echo "                ";
+            // line 57
             echo "                    <a class=\"nav-link\" aria-current=\"page\" href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account");
             echo "\">Mon compte <small>(";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 56, $this->source); })()), "user", [], "any", false, false, false, 56), "firstname", [], "any", false, false, false, 56), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 57, $this->source); })()), "user", [], "any", false, false, false, 57), "firstname", [], "any", false, false, false, 57), "html", null, true);
             echo ")</small></a> | <a class=\"nav-link\" href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             echo "\">Déconnexion</a>
                 ";
-            // line 58
+            // line 59
             echo "            ";
         } else {
-            // line 59
-            echo "                ";
             // line 60
+            echo "                ";
+            // line 61
             echo "                    <a class=\"nav-link\" href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             echo "\">Connexion</a> | <a class=\"nav-link\" href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
             echo "\">Inscription</a>
                 ";
-            // line 62
+            // line 63
             echo "            ";
         }
-        // line 63
+        // line 64
         echo "
             <a href=\"";
-        // line 64
+        // line 65
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_cart");
         echo "\">
                 <img src=\"";
-        // line 65
+        // line 66
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/shopping-cart.png"), "html", null, true);
         echo "\" class=\"cart-icon\" alt=\"Mon panier\">
             </a>
@@ -168,19 +172,19 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
 
 <main role=\"main\">
     ";
-        // line 78
+        // line 79
         if (        $this->hasBlock("carousel", $context, $blocks)) {
-            // line 79
-            echo "    ";
             // line 80
+            echo "    ";
+            // line 81
             echo "    <div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">
         <ol class=\"carousel-indicators\">
             ";
-            // line 82
+            // line 83
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["headers"]) || array_key_exists("headers", $context) ? $context["headers"] : (function () { throw new RuntimeError('Variable "headers" does not exist.', 82, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["headers"]) || array_key_exists("headers", $context) ? $context["headers"] : (function () { throw new RuntimeError('Variable "headers" does not exist.', 83, $this->source); })()));
             foreach ($context['_seq'] as $context["key"] => $context["header"]) {
-                // line 83
+                // line 84
                 echo "                <li data-target=\"#myCarousel\" data-slide-to=\"";
                 echo twig_escape_filter($this->env, $context["key"], "html", null, true);
                 echo "\" ";
@@ -193,37 +197,37 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['key'], $context['header'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 85
+            // line 86
             echo "        </ol>
         <div class=\"carousel-inner\">
             ";
-            // line 87
+            // line 88
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["headers"]) || array_key_exists("headers", $context) ? $context["headers"] : (function () { throw new RuntimeError('Variable "headers" does not exist.', 87, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["headers"]) || array_key_exists("headers", $context) ? $context["headers"] : (function () { throw new RuntimeError('Variable "headers" does not exist.', 88, $this->source); })()));
             foreach ($context['_seq'] as $context["key"] => $context["header"]) {
-                // line 88
+                // line 89
                 echo "            <div class=\"carousel-item ";
                 if (($context["key"] == 0)) {
                     echo "active";
                 }
                 echo "\" style=\"background: url('/uploads/";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "illustration", [], "any", false, false, false, 88), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "illustration", [], "any", false, false, false, 89), "html", null, true);
                 echo "'); background-size: cover; background-position: center\">
                 <div class=\"container\">
                     <div class=\"carousel-caption text-left\">
                         <h1>";
-                // line 91
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "title", [], "any", false, false, false, 91), "html", null, true);
+                // line 92
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "title", [], "any", false, false, false, 92), "html", null, true);
                 echo "</h1>
                         <p>";
-                // line 92
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "content", [], "any", false, false, false, 92), "html", null, true);
+                // line 93
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "content", [], "any", false, false, false, 93), "html", null, true);
                 echo "</p>
                         <p><a class=\"btn btn-lg btn-primary\" href=\"";
-                // line 93
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "btnUrl", [], "any", false, false, false, 93), "html", null, true);
+                // line 94
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "btnUrl", [], "any", false, false, false, 94), "html", null, true);
                 echo "\" role=\"button\">";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "btnTitle", [], "any", false, false, false, 93), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["header"], "btnTitle", [], "any", false, false, false, 94), "html", null, true);
                 echo "</a></p>
                     </div>
                 </div>
@@ -233,7 +237,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['key'], $context['header'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 98
+            // line 99
             echo "        </div>
         <a class=\"carousel-control-prev\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">
             <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>
@@ -245,10 +249,10 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
         </a>
     </div>
     ";
-            // line 109
+            // line 110
             echo "    ";
         }
-        // line 110
+        // line 111
         echo "
     <!-- Marketing messaging and featurettes
     ================================================== -->
@@ -257,9 +261,9 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
     <div class=\"container marketing\">
 
         ";
-        // line 117
+        // line 118
         $this->displayBlock('content', $context, $blocks);
-        // line 119
+        // line 120
         echo "
     </div><!-- /.container -->
 
@@ -271,7 +275,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
 </main>
 <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
 <script src=\"";
-        // line 129
+        // line 130
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/bootstrap.bundle.js"), "html", null, true);
         echo "\"></script>
 </body>
@@ -303,7 +307,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
 
     }
 
-    // line 13
+    // line 14
     public function block_javascript($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -313,7 +317,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascript"));
 
-        // line 14
+        // line 15
         echo "    ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -323,7 +327,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
 
     }
 
-    // line 117
+    // line 118
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -333,7 +337,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 118
+        // line 119
         echo "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -355,7 +359,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
 
     public function getDebugInfo()
     {
-        return array (  337 => 118,  327 => 117,  317 => 14,  307 => 13,  288 => 9,  275 => 129,  263 => 119,  261 => 117,  252 => 110,  249 => 109,  237 => 98,  224 => 93,  220 => 92,  216 => 91,  205 => 88,  201 => 87,  197 => 85,  184 => 83,  180 => 82,  176 => 80,  174 => 79,  172 => 78,  156 => 65,  152 => 64,  149 => 63,  146 => 62,  139 => 60,  137 => 59,  134 => 58,  125 => 56,  123 => 55,  121 => 54,  109 => 45,  99 => 38,  91 => 33,  71 => 15,  69 => 13,  65 => 12,  61 => 11,  56 => 9,  46 => 1,);
+        return array (  341 => 119,  331 => 118,  321 => 15,  311 => 14,  292 => 9,  279 => 130,  267 => 120,  265 => 118,  256 => 111,  253 => 110,  241 => 99,  228 => 94,  224 => 93,  220 => 92,  209 => 89,  205 => 88,  201 => 86,  188 => 84,  184 => 83,  180 => 81,  178 => 80,  176 => 79,  160 => 66,  156 => 65,  153 => 64,  150 => 63,  143 => 61,  141 => 60,  138 => 59,  129 => 57,  127 => 56,  125 => 55,  113 => 46,  103 => 39,  95 => 34,  75 => 16,  73 => 14,  69 => 13,  65 => 12,  61 => 11,  56 => 9,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -372,6 +376,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
     <!-- Bootstrap core CSS -->
     <link href=\"{{ asset('assets/css/bootstrap.min.css') }}\" rel=\"stylesheet\">
     <link rel=\"stylesheet\" href=\"{{ asset('assets/css/mcmc.css') }}\">
+    <link rel=\"icon\" href=\"{{ asset('assets/images/logo.png') }}\">
     {% block javascript %}
     {% endblock %}
 
