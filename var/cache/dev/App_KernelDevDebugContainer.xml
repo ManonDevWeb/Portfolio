@@ -537,6 +537,9 @@
     <service id="App\Form\ChangePasswordType" class="App\Form\ChangePasswordType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\ContactType" class="App\Form\ContactType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\OrderType" class="App\Form\OrderType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -555,6 +558,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -1216,6 +1223,7 @@
       <argument type="collection">
         <argument>App\Form\AddressType</argument>
         <argument>App\Form\ChangePasswordType</argument>
+        <argument>App\Form\ContactType</argument>
         <argument>App\Form\OrderType</argument>
         <argument>App\Form\RegisterType</argument>
         <argument>App\Form\SearchType</argument>
@@ -3305,7 +3313,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.i50FDh4"/>
+      <argument type="service" id=".service_locator.CG_9Cpp"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4799,7 +4807,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.4.bfNh_"/>
+      <argument type="service" id=".service_locator.G2aRHbk"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -6314,6 +6322,8 @@
     <service id=".abstract.instanceof.App\Form\AddressType" class="App\Form\AddressType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ChangePasswordType" class="App\Form\ChangePasswordType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ChangePasswordType" class="App\Form\ChangePasswordType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContactType" class="App\Form\ContactType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ContactType" class="App\Form\ContactType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\OrderType" class="App\Form\OrderType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\OrderType" class="App\Form\OrderType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegisterType" class="App\Form\RegisterType" autowire="true" abstract="true"/>
@@ -6326,6 +6336,8 @@
     <service id=".abstract.instanceof.App\Repository\CarrierRepository" class="App\Repository\CarrierRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\HeaderRepository" class="App\Repository\HeaderRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\HeaderRepository" class="App\Repository\HeaderRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\OrderDetailsRepository" class="App\Repository\OrderDetailsRepository" autowire="true" abstract="true"/>
@@ -7196,11 +7208,12 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.i50FDh4" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.CG_9Cpp" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\AddressType" type="service_closure" id="App\Form\AddressType"/>
         <argument key="App\Form\ChangePasswordType" type="service_closure" id="App\Form\ChangePasswordType"/>
+        <argument key="App\Form\ContactType" type="service_closure" id="App\Form\ContactType"/>
         <argument key="App\Form\OrderType" type="service_closure" id="App\Form\OrderType"/>
         <argument key="App\Form\RegisterType" type="service_closure" id="App\Form\RegisterType"/>
         <argument key="App\Form\SearchType" type="service_closure" id="App\Form\SearchType"/>
@@ -7403,12 +7416,13 @@
         <argument key="doctrine.orm.listeners.doctrine_token_provider_schema_subscriber" type="service_closure" id="doctrine.orm.listeners.doctrine_token_provider_schema_subscriber"/>
       </argument>
     </service>
-    <service id=".service_locator.4.bfNh_" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.G2aRHbk" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\AddressRepository" type="service_closure" id="App\Repository\AddressRepository"/>
         <argument key="App\Repository\CarrierRepository" type="service_closure" id="App\Repository\CarrierRepository"/>
         <argument key="App\Repository\CategoryRepository" type="service_closure" id="App\Repository\CategoryRepository"/>
+        <argument key="App\Repository\ContactRepository" type="service_closure" id="App\Repository\ContactRepository"/>
         <argument key="App\Repository\HeaderRepository" type="service_closure" id="App\Repository\HeaderRepository"/>
         <argument key="App\Repository\OrderDetailsRepository" type="service_closure" id="App\Repository\OrderDetailsRepository"/>
         <argument key="App\Repository\OrderRepository" type="service_closure" id="App\Repository\OrderRepository"/>
@@ -8765,7 +8779,7 @@
     <service id=".service_locator.ktF.0rV" alias=".service_locator.HvdMD1H"/>
     <service id=".service_locator.0dHtc9m" alias=".service_locator.nX4XuQw"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
-    <service id=".service_locator.nTbfSRx" alias=".service_locator.i50FDh4"/>
+    <service id=".service_locator.Pxcf3XG" alias=".service_locator.CG_9Cpp"/>
     <service id=".service_locator.qBCHs1a" alias=".service_locator.QXcJQkF"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator._eRAkJb" alias=".service_locator.jIxfAsi"/>
