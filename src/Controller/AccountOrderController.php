@@ -30,14 +30,19 @@ class AccountOrderController extends AbstractController
     }
 
     #[Route('/compte/mes-commandes/{reference}', name: 'app_account_order_show')]
-    public function show(): Response
+    public function show($reference): Response
     {
         //Afficher uniquement les commandes finalisées, payées
-        $orders = $this->entityManager->getRepository(Order::class)->findSuccessOrders($this->getUser());
+        $order = $this->entityManager->getRepository(Order::class)->findOneByReference($reference);
         //dd($orders);
+
+        if (!$order || $order->getUser() != $this->getUser()) {
+            return $this->redirectToRoute('app_account_order');
+        }
         
-        return $this->render('account/order.html.twig', [
-            'orders' => $orders
+        return $this->render('account/order_show.html.twig', [
+            'order' => $order,
+
         ]);
     }
 }

@@ -117,7 +117,10 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
                     <a class=\"nav-link\" href=\"\">Qui sommes-nous ? </a>
                 </li>
                 <li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"\">Contact </a>
+                    <a class=\"nav-link\" href=\"";
+        // line 52
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_contact");
+        echo "\">Contact </a>
                 </li>
             </ul>
             ";
@@ -359,7 +362,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
 
     public function getDebugInfo()
     {
-        return array (  341 => 119,  331 => 118,  321 => 15,  311 => 14,  292 => 9,  279 => 130,  267 => 120,  265 => 118,  256 => 111,  253 => 110,  241 => 99,  228 => 94,  224 => 93,  220 => 92,  209 => 89,  205 => 88,  201 => 86,  188 => 84,  184 => 83,  180 => 81,  178 => 80,  176 => 79,  160 => 66,  156 => 65,  153 => 64,  150 => 63,  143 => 61,  141 => 60,  138 => 59,  129 => 57,  127 => 56,  125 => 55,  113 => 46,  103 => 39,  95 => 34,  75 => 16,  73 => 14,  69 => 13,  65 => 12,  61 => 11,  56 => 9,  46 => 1,);
+        return array (  344 => 119,  334 => 118,  324 => 15,  314 => 14,  295 => 9,  282 => 130,  270 => 120,  268 => 118,  259 => 111,  256 => 110,  244 => 99,  231 => 94,  227 => 93,  223 => 92,  212 => 89,  208 => 88,  204 => 86,  191 => 84,  187 => 83,  183 => 81,  181 => 80,  179 => 79,  163 => 66,  159 => 65,  156 => 64,  153 => 63,  146 => 61,  144 => 60,  141 => 59,  132 => 57,  130 => 56,  128 => 55,  122 => 52,  113 => 46,  103 => 39,  95 => 34,  75 => 16,  73 => 14,  69 => 13,  65 => 12,  61 => 11,  56 => 9,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -415,7 +418,7 @@ class __TwigTemplate_b65dcd4beb3b8a8b94e9db682d1a5e31 extends Template
                     <a class=\"nav-link\" href=\"\">Qui sommes-nous ? </a>
                 </li>
                 <li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"\">Contact </a>
+                    <a class=\"nav-link\" href=\"{{ path('app_contact') }}\">Contact </a>
                 </li>
             </ul>
             {% if app.user %}
