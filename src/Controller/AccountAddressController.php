@@ -23,7 +23,6 @@ class AccountAddressController extends AbstractController
     #[Route('/compte/adresses', name: 'app_account_address')]
     public function index(): Response
     {
-        //dd($this->getUser());
         return $this->render('account/address.html.twig');
     }
 
@@ -31,7 +30,6 @@ class AccountAddressController extends AbstractController
     #[Route('/compte/ajouter-une-adresse', name: 'app_account_address_add')]
     public function add(Cart $cart, Request $request): Response
     {
-        //dd($this->getUser());
         $address = new Address;
         $form = $this->createForm(AddressType::class, $address);
         $form->handleRequest($request);
@@ -43,7 +41,6 @@ class AccountAddressController extends AbstractController
             $this->entityManager->persist($address);
             //Envoie la donnée dans la bd
             $this->entityManager->flush();
-            //dd($address);
 
             //Redirection différente si la création de l'adresse se fait depuis le panier (=s'il y a des produits dans le panier)
             if ($cart->get()){
@@ -62,7 +59,6 @@ class AccountAddressController extends AbstractController
     #[Route('/compte/modifier-une-adresse/{id}', name: 'app_account_address_edit')]
     public function edit(Request $request, $id): Response
     {
-        //dd($this->getUser());
         //On va chercher la donnée à modifier
         $address = $this->entityManager->getRepository(Address::class)->findOneById($id);
 
@@ -78,7 +74,6 @@ class AccountAddressController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
             //Envoie la donnée dans la bd
             $this->entityManager->flush();
-            //dd($address);
             return $this->redirectToRoute('app_account_address');
         }
 
@@ -103,5 +98,4 @@ class AccountAddressController extends AbstractController
 
         return $this->redirectToRoute('app_account_address');
     }
-
 }

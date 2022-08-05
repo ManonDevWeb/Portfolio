@@ -26,6 +26,7 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
+            'carousel' => [$this, 'block_carousel'],
             'content' => [$this, 'block_content'],
         ];
     }
@@ -76,6 +77,24 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
     }
 
     // line 5
+    public function block_carousel($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "carousel"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "carousel"));
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 8
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -85,15 +104,15 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 6
+        // line 9
         echo "    <!-- Three columns of text below the carousel -->
-    <h2 class=\"mt-4\">Nos meilleures ventes</h2>
+    <h2 class=\"mt-5\">Nos meilleures ventes</h2>
     <p>Découvrez les articles les plus vendus</p>
     <div class=\"row\">
         ";
-        // line 10
+        // line 13
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 10, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 13, $this->source); })()));
         $context['loop'] = [
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -108,12 +127,12 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-            // line 11
+            // line 14
             echo "            <div class=\"col-md-4\">
                 ";
-            // line 12
-            $this->loadTemplate("product/single_product.html.twig", "home/index.html.twig", 12)->display($context);
-            // line 13
+            // line 15
+            $this->loadTemplate("product/single_product.html.twig", "home/index.html.twig", 15)->display($context);
+            // line 16
             echo "            </div>
         ";
             ++$context['loop']['index0'];
@@ -128,7 +147,7 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 15
+        // line 18
         echo "    </div><!-- /.row -->
 
 
@@ -194,7 +213,7 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
 
     public function getDebugInfo()
     {
-        return array (  132 => 15,  117 => 13,  115 => 12,  112 => 11,  95 => 10,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
+        return array (  151 => 18,  136 => 16,  134 => 15,  131 => 14,  114 => 13,  108 => 9,  98 => 8,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -203,9 +222,12 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
 
 {% block title %}{{parent()}}Accueil{% endblock %}
 
+{% block carousel %}
+{% endblock %}
+
 {% block content %}
     <!-- Three columns of text below the carousel -->
-    <h2 class=\"mt-4\">Nos meilleures ventes</h2>
+    <h2 class=\"mt-5\">Nos meilleures ventes</h2>
     <p>Découvrez les articles les plus vendus</p>
     <div class=\"row\">
         {% for product in products %}

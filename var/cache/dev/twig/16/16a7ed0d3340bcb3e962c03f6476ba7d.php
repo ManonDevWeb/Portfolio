@@ -121,16 +121,14 @@ class __TwigTemplate_832f6643745003b5735e108e81ce802c extends Template
         </div>
 
     </div>
-    ";
-        // line 22
-        echo "    <hr>
+    <hr>
     <h2>Nos meilleures ventes</h2>
     <p>Découvrez les articles les plus vendus</p>
     <div class=\"row\">
         ";
-        // line 26
+        // line 25
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 26, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 25, $this->source); })()));
         $context['loop'] = [
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -145,12 +143,12 @@ class __TwigTemplate_832f6643745003b5735e108e81ce802c extends Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-            // line 27
+            // line 26
             echo "            <div class=\"col-md-4\">
                 ";
+            // line 27
+            $this->loadTemplate("product/single_product.html.twig", "product/show.html.twig", 27)->display($context);
             // line 28
-            $this->loadTemplate("product/single_product.html.twig", "product/show.html.twig", 28)->display($context);
-            // line 29
             echo "            </div>
         ";
             ++$context['loop']['index0'];
@@ -165,7 +163,7 @@ class __TwigTemplate_832f6643745003b5735e108e81ce802c extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 31
+        // line 30
         echo "    </div><!-- /.row -->
 
 ";
@@ -189,7 +187,7 @@ class __TwigTemplate_832f6643745003b5735e108e81ce802c extends Template
 
     public function getDebugInfo()
     {
-        return array (  169 => 31,  154 => 29,  152 => 28,  149 => 27,  132 => 26,  126 => 22,  119 => 17,  115 => 16,  110 => 14,  106 => 13,  102 => 12,  94 => 9,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
+        return array (  167 => 30,  152 => 28,  150 => 27,  147 => 26,  130 => 25,  119 => 17,  115 => 16,  110 => 14,  106 => 13,  102 => 12,  94 => 9,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -214,7 +212,6 @@ class __TwigTemplate_832f6643745003b5735e108e81ce802c extends Template
         </div>
 
     </div>
-    {# {{dump(product)}} #}
     <hr>
     <h2>Nos meilleures ventes</h2>
     <p>Découvrez les articles les plus vendus</p>

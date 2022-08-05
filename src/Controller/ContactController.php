@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Classe\Mail;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -22,6 +23,8 @@ class ContactController extends AbstractController
     #[Route('/contact', name: 'app_contact')]
     public function index(Request $request): Response
     {
+        $notification = null;
+
         $contact = new Contact();
         $form = $this->createForm(ContactType::class);
 
@@ -32,10 +35,33 @@ class ContactController extends AbstractController
 
             $this->entityManager->persist($contact);
             $this->entityManager->flush();
+
+            //Création et envoi du mail de confirmation d'inscription
+            $mail = new Mail();
+            $fullname = $contact->getFirstname()." ".$contact->getLastname();
+            $message = $contact->getMessage();
+
+            $object = '📧 '.$fullname.' a envoyé un message à MCMC !';
+
+            $content = "Bonjour,<br>Vous avez reçu ce message de ".$fullname." : <br><br>";
+            $content .= $message."<br><br>";
+            $content .= "Cordialement,<br>La bise les filles";
+
+            // **Recuperer array avec les admin et en extraire les noms et les emails pour faire une boucle et leur envoyer le mail de contact
+            //$admins = $this->entityManager->getRepository(User::class)->findByRole('ROLE_ADMIN');
+
+            $mail->send($emailMarta, 'Marta', $object, $content);
+            $mail->send($emailColine, 'Coline', $object, $content);
+            $mail->send($emailManon, 'Manon', $object, $content);
+            $mail->send($emailChloe, 'Chloe', $object, $content);
+
+            $notification = "Votre inscription s'est déroulée avec succès. Vous pouvez dès à présent vous connecter à votre compte.";
+            
         }
 
         return $this->render('contact/index.html.twig', [
-            'contactForm'=> $form->createView() 
+            'contactForm'=> $form->createView(),
+            'notification' => $notification
         ]);
     }
 }

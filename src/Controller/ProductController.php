@@ -31,13 +31,9 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //dd($search);
             $products = $this->entityManager->getRepository(Product::class)->findWithSearch($search);
         }
 
-        //Récupérer toutes les données grâce au repository
-        //$products = $this->entityManager->getRepository(Product::class)->findAll();
-        // dd($products);
         return $this->render('product/index.html.twig', [
             'products' => $products,
             'form' => $form->createView()
@@ -49,10 +45,9 @@ class ProductController extends AbstractController
     #[Route('/produit/{slug}', name: 'app_oneproduct')]
     public function show($slug): Response
     {
-        //dd($slug);
-
         //Récupérer toutes les données d'un seul produit grâce au repository via son slug
         $product = $this->entityManager->getRepository(Product::class)->findOneBySlug($slug);
+
         //Afficher les meilleures ventes
         $products = $this->entityManager->getRepository(Product::class)->findByIsBest(1);
 
@@ -61,7 +56,6 @@ class ProductController extends AbstractController
             return $this->redirectToRoute('app_product');
         }
 
-        // dd($products);
         return $this->render('product/show.html.twig', [
             'product' => $product,
             'products' => $products

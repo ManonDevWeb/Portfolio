@@ -8,7 +8,7 @@
     <meta name="generator" content="Jekyll v4.1.1">
 
     <title>{% block title %}MCMC | {% endblock %}</title>
-    
+
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Fontawesome library CSS -->
@@ -43,7 +43,7 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="{{path('home')}}">MCMC</a>
+        <a class="navbar-brand" href="{{path('app_home')}}">MCMC</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -58,15 +58,21 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_contact') }}">Contact </a>
                 </li>
+                {% if app.user %}
+                    {% if app.user.roles[0] == "ROLE_ADMIN" %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('admin')}}">Administration</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
             </ul>
             {% if app.user %}
-                {# <li class="nav-item"> #}
-                    <a class="nav-link" aria-current="page" href="{{path('app_account')}}">Mon compte <small>({{app.user.firstname}})</small></a> | <a class="nav-link" href="{{path('app_logout')}}">Déconnexion</a>
-                {# </li> #}
+                {% if app.user.roles[0] == "ROLE_ADMIN" %}
+                        <a class="nav-link" href="{{path('admin')}}">Administration </a> |
+                {% endif %}
+                <a class="nav-link" aria-current="page" href="{{path('app_account')}}">Mon compte <small>({{app.user.firstname}})</small></a> | <a class="nav-link" href="{{path('app_logout')}}">Déconnexion</a>
             {% else %}
-                {# <li class="nav-item"> #}
-                    <a class="nav-link" href="{{path('app_login')}}">Connexion</a> | <a class="nav-link" href="{{path('app_register')}}">Inscription</a>
-                {# </li> #}
+                <a class="nav-link" href="{{path('app_login')}}">Connexion</a> | <a class="nav-link" href="{{path('app_register')}}">Inscription</a>
             {% endif %}
 
             <a href="{{ path('app_cart') }}">
@@ -84,7 +90,6 @@
 
 <main role="main">
     {% if block('carousel') is defined %}
-    {# {% block carousel %} #}
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             {% for key,header in headers %}
@@ -113,7 +118,6 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    {# {% endblock carousel %}  #}
     {% endif %}
 
     <!-- Marketing messaging and featurettes
@@ -133,7 +137,7 @@
         <p>&copy; 2022 MCMC &middot; <small><a href="#">Politique de confidentialité</a> &middot; <a href="#">Mentions légales</a> &middot; <a href="#">Cookies</a></small></p>
     </footer>
 </main>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="{{ asset('assets/js/jquery-3.5.1.slim.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
 </body>
 </html>

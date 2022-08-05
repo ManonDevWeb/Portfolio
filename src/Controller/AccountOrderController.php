@@ -22,7 +22,6 @@ class AccountOrderController extends AbstractController
     {
         //Afficher uniquement les commandes finalisées, payées
         $orders = $this->entityManager->getRepository(Order::class)->findSuccessOrders($this->getUser());
-        //dd($orders);
         
         return $this->render('account/order.html.twig', [
             'orders' => $orders
@@ -34,7 +33,6 @@ class AccountOrderController extends AbstractController
     {
         //Afficher uniquement les commandes finalisées, payées
         $order = $this->entityManager->getRepository(Order::class)->findOneByReference($reference);
-        //dd($orders);
 
         if (!$order || $order->getUser() != $this->getUser()) {
             return $this->redirectToRoute('app_account_order');
@@ -42,7 +40,6 @@ class AccountOrderController extends AbstractController
         
         return $this->render('account/order_show.html.twig', [
             'order' => $order,
-
         ]);
     }
 }

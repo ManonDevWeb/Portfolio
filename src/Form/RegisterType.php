@@ -50,19 +50,6 @@ class RegisterType extends AbstractType
                 'first_options'=>['label'=> 'Mot de passe', 'attr' => ['placeholder'=>'**********']],
                 'second_options'=>['label'=> 'Confirmez votre mot de passe', 'attr' => ['placeholder'=>'**********']]
             ])
-            //
-
-            //Méthode un peu "lourde"
-            // ->add('password', PasswordType::class, [
-            //     'label' => 'Votre mot de passe',
-            //     'attr' => ['placeholder'=>'°°°°°°°']
-            // ])
-            // Confirmation mot de passe
-            // ->add('password_confirm', PasswordType::class, [
-            //     'label' => 'Confirmer votre mot de passe',
-            //     'mapped'=>false, //indique que la propriété password_confirm n'est pas liée à l'entité donc il ne faut pas la vérifier
-            //     'attr' => ['placeholder'=>'°°°°°°°']
-            // ])
             ->add('submit', SubmitType::class, [
                 'label' => "S'inscrire"
             ])
