@@ -27,7 +27,7 @@ return [
         '/commande/recapitulatif' => [[['_route' => 'app_order_recap', '_controller' => 'App\\Controller\\OrderController::add'], null, ['POST' => 0], null, false, false, null]],
         '/' => [
             [['_route' => 'app_order_add', '_controller' => 'App\\Controller\\OrderController::add'], null, null, null, false, false, null],
-            [['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null],
+            [['_route' => 'home', '_controller' => 'App/Controller/HomeController::index'], null, null, null, false, false, null],
         ],
         '/nos-produits' => [[['_route' => 'app_product', '_controller' => 'App\\Controller\\ProductController::index'], null, null, null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegisterController::index'], null, null, null, false, false, null]],

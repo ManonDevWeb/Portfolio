@@ -115,8 +115,13 @@ class __TwigTemplate_451a2304fccd620335743498ed0635f8 extends Template
         echo "</div>
     </div>
     ";
-        // line 19
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["contactForm"]) || array_key_exists("contactForm", $context) ? $context["contactForm"] : (function () { throw new RuntimeError('Variable "contactForm" does not exist.', 19, $this->source); })()), 'form_end');
+        // line 20
+        echo "    ";
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["contactForm"]) || array_key_exists("contactForm", $context) ? $context["contactForm"] : (function () { throw new RuntimeError('Variable "contactForm" does not exist.', 20, $this->source); })()), 'rest');
+        echo "
+    ";
+        // line 21
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["contactForm"]) || array_key_exists("contactForm", $context) ? $context["contactForm"] : (function () { throw new RuntimeError('Variable "contactForm" does not exist.', 21, $this->source); })()), 'form_end');
         echo "
 
 
@@ -141,7 +146,7 @@ class __TwigTemplate_451a2304fccd620335743498ed0635f8 extends Template
 
     public function getDebugInfo()
     {
-        return array (  119 => 19,  114 => 17,  108 => 14,  102 => 11,  98 => 10,  93 => 8,  90 => 7,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  124 => 21,  119 => 20,  114 => 17,  108 => 14,  102 => 11,  98 => 10,  93 => 8,  90 => 7,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -164,6 +169,8 @@ class __TwigTemplate_451a2304fccd620335743498ed0635f8 extends Template
     <div class=\"row\">
         <div class=\"col-12\">{{ form_row(contactForm.message) }}</div>
     </div>
+    {# To render all the fields that haven't been rendered manually#}
+    {{ form_rest(contactForm) }}
     {{ form_end(contactForm) }}
 
 

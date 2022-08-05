@@ -88,9 +88,21 @@ class __TwigTemplate_14763e98dba3d31d958af33aab262971 extends Template
         // line 6
         echo "
     <h1 class=\"mt-5\">Inscription</h1>
+
     ";
-        // line 8
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 8, $this->source); })()), 'form');
+        // line 9
+        if ((isset($context["notification"]) || array_key_exists("notification", $context) ? $context["notification"] : (function () { throw new RuntimeError('Variable "notification" does not exist.', 9, $this->source); })())) {
+            // line 10
+            echo "        <div class=\"alert alert-info\">";
+            echo twig_escape_filter($this->env, (isset($context["notification"]) || array_key_exists("notification", $context) ? $context["notification"] : (function () { throw new RuntimeError('Variable "notification" does not exist.', 10, $this->source); })()), "html", null, true);
+            echo "</div>
+    ";
+        }
+        // line 12
+        echo "    <hr>
+    ";
+        // line 13
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 13, $this->source); })()), 'form');
         echo "
 
 ";
@@ -114,7 +126,7 @@ class __TwigTemplate_14763e98dba3d31d958af33aab262971 extends Template
 
     public function getDebugInfo()
     {
-        return array (  93 => 8,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
+        return array (  105 => 13,  102 => 12,  96 => 10,  94 => 9,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -126,6 +138,11 @@ class __TwigTemplate_14763e98dba3d31d958af33aab262971 extends Template
 {% block content %}
 
     <h1 class=\"mt-5\">Inscription</h1>
+
+    {% if notification %}
+        <div class=\"alert alert-info\">{{ notification }}</div>
+    {% endif %}
+    <hr>
     {{form(form)}}
 
 {% endblock %}

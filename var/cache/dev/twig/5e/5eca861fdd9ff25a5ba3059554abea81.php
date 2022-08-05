@@ -115,7 +115,7 @@ class __TwigTemplate_67fd81a4ed7349c72c32455b7fb13012 extends Template
         }
         // line 18
         echo "
-            <h1 class=\"h3 mb-3 font-weight-normal\">Connexion</h1>
+            <h1 class=\"h3 mb-3 font-weight-normal mt-5\">Connexion</h1>
             <label for=\"inputEmail\">Votre email</label>
             <input type=\"email\" placeholder='pierre.dupont@example.com' value=\"";
         // line 21
@@ -185,7 +185,7 @@ class __TwigTemplate_67fd81a4ed7349c72c32455b7fb13012 extends Template
                 </div>
             {% endif %}
 
-            <h1 class=\"h3 mb-3 font-weight-normal\">Connexion</h1>
+            <h1 class=\"h3 mb-3 font-weight-normal mt-5\">Connexion</h1>
             <label for=\"inputEmail\">Votre email</label>
             <input type=\"email\" placeholder='pierre.dupont@example.com' value=\"{{ last_username }}\" name=\"email\" id=\"inputEmail\" class=\"form-control\" autocomplete=\"email\" required autofocus>
             <label for=\"inputPassword\">Votre mot de passe</label>
