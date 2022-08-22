@@ -20,21 +20,12 @@ namespace Sonata\Exporter\Writer;
  */
 final class XmlExcelWriter implements WriterInterface
 {
-    private string $filename;
-
     /**
      * @var resource|null
      * @phpstan-var resource|null
      * @psalm-var resource|closed-resource|null
      */
     private $file;
-
-    private bool $showHeaders;
-
-    /**
-     * @var mixed|null
-     */
-    private $columnsType;
 
     private int $position = 0;
 
@@ -50,12 +41,11 @@ final class XmlExcelWriter implements WriterInterface
      *
      * @throws \RuntimeException
      */
-    public function __construct(string $filename, bool $showHeaders = true, $columnsType = null)
-    {
-        $this->filename = $filename;
-        $this->showHeaders = $showHeaders;
-        $this->columnsType = $columnsType;
-
+    public function __construct(
+        private string $filename,
+        private bool $showHeaders = true,
+        private mixed $columnsType = null
+    ) {
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
         }
@@ -63,7 +53,12 @@ final class XmlExcelWriter implements WriterInterface
 
     public function open(): void
     {
-        $this->file = fopen($this->filename, 'w');
+        $file = fopen($this->filename, 'w', false);
+        if (false === $file) {
+            throw new \Exception(sprintf('Cannot open file %s.', $this->filename));
+        }
+
+        $this->file = $file;
         fwrite($this->file, $this->header);
     }
 
@@ -71,18 +66,23 @@ final class XmlExcelWriter implements WriterInterface
     {
         if (0 === $this->position && $this->showHeaders) {
             $header = array_keys($data);
-            fwrite($this->file, $this->getXmlString($header));
+            fwrite($this->getFile(), $this->getXmlString($header));
             ++$this->position;
         }
 
-        fwrite($this->file, $this->getXmlString($data));
+        fwrite($this->getFile(), $this->getXmlString($data));
         ++$this->position;
     }
 
+    /**
+     * @psalm-suppress InvalidPassByReference
+     *
+     * @see https://github.com/vimeo/psalm/issues/7505
+     */
     public function close(): void
     {
-        fwrite($this->file, $this->footer);
-        fclose($this->file);
+        fwrite($this->getFile(), $this->footer);
+        fclose($this->getFile());
     }
 
     /**
@@ -131,5 +131,17 @@ final class XmlExcelWriter implements WriterInterface
         }
 
         return $dataType;
+    }
+
+    /**
+     * @return resource
+     */
+    private function getFile()
+    {
+        if (!\is_resource($this->file)) {
+            throw new \LogicException('You MUST open the file first');
+        }
+
+        return $this->file;
     }
 }

@@ -17,14 +17,11 @@ namespace Sonata\Exporter\Source;
  * Read data from a Xml file.
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
+ *
+ * @phpstan-implements \Iterator<array<mixed>>
  */
-abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
+abstract class AbstractXmlSourceIterator implements \Iterator
 {
-    /**
-     * @var string
-     */
-    protected $filename;
-
     /**
      * @var resource|null
      * @phpstan-var resource|null
@@ -33,100 +30,64 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
     protected $file;
 
     /**
-     * @var bool
-     */
-    protected $hasHeaders;
-
-    /**
      * @var string[]
      */
-    protected $columns = [];
+    protected array $columns = [];
 
-    /**
-     * @var \XMLParser|null
-     */
-    protected $parser;
+    protected ?\XMLParser $parser = null;
 
-    /**
-     * @var int
-     */
-    protected $currentRowIndex = 0;
+    protected int $currentRowIndex = 0;
 
-    /**
-     * @var int
-     */
-    protected $currentColumnIndex = 0;
+    protected int $currentColumnIndex = 0;
 
     /**
      * @var array<mixed>|null
      */
-    protected $currentRow;
+    protected ?array $currentRow = null;
 
     /**
      * @var array<string, array<string>>
      */
     protected $bufferedRow = [];
 
-    /**
-     * @var bool
-     */
-    protected $currentRowEnded = false;
+    protected bool $currentRowEnded = false;
 
-    /**
-     * @var int
-     */
-    protected $position = 0;
+    protected int $position = 0;
 
-    public function __construct(string $filename, bool $hasHeaders = true)
-    {
-        $this->filename = $filename;
-        $this->hasHeaders = $hasHeaders;
+    public function __construct(
+        protected string $filename,
+        protected bool $hasHeaders = true
+    ) {
     }
 
     /**
      * Start element handler.
      *
-     * @param resource              $parser
      * @param array<string, string> $attributes
-     *
-     * @return void
      */
-    abstract public function tagStart($parser, string $name, array $attributes = []);
+    abstract public function tagStart(\XMLParser $parser, string $name, array $attributes = []): void;
 
     /**
      * End element handler.
-     *
-     * @param resource $parser
-     *
-     * @return void
      */
-    abstract public function tagEnd($parser, string $name);
+    abstract public function tagEnd(\XMLParser $parser, string $name): void;
 
     /**
      * Tag content handler.
-     *
-     * @param resource $parser
-     *
-     * @return void
      */
-    abstract public function tagContent($parser, string $data);
+    abstract public function tagContent(\XMLParser $parser, string $data): void;
 
     /**
      * @return array<mixed>
      */
-    #[\ReturnTypeWillChange]
-    final public function current()
+    final public function current(): array
     {
         \assert(\is_array($this->currentRow));
 
         return $this->currentRow;
     }
 
-    /**
-     * @return mixed
-     */
-    #[\ReturnTypeWillChange]
-    final public function key()
+    final public function key(): mixed
     {
         return $this->position;
     }
@@ -147,7 +108,11 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
         xml_parser_set_option($this->parser, \XML_OPTION_CASE_FOLDING, 0);
         xml_parser_set_option($this->parser, \XML_OPTION_SKIP_WHITE, 0);
 
-        $this->file = fopen($this->filename, 'r');
+        $file = fopen($this->filename, 'r');
+        if (false === $file) {
+            throw new \Exception(sprintf('Cannot open file %s.', $this->filename));
+        }
+        $this->file = $file;
 
         $this->bufferedRow = [];
         $this->currentRowIndex = 0;
@@ -155,7 +120,7 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
         $this->position = 0;
         $this->parseRow();
         if ($this->hasHeaders) {
-            $this->columns = array_shift($this->bufferedRow);
+            $this->columns = array_shift($this->bufferedRow) ?? [];
             $this->parseRow();
         }
         $this->prepareCurrentRow();
@@ -163,6 +128,9 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
 
     final public function valid(): bool
     {
+        \assert(null !== $this->parser);
+        \assert(\is_resource($this->file));
+
         if (!\is_array($this->currentRow)) {
             xml_parser_free($this->parser);
             fclose($this->file);
@@ -178,11 +146,15 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
      */
     final protected function parseRow(): void
     {
+        if (null === $this->parser) {
+            throw new \LogicException('A parser MUST be set to parse a row.');
+        }
+
         // only parse the next row if only one in buffer
         if (\count($this->bufferedRow) > 1) {
             return;
         }
-        if (feof($this->file)) {
+        if (!\is_resource($this->file) || feof($this->file)) {
             $this->currentRow = null;
 
             return;
@@ -194,6 +166,10 @@ abstract class AbstractXmlSourceIterator implements SourceIteratorInterface
         // @phpstan-ignore-next-line: The currentRowEnded value is updated when parsing the data
         while (!$this->currentRowEnded && !feof($this->file)) {
             $data = fread($this->file, 1024);
+            if (false === $data) {
+                throw new \RuntimeException('Cannot read the ressource');
+            }
+
             xml_parse($this->parser, $data);
         }
     }

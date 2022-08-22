@@ -17,11 +17,11 @@ namespace Sonata\Exporter\Source;
  * Read data from a csv file.
  *
  * @author Vincent Touzet <vincent.touzet@gmail.com>
+ *
+ * @phpstan-implements \Iterator<array<mixed>>
  */
-final class CsvSourceIterator implements SourceIteratorInterface
+final class CsvSourceIterator implements \Iterator
 {
-    private string $filename;
-
     /**
      * @var resource|null
      * @phpstan-var resource|null
@@ -29,62 +29,46 @@ final class CsvSourceIterator implements SourceIteratorInterface
      */
     private $file;
 
-    private string $delimiter;
-
-    private string $enclosure;
-
-    private string $escape;
-
-    private bool $hasHeaders;
-
     /**
-     * @var array<string|null>
+     * @var array<string>
      */
     private array $columns = [];
 
     private int $position = 0;
 
     /**
-     * @var array<string|null>|false
+     * @var array<string>|false
      */
-    private $currentLine = [];
+    private array|false $currentLine = [];
 
     public function __construct(
-        string $filename,
-        string $delimiter = ',',
-        string $enclosure = '"',
-        string $escape = '\\',
-        bool $hasHeaders = true
+        private string $filename,
+        private string $delimiter = ',',
+        private string $enclosure = '"',
+        private string $escape = '\\',
+        private bool $hasHeaders = true
     ) {
-        $this->filename = $filename;
-        $this->delimiter = $delimiter;
-        $this->enclosure = $enclosure;
-        $this->escape = $escape;
-        $this->hasHeaders = $hasHeaders;
     }
 
     /**
      * @return array<string|null>
      */
-    #[\ReturnTypeWillChange]
-    public function current()
+    public function current(): array
     {
         \assert(\is_array($this->currentLine));
 
         return $this->currentLine;
     }
 
-    /**
-     * @return int
-     */
-    #[\ReturnTypeWillChange]
-    public function key()
+    public function key(): int
     {
         return $this->position;
     }
 
     public function next(): void
     {
+        \assert(\is_resource($this->file));
+
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         $this->currentLine = $line;
         ++$this->position;
@@ -99,10 +83,15 @@ final class CsvSourceIterator implements SourceIteratorInterface
 
     public function rewind(): void
     {
-        $this->file = fopen($this->filename, 'r');
+        $file = fopen($this->filename, 'r');
+        if (false === $file) {
+            throw new \Exception(sprintf('Cannot open file %s.', $this->filename));
+        }
+        $this->file = $file;
+
         $this->position = 0;
         $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
-        if ($this->hasHeaders) {
+        if ($this->hasHeaders && \is_array($line)) {
             $this->columns = $line;
             $line = fgetcsv($this->file, 0, $this->delimiter, $this->enclosure, $this->escape);
         }

@@ -18,7 +18,10 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyAccess\PropertyPath;
 
-abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
+/**
+ * @phpstan-implements \Iterator<array<mixed>>
+ */
+abstract class AbstractPropertySourceIterator implements \Iterator
 {
     private const DATE_PARTS = [
         'y' => 'Y',
@@ -31,65 +34,43 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
         's' => 'S',
     ];
 
-    /**
-     * @var \Iterator|null
-     */
-    protected $iterator;
+    protected ?\Iterator $iterator = null;
 
-    /**
-     * @var PropertyAccessor
-     */
-    protected $propertyAccessor;
-
-    /**
-     * @var string default DateTime format
-     */
-    protected $dateTimeFormat;
-
-    /**
-     * @var string[]
-     */
-    protected $fields = [];
+    protected PropertyAccessor $propertyAccessor;
 
     /**
      * @param string[] $fields Fields to export
      */
-    public function __construct(array $fields, string $dateTimeFormat = 'r')
-    {
+    public function __construct(
+        protected array $fields,
+        protected string $dateTimeFormat = 'r'
+    ) {
         $this->propertyAccessor = PropertyAccess::createPropertyAccessor();
-        $this->fields = $fields;
-
-        $this->dateTimeFormat = $dateTimeFormat;
     }
 
     /**
      * @return array<string, mixed>
      */
-    #[\ReturnTypeWillChange]
-    public function current()
+    public function current(): array
     {
-        $current = $this->iterator->current();
+        $current = $this->getIterator()->current();
 
         return $this->getCurrentData($current);
     }
 
     public function next(): void
     {
-        $this->iterator->next();
+        $this->getIterator()->next();
     }
 
-    /**
-     * @return mixed
-     */
-    #[\ReturnTypeWillChange]
-    public function key()
+    public function key(): mixed
     {
-        return $this->iterator->key();
+        return $this->getIterator()->key();
     }
 
     public function valid(): bool
     {
-        return $this->iterator->valid();
+        return $this->getIterator()->valid();
     }
 
     abstract public function rewind(): void;
@@ -104,12 +85,56 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
         return $this->dateTimeFormat;
     }
 
+    protected function getIterator(): \Iterator
+    {
+        if (null === $this->iterator) {
+            throw new \LogicException('The iterator MUST be set in the "rewind()" method.');
+        }
+
+        return $this->iterator;
+    }
+
     /**
-     * NEXT_MAJOR: Change the method visibility to private.
+     * @phpstan-param object|array<mixed> $current TODO: Change to param when https://github.com/rectorphp/rector/issues/7186 is released
      *
+     * @return array<string, mixed>
+     */
+    protected function getCurrentData(object|array $current): array
+    {
+        $data = [];
+        foreach ($this->fields as $key => $field) {
+            $name = \is_string($key) ? $key : $field;
+            $propertyPath = $field;
+
+            try {
+                $propertyValue = $this->propertyAccessor->getValue($current, new PropertyPath($propertyPath));
+
+                $data[$name] = $this->getValue($propertyValue);
+            } catch (UnexpectedTypeException) {
+                // Non existent object in path will be ignored but a wrong path will still throw exceptions
+                $data[$name] = null;
+            }
+        }
+
+        return $data;
+    }
+
+    protected function getValue(mixed $value): bool|int|float|string|null
+    {
+        return match (true) {
+            \is_array($value) => '['.implode(', ', array_map([$this, 'getValue'], $value)).']',
+            $value instanceof \Traversable => '['.implode(', ', array_map([$this, 'getValue'], iterator_to_array($value))).']',
+            $value instanceof \DateTimeInterface => $value->format($this->dateTimeFormat),
+            $value instanceof \DateInterval => $this->getDuration($value),
+            \is_object($value) => method_exists($value, '__toString') ? (string) $value : null,
+            default => $value,
+        };
+    }
+
+    /**
      * @return string An ISO8601 duration
      */
-    public function getDuration(\DateInterval $interval): string
+    private function getDuration(\DateInterval $interval): string
     {
         $datePart = '';
         foreach (self::DATE_PARTS as $datePartAttribute => $datePartAttributeString) {
@@ -130,53 +155,5 @@ abstract class AbstractPropertySourceIterator implements SourceIteratorInterface
         }
 
         return 'P'.$datePart.('' !== $timePart ? 'T'.$timePart : '');
-    }
-
-    /**
-     * @param object|mixed[] $current
-     *
-     * @return array<string, mixed>
-     */
-    protected function getCurrentData($current): array
-    {
-        $data = [];
-        foreach ($this->fields as $key => $field) {
-            $name = \is_string($key) ? $key : $field;
-            $propertyPath = $field;
-
-            try {
-                $propertyValue = $this->propertyAccessor->getValue($current, new PropertyPath($propertyPath));
-
-                $data[$name] = $this->getValue($propertyValue);
-            } catch (UnexpectedTypeException $e) {
-                // Non existent object in path will be ignored but a wrong path will still throw exceptions
-                $data[$name] = null;
-            }
-        }
-
-        return $data;
-    }
-
-    /**
-     * @param mixed $value
-     *
-     * @return bool|int|float|string|null
-     */
-    protected function getValue($value)
-    {
-        switch (true) {
-            case \is_array($value):
-                return '['.implode(', ', array_map([$this, 'getValue'], $value)).']';
-            case $value instanceof \Traversable:
-                return '['.implode(', ', array_map([$this, 'getValue'], iterator_to_array($value))).']';
-            case $value instanceof \DateTimeInterface:
-                return $value->format($this->dateTimeFormat);
-            case $value instanceof \DateInterval:
-                return $this->getDuration($value);
-            case \is_object($value):
-                return method_exists($value, '__toString') ? (string) $value : null;
-            default:
-                return $value;
-        }
     }
 }

@@ -19,7 +19,7 @@ class CarrierCrudController extends AbstractCrudController
     //Configuration du favicon
     public function configureAssets(Assets $assets): Assets
     {
-        return $assets->addHtmlContentToHead('<link rel="shortcut icon" type="image/png" href="/assets/images/faviconBO.png">');
+        return $assets->addHtmlContentToHead('<link rel="shortcut icon" type="image/png" href="/assets/images/favicon-BO.svg">');
     }
     
     public function configureFields(string $pageName): iterable

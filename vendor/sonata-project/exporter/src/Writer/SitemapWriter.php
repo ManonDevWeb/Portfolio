@@ -21,13 +21,7 @@ final class SitemapWriter implements WriterInterface
     public const LIMIT_SIZE = 10_485_760;
     public const LIMIT_URL = 50000;
 
-    private string $folder;
-
     private string $pattern;
-
-    private string $groupName;
-
-    private bool $autoIndex;
 
     /**
      * @var resource|null
@@ -35,11 +29,6 @@ final class SitemapWriter implements WriterInterface
      * @psalm-var resource|closed-resource|null
      */
     private $buffer;
-
-    /**
-     * @var string[]
-     */
-    private array $headers;
 
     private int $bufferSize = 0;
 
@@ -49,17 +38,16 @@ final class SitemapWriter implements WriterInterface
 
     /**
      * @param string   $folder    The folder to store the sitemap.xml file
-     * @param mixed    $groupName Name of sub-sitemap (optional)
+     * @param string   $groupName Name of sub-sitemap (optional)
      * @param string[] $headers   Indicate the need for namespace in the header sitemap
      * @param bool     $autoIndex If you want to generate index of sitemap (optional)
      */
-    public function __construct(string $folder, $groupName = false, array $headers = [], bool $autoIndex = true)
-    {
-        $this->folder = $folder;
-        $this->groupName = \is_string($groupName) ? $groupName : '';
-        $this->headers = $headers;
-        $this->autoIndex = $autoIndex;
-
+    public function __construct(
+        private string $folder,
+        private string $groupName = '',
+        private array $headers = [],
+        private bool $autoIndex = true
+    ) {
         $this->pattern = 'sitemap_'.('' !== $this->groupName ? $this->groupName.'_' : '').'%05d.xml';
     }
 
@@ -89,21 +77,11 @@ final class SitemapWriter implements WriterInterface
     {
         $data = $this->buildData($data);
 
-        switch ($data['type']) {
-            case 'video':
-                $line = $this->generateVideoLine($data);
-
-                break;
-
-            case 'image':
-                $line = $this->generateImageLine($data);
-
-                break;
-
-            case 'default':
-            default:
-                $line = $this->generateDefaultLine($data);
-        }
+        $line = match ($data['type']) {
+            'video' => $this->generateVideoLine($data),
+            'image' => $this->generateImageLine($data),
+            default => $this->generateDefaultLine($data),
+        };
 
         $this->addSitemapLine($line);
     }
@@ -130,12 +108,23 @@ final class SitemapWriter implements WriterInterface
      * @param string $baseUrl  A base URL
      * @param string $pattern  A sitemap pattern, optional
      * @param string $filename A sitemap file name, optional
+     *
+     * @throws \RuntimeException
      */
     public static function generateSitemapIndex(string $folder, string $baseUrl, string $pattern = 'sitemap*.xml', string $filename = 'sitemap.xml'): void
     {
         $content = "<?xml version='1.0' encoding='UTF-8'?".">\n<sitemapindex xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/1.0 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n";
-        foreach (glob(sprintf('%s/%s', $folder, $pattern)) as $file) {
+        $files = glob(sprintf('%s/%s', $folder, $pattern));
+        if (false === $files) {
+            throw new \RuntimeException('Cannot find sitemap files.');
+        }
+
+        foreach ($files as $file) {
             $stat = stat($file);
+            if (false === $stat) {
+                throw new \RuntimeException(sprintf('Cannot access to stats of the file %s.', $file));
+            }
+
             $content .= sprintf(
                 "\t".'<sitemap><loc>%s/%s</loc><lastmod>%s</lastmod></sitemap>'."\n",
                 $baseUrl,
@@ -170,7 +159,11 @@ final class SitemapWriter implements WriterInterface
 
         $filename = sprintf($this->pattern, $this->bufferPart);
 
-        $this->buffer = fopen($this->folder.'/'.$filename, 'w');
+        $buffer = fopen($this->folder.'/'.$filename, 'w');
+        if (false === $buffer) {
+            throw new \Exception(sprintf('Cannot open file %s.', $this->folder.'/'.$filename));
+        }
+        $this->buffer = $buffer;
 
         $this->bufferSize += fwrite($this->buffer, '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'.$this->getHeaderByFlag().'>'."\n");
     }
@@ -190,7 +183,7 @@ final class SitemapWriter implements WriterInterface
 
         ++$this->bufferUrlCount;
 
-        $this->bufferSize += fwrite($this->buffer, $line);
+        $this->bufferSize += fwrite($this->getBuffer(), $line);
     }
 
     /**
@@ -274,7 +267,7 @@ final class SitemapWriter implements WriterInterface
             $images .= '<image:image>';
 
             foreach ($image as $key => $element) {
-                $images .= sprintf('<image:%1$s>%2$s</image:%1$s>', ($builder[$key] ?? $key), $element);
+                $images .= sprintf('<image:%1$s>%2$s</image:%1$s>', $builder[$key] ?? $key, $element);
             }
 
             $images .= '</image:image>';
@@ -296,7 +289,7 @@ final class SitemapWriter implements WriterInterface
         ];
 
         foreach ($data['video'] as $key => $video) {
-            $videos .= sprintf('<video:%1$s>%2$s</video:%1$s>', ($builder[$key] ?? $key), $video);
+            $videos .= sprintf('<video:%1$s>%2$s</video:%1$s>', $builder[$key] ?? $key, $video);
         }
 
         return sprintf('    '.'<url><loc>%s</loc><video:video>%s</video:video></url>'."\n", $data['url'], $videos);
@@ -320,9 +313,26 @@ final class SitemapWriter implements WriterInterface
         return $result;
     }
 
+    /**
+     * @psalm-suppress InvalidPassByReference
+     *
+     * @see https://github.com/vimeo/psalm/issues/7505
+     */
     private function closeSitemap(): void
     {
-        fwrite($this->buffer, '</urlset>');
-        fclose($this->buffer);
+        fwrite($this->getBuffer(), '</urlset>');
+        fclose($this->getBuffer());
+    }
+
+    /**
+     * @return resource
+     */
+    private function getBuffer()
+    {
+        if (!\is_resource($this->buffer)) {
+            throw new \LogicException('You MUST open the file first');
+        }
+
+        return $this->buffer;
     }
 }

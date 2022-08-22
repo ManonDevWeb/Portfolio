@@ -94,12 +94,12 @@ return [[
 '[C]App%5CController%5CAdmin%5CCarrierCrudController' => 1,
 'App%5CController%5CAdmin%5CCarrierCrudController%23getEntityFqcn' => 0,
 '[C]App%5CController%5CAdmin%5CCarrierCrudController%23getEntityFqcn' => 1,
+'App%5CController%5CAdmin%5CCarrierCrudController%23configureAssets' => 0,
+'[C]App%5CController%5CAdmin%5CCarrierCrudController%23configureAssets' => 1,
 'App%5CController%5CAdmin%5CCarrierCrudController%23configureFields' => 0,
 '[C]App%5CController%5CAdmin%5CCarrierCrudController%23configureFields' => 1,
 'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureCrud' => 0,
 '[C]EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureCrud' => 1,
-'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureAssets' => 0,
-'[C]EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureAssets' => 1,
 'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureActions' => 0,
 '[C]EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureActions' => 1,
 'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureFilters' => 0,
@@ -156,8 +156,18 @@ return [[
 '[C]App%5CController%5CAdmin%5CCategoryCrudController' => 1,
 'App%5CController%5CAdmin%5CCategoryCrudController%23getEntityFqcn' => 0,
 '[C]App%5CController%5CAdmin%5CCategoryCrudController%23getEntityFqcn' => 1,
+'App%5CController%5CAdmin%5CCategoryCrudController%23configureAssets' => 0,
+'[C]App%5CController%5CAdmin%5CCategoryCrudController%23configureAssets' => 1,
 'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureFields' => 0,
 '[C]EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureFields' => 1,
+'App%5CController%5CAdmin%5CContactCrudController' => 0,
+'[C]App%5CController%5CAdmin%5CContactCrudController' => 1,
+'App%5CController%5CAdmin%5CContactCrudController%23getEntityFqcn' => 0,
+'[C]App%5CController%5CAdmin%5CContactCrudController%23getEntityFqcn' => 1,
+'App%5CController%5CAdmin%5CContactCrudController%23configureAssets' => 0,
+'[C]App%5CController%5CAdmin%5CContactCrudController%23configureAssets' => 1,
+'App%5CController%5CAdmin%5CContactCrudController%23configureFields' => 0,
+'[C]App%5CController%5CAdmin%5CContactCrudController%23configureFields' => 1,
 'App%5CController%5CAdmin%5CDashboardController' => 0,
 '[C]App%5CController%5CAdmin%5CDashboardController' => 1,
 'App%5CController%5CAdmin%5CDashboardController%23index' => 0,
@@ -182,12 +192,16 @@ return [[
 '[C]App%5CController%5CAdmin%5CHeaderCrudController' => 1,
 'App%5CController%5CAdmin%5CHeaderCrudController%23getEntityFqcn' => 0,
 '[C]App%5CController%5CAdmin%5CHeaderCrudController%23getEntityFqcn' => 1,
+'App%5CController%5CAdmin%5CHeaderCrudController%23configureAssets' => 0,
+'[C]App%5CController%5CAdmin%5CHeaderCrudController%23configureAssets' => 1,
 'App%5CController%5CAdmin%5CHeaderCrudController%23configureFields' => 0,
 '[C]App%5CController%5CAdmin%5CHeaderCrudController%23configureFields' => 1,
 'App%5CController%5CAdmin%5COrderCrudController' => 0,
 '[C]App%5CController%5CAdmin%5COrderCrudController' => 1,
 'App%5CController%5CAdmin%5COrderCrudController%23getEntityFqcn' => 0,
 '[C]App%5CController%5CAdmin%5COrderCrudController%23getEntityFqcn' => 1,
+'App%5CController%5CAdmin%5COrderCrudController%23configureAssets' => 0,
+'[C]App%5CController%5CAdmin%5COrderCrudController%23configureAssets' => 1,
 'App%5CController%5CAdmin%5COrderCrudController%23configureFields' => 0,
 '[C]App%5CController%5CAdmin%5COrderCrudController%23configureFields' => 1,
 'App%5CController%5CAdmin%5COrderCrudController%23configureCrud' => 0,
@@ -198,12 +212,16 @@ return [[
 '[C]App%5CController%5CAdmin%5CProductCrudController' => 1,
 'App%5CController%5CAdmin%5CProductCrudController%23getEntityFqcn' => 0,
 '[C]App%5CController%5CAdmin%5CProductCrudController%23getEntityFqcn' => 1,
+'App%5CController%5CAdmin%5CProductCrudController%23configureAssets' => 0,
+'[C]App%5CController%5CAdmin%5CProductCrudController%23configureAssets' => 1,
 'App%5CController%5CAdmin%5CProductCrudController%23configureFields' => 0,
 '[C]App%5CController%5CAdmin%5CProductCrudController%23configureFields' => 1,
 'App%5CController%5CAdmin%5CUserCrudController' => 0,
 '[C]App%5CController%5CAdmin%5CUserCrudController' => 1,
 'App%5CController%5CAdmin%5CUserCrudController%23getEntityFqcn' => 0,
 '[C]App%5CController%5CAdmin%5CUserCrudController%23getEntityFqcn' => 1,
+'App%5CController%5CAdmin%5CUserCrudController%23configureAssets' => 0,
+'[C]App%5CController%5CAdmin%5CUserCrudController%23configureAssets' => 1,
 'App%5CController%5CCartController' => 0,
 '[C]App%5CController%5CCartController' => 1,
 'App%5CController%5CCartController%23__construct' => 0,
@@ -250,7 +268,7 @@ return [[
 '[C]App%5CController%5COrderController%23__construct' => 1,
 'App%5CController%5COrderController%23index' => 0,
 '[C]App%5CController%5COrderController%23index' => 1,
-'App%5CController%5COrderController%23add' => 2,
+'App%5CController%5COrderController%23add' => 0,
 '[C]App%5CController%5COrderController%23add' => 1,
 'App%5CController%5COrderController%24entityManager' => 0,
 '[C]App%5CController%5COrderController%24entityManager' => 1,
@@ -1202,6 +1220,8 @@ return [[
 '[C]EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController' => 1,
 'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23getEntityFqcn' => 0,
 '[C]EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23getEntityFqcn' => 1,
+'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureAssets' => 0,
+'[C]EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractCrudController%23configureAssets' => 1,
 'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractDashboardController' => 0,
 '[C]EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractDashboardController' => 1,
 'EasyCorp%5CBundle%5CEasyAdminBundle%5CController%5CAbstractDashboardController%23index' => 0,
@@ -1320,52 +1340,6 @@ return [[
 ], [
 
 0 => [],
-1 => 1659621166,
-2 => static function () {
-    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
-        $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
-        ],
-        null,
-        [
-            'Symfony\\Component\\Routing\\Annotation\\Route' => [
-                'methods' => [
-                    [],
-                ],
-                'schemes' => [
-                    [],
-                ],
-                'name' => [
-                    null,
-                ],
-                'requirements' => [
-                    [],
-                ],
-                'options' => [
-                    [],
-                ],
-                'defaults' => [
-                    [],
-                ],
-                'host' => [
-                    null,
-                ],
-                'condition' => [
-                    null,
-                ],
-                'priority' => [
-                    null,
-                ],
-                'env' => [
-                    null,
-                ],
-            ],
-        ],
-        [
-            $o[0],
-        ],
-        []
-    );
-},
+1 => 1661160935,
 
 ]];

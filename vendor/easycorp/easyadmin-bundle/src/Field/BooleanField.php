@@ -3,6 +3,7 @@
 namespace EasyCorp\Bundle\EasyAdminBundle\Field;
 
 use EasyCorp\Bundle\EasyAdminBundle\Config\Asset;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Option\TextAlign;
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Contracts\Translation\TranslatableInterface;
@@ -28,10 +29,11 @@ final class BooleanField implements FieldInterface
         return (new self())
             ->setProperty($propertyName)
             ->setLabel($label)
+            ->setTextAlign(TextAlign::CENTER)
             ->setTemplateName('crud/field/boolean')
             ->setFormType(CheckboxType::class)
             ->addCssClass('field-boolean')
-            ->addJsFiles(Asset::new('bundles/easyadmin/field-boolean.js')->onlyOnIndex())
+            ->addJsFiles(Asset::fromEasyAdminAssetPackage('field-boolean.js')->onlyOnIndex())
             ->setCustomOption(self::OPTION_RENDER_AS_SWITCH, true);
     }
 

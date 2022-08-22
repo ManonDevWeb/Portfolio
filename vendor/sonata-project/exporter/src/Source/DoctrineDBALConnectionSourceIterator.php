@@ -14,70 +14,36 @@ declare(strict_types=1);
 namespace Sonata\Exporter\Source;
 
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Driver\Connection as DriverConnection;
-use Doctrine\DBAL\Driver\Result as DriverResult;
 use Doctrine\DBAL\Result;
 
-final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterface
+/**
+ * @phpstan-implements \Iterator<array<mixed>>
+ */
+final class DoctrineDBALConnectionSourceIterator implements \Iterator
 {
-    /**
-     * @var Connection|DriverConnection
-     */
-    private $connection;
-
-    private string $query;
-
-    /**
-     * @var mixed[]
-     */
-    private array $parameters;
-
     /**
      * @var array<string, mixed>|false
      */
-    private $current;
+    private array|false $current = false;
 
     private int $position = 0;
 
-    /**
-     * @var Result|DriverResult
-     */
-    private $result;
+    private ?Result $result = null;
 
     /**
-     * @param Connection|DriverConnection $connection
-     * @param mixed[]                     $parameters
+     * @param mixed[] $parameters
      */
-    public function __construct($connection, string $query, array $parameters = [])
-    {
-        if (!$connection instanceof Connection) {
-            if (!$connection instanceof DriverConnection) {
-                throw new \TypeError(sprintf(
-                    '%s: Argument 1 is expected to be an instance of %s, got %s.',
-                    __METHOD__,
-                    Connection::class,
-                    \get_class($connection)
-                ));
-            }
-
-            @trigger_error(sprintf(
-                'Passing an instance of %s as argument 1 is deprecated since sonata-project/exporter 2.13'
-                .' and will not work in 3.0. You MUST pass an instance of %s instead',
-                \get_class($connection),
-                Connection::class
-            ), \E_USER_DEPRECATED);
-        }
-
-        $this->connection = $connection;
-        $this->query = $query;
-        $this->parameters = $parameters;
+    public function __construct(
+        private Connection $connection,
+        private string $query,
+        private array $parameters = []
+    ) {
     }
 
     /**
      * @return array<string, mixed>
      */
-    #[\ReturnTypeWillChange]
-    public function current()
+    public function current(): array
     {
         \assert(\is_array($this->current));
 
@@ -86,15 +52,13 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
 
     public function next(): void
     {
+        \assert(null !== $this->result);
+
         $this->current = $this->result->fetchAssociative();
         ++$this->position;
     }
 
-    /**
-     * @return int
-     */
-    #[\ReturnTypeWillChange]
-    public function key()
+    public function key(): int
     {
         return $this->position;
     }
@@ -104,23 +68,11 @@ final class DoctrineDBALConnectionSourceIterator implements SourceIteratorInterf
         return \is_array($this->current);
     }
 
-    /**
-     * @psalm-suppress InvalidPropertyAssignmentValue
-     */
     public function rewind(): void
     {
         $statement = $this->connection->prepare($this->query);
 
-        $result = $statement->execute($this->parameters);
-
-        // TODO: Keep only the if part when dropping support for Doctrine DBAL < 3.1
-        // @phpstan-ignore-next-line
-        if ($result instanceof Result || $result instanceof DriverResult) {
-            $this->result = $result;
-        } else {
-            // @phpstan-ignore-next-line
-            $this->result = $statement;
-        }
+        $this->result = $statement->executeQuery($this->parameters);
 
         $this->next();
     }

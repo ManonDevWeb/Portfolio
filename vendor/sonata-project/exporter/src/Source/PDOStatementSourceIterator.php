@@ -15,29 +15,25 @@ namespace Sonata\Exporter\Source;
 
 use Sonata\Exporter\Exception\InvalidMethodCallException;
 
-final class PDOStatementSourceIterator implements SourceIteratorInterface
+/**
+ * @phpstan-implements \Iterator<array<mixed>>
+ */
+final class PDOStatementSourceIterator implements \Iterator
 {
-    private \PDOStatement $statement;
-
-    /**
-     * @var mixed
-     */
-    private $current;
+    private mixed $current = null;
 
     private int $position = 0;
 
     private bool $rewinded = false;
 
-    public function __construct(\PDOStatement $statement)
+    public function __construct(private \PDOStatement $statement)
     {
-        $this->statement = $statement;
     }
 
     /**
      * @return array<mixed>
      */
-    #[\ReturnTypeWillChange]
-    public function current()
+    public function current(): array
     {
         return $this->current;
     }
@@ -48,11 +44,7 @@ final class PDOStatementSourceIterator implements SourceIteratorInterface
         ++$this->position;
     }
 
-    /**
-     * @return int
-     */
-    #[\ReturnTypeWillChange]
-    public function key()
+    public function key(): int
     {
         return $this->position;
     }

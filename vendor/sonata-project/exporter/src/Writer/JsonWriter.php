@@ -18,8 +18,6 @@ namespace Sonata\Exporter\Writer;
  */
 final class JsonWriter implements TypedWriterInterface
 {
-    private string $filename;
-
     /**
      * @var resource|null
      * @phpstan-var resource|null
@@ -32,10 +30,8 @@ final class JsonWriter implements TypedWriterInterface
     /**
      * @throws \RuntimeException
      */
-    public function __construct(string $filename)
+    public function __construct(private string $filename)
     {
-        $this->filename = $filename;
-
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
         }
@@ -53,22 +49,42 @@ final class JsonWriter implements TypedWriterInterface
 
     public function open(): void
     {
-        $this->file = fopen($this->filename, 'w', false);
+        $file = fopen($this->filename, 'w', false);
+        if (false === $file) {
+            throw new \Exception(sprintf('Cannot open file %s.', $this->filename));
+        }
 
+        $this->file = $file;
         fwrite($this->file, '[');
     }
 
+    /**
+     * @psalm-suppress InvalidPassByReference
+     *
+     * @see https://github.com/vimeo/psalm/issues/7505
+     */
     public function close(): void
     {
-        fwrite($this->file, ']');
-
-        fclose($this->file);
+        fwrite($this->getFile(), ']');
+        fclose($this->getFile());
     }
 
     public function write(array $data): void
     {
-        fwrite($this->file, ($this->position > 0 ? ',' : '').json_encode($data, \JSON_THROW_ON_ERROR));
+        fwrite($this->getFile(), ($this->position > 0 ? ',' : '').json_encode($data, \JSON_THROW_ON_ERROR));
 
         ++$this->position;
+    }
+
+    /**
+     * @return resource
+     */
+    private function getFile()
+    {
+        if (!\is_resource($this->file)) {
+            throw new \LogicException('You MUST open the file first');
+        }
+
+        return $this->file;
     }
 }

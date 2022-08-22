@@ -18,8 +18,6 @@ namespace Sonata\Exporter\Writer;
  */
 final class XlsWriter implements TypedWriterInterface
 {
-    private string $filename;
-
     /**
      * @var resource|null
      * @phpstan-var resource|null
@@ -27,18 +25,15 @@ final class XlsWriter implements TypedWriterInterface
      */
     private $file;
 
-    private bool $showHeaders;
-
     private int $position = 0;
 
     /**
      * @throws \RuntimeException
      */
-    public function __construct(string $filename, bool $showHeaders = true)
-    {
-        $this->filename = $filename;
-        $this->showHeaders = $showHeaders;
-
+    public function __construct(
+        private string $filename,
+        private bool $showHeaders = true
+    ) {
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exists', $filename));
         }
@@ -56,25 +51,35 @@ final class XlsWriter implements TypedWriterInterface
 
     public function open(): void
     {
-        $this->file = fopen($this->filename, 'w', false);
+        $file = fopen($this->filename, 'w', false);
+        if (false === $file) {
+            throw new \Exception(sprintf('Cannot open file %s.', $this->filename));
+        }
+
+        $this->file = $file;
         fwrite($this->file, '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name=ProgId content=Excel.Sheet><meta name=Generator content="https://github.com/sonata-project/exporter"></head><body><table>');
     }
 
+    /**
+     * @psalm-suppress InvalidPassByReference
+     *
+     * @see https://github.com/vimeo/psalm/issues/7505
+     */
     public function close(): void
     {
-        fwrite($this->file, '</table></body></html>');
-        fclose($this->file);
+        fwrite($this->getFile(), '</table></body></html>');
+        fclose($this->getFile());
     }
 
     public function write(array $data): void
     {
         $this->init($data);
 
-        fwrite($this->file, '<tr>');
+        fwrite($this->getFile(), '<tr>');
         foreach ($data as $value) {
-            fwrite($this->file, sprintf('<td>%s</td>', $value));
+            fwrite($this->getFile(), sprintf('<td>%s</td>', $value));
         }
-        fwrite($this->file, '</tr>');
+        fwrite($this->getFile(), '</tr>');
 
         ++$this->position;
     }
@@ -89,12 +94,24 @@ final class XlsWriter implements TypedWriterInterface
         }
 
         if ($this->showHeaders) {
-            fwrite($this->file, '<tr>');
+            fwrite($this->getFile(), '<tr>');
             foreach ($data as $header => $value) {
-                fwrite($this->file, sprintf('<th>%s</th>', (string) $header));
+                fwrite($this->getFile(), sprintf('<th>%s</th>', (string) $header));
             }
-            fwrite($this->file, '</tr>');
+            fwrite($this->getFile(), '</tr>');
             ++$this->position;
         }
+    }
+
+    /**
+     * @return resource
+     */
+    private function getFile()
+    {
+        if (!\is_resource($this->file)) {
+            throw new \LogicException('You MUST open the file first');
+        }
+
+        return $this->file;
     }
 }

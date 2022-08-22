@@ -13,7 +13,10 @@ declare(strict_types=1);
 
 namespace Sonata\Exporter\Source;
 
-final class ChainSourceIterator implements SourceIteratorInterface
+/**
+ * @phpstan-implements \Iterator<array<mixed>>
+ */
+final class ChainSourceIterator implements \Iterator
 {
     /**
      * @var \ArrayIterator<array-key, \Iterator>
@@ -40,8 +43,7 @@ final class ChainSourceIterator implements SourceIteratorInterface
     /**
      * @return array<mixed>
      */
-    #[\ReturnTypeWillChange]
-    public function current()
+    public function current(): array
     {
         return $this->sources->current()->current();
     }
@@ -51,11 +53,7 @@ final class ChainSourceIterator implements SourceIteratorInterface
         $this->sources->current()->next();
     }
 
-    /**
-     * @return mixed
-     */
-    #[\ReturnTypeWillChange]
-    public function key()
+    public function key(): mixed
     {
         return $this->sources->current()->key();
     }

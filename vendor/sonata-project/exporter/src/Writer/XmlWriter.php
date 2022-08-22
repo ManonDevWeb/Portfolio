@@ -21,8 +21,6 @@ use Sonata\Exporter\Exception\RuntimeException;
  */
 final class XmlWriter implements TypedWriterInterface
 {
-    private string $filename;
-
     /**
      * @var resource|null
      * @phpstan-var resource|null
@@ -30,19 +28,14 @@ final class XmlWriter implements TypedWriterInterface
      */
     private $file;
 
-    private string $mainElement;
-
-    private string $childElement;
-
     /**
      * @throws \RuntimeException
      */
-    public function __construct(string $filename, string $mainElement = 'datas', string $childElement = 'data')
-    {
-        $this->filename = $filename;
-        $this->mainElement = $mainElement;
-        $this->childElement = $childElement;
-
+    public function __construct(
+        private string $filename,
+        private string $mainElement = 'datas',
+        private string $childElement = 'data'
+    ) {
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
         }
@@ -60,42 +53,60 @@ final class XmlWriter implements TypedWriterInterface
 
     public function open(): void
     {
-        $this->file = fopen($this->filename, 'w', false);
+        $file = fopen($this->filename, 'w', false);
+        if (false === $file) {
+            throw new \Exception(sprintf('Cannot open file %s.', $this->filename));
+        }
 
+        $this->file = $file;
         fwrite($this->file, sprintf("<?xml version=\"1.0\" ?>\n<%s>\n", $this->mainElement));
     }
 
+    /**
+     * @psalm-suppress InvalidPassByReference
+     *
+     * @see https://github.com/vimeo/psalm/issues/7505
+     */
     public function close(): void
     {
-        fwrite($this->file, sprintf('</%s>', $this->mainElement));
-
-        fclose($this->file);
+        fwrite($this->getFile(), sprintf('</%s>', $this->mainElement));
+        fclose($this->getFile());
     }
 
     public function write(array $data): void
     {
-        fwrite($this->file, sprintf("<%s>\n", $this->childElement));
+        fwrite($this->getFile(), sprintf("<%s>\n", $this->childElement));
 
         foreach ($data as $k => $v) {
             $this->generateNode($k, $v);
         }
 
-        fwrite($this->file, sprintf("</%s>\n", $this->childElement));
+        fwrite($this->getFile(), sprintf("</%s>\n", $this->childElement));
     }
 
     /**
-     * @param mixed $value
-     *
      * @throws \RuntimeException
      */
-    private function generateNode(string $name, $value): void
+    private function generateNode(string $name, mixed $value): void
     {
         if (\is_array($value)) {
             throw new RuntimeException('Not implemented');
         } elseif (\is_scalar($value) || null === $value) {
-            fwrite($this->file, sprintf("<%s><![CDATA[%s]]></%s>\n", $name, (string) $value, $name));
+            fwrite($this->getFile(), sprintf("<%s><![CDATA[%s]]></%s>\n", $name, (string) $value, $name));
         } else {
             throw new InvalidDataFormatException('Invalid data');
         }
+    }
+
+    /**
+     * @return resource
+     */
+    private function getFile()
+    {
+        if (!\is_resource($this->file)) {
+            throw new \LogicException('You MUST open the file first');
+        }
+
+        return $this->file;
     }
 }

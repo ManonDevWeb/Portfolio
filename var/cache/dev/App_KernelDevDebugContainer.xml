@@ -273,7 +273,6 @@
     <parameter key="sonata.exporter.writer.xml.show_headers">true</parameter>
     <parameter key="sonata.exporter.writer.xml.main_element">datas</parameter>
     <parameter key="sonata.exporter.writer.xml.child_element">data</parameter>
-    <parameter key="maker.compatible_check.doctrine.supports_attributes">true</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -3016,7 +3015,6 @@
         <argument type="service" id="serializer.denormalizer.unwrapping"/>
         <argument type="service" id="serializer.normalizer.problem"/>
         <argument type="service" id="serializer.normalizer.uid"/>
-        <argument type="service" id="serializer.normalizer.json_serializable"/>
         <argument type="service" id="serializer.normalizer.datetime"/>
         <argument type="service" id="serializer.normalizer.constraint_violation_list"/>
         <argument type="service" id="serializer.normalizer.mime_message"/>
@@ -3025,6 +3023,7 @@
         <argument type="service" id="serializer.normalizer.form_error"/>
         <argument type="service" id="serializer.normalizer.backed_enum"/>
         <argument type="service" id="serializer.normalizer.data_uri"/>
+        <argument type="service" id="serializer.normalizer.json_serializable"/>
         <argument type="service" id="serializer.denormalizer.array"/>
         <argument type="service" id="serializer.normalizer.object"/>
       </argument>
@@ -3061,7 +3060,7 @@
       <tag name="serializer.normalizer" priority="-910"/>
     </service>
     <service id="serializer.normalizer.json_serializable" class="Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer">
-      <tag name="serializer.normalizer" priority="-900"/>
+      <tag name="serializer.normalizer" priority="-950"/>
       <argument>null</argument>
       <argument>null</argument>
     </service>
@@ -4513,9 +4512,7 @@
     </service>
     <service id="maker.doctrine_helper" class="Symfony\Bundle\MakerBundle\Doctrine\DoctrineHelper">
       <argument>App\Entity</argument>
-      <argument type="service" id="maker.php_compat_util"/>
       <argument type="service" id="doctrine" on-invalid="ignore"/>
-      <argument>true</argument>
       <argument type="collection">
         <argument key="default" type="collection">
           <argument type="collection">
@@ -4533,7 +4530,7 @@
     <service id="maker.generator" class="Symfony\Bundle\MakerBundle\Generator">
       <argument type="service" id="maker.file_manager"/>
       <argument>App</argument>
-      <argument type="service" id="maker.php_compat_util"/>
+      <argument>null</argument>
       <argument type="service" id="maker.template_component_generator"/>
     </service>
     <service id="maker.entity_class_generator" class="Symfony\Bundle\MakerBundle\Doctrine\EntityClassGenerator">
@@ -4545,15 +4542,11 @@
     <service id="maker.renderer.form_type_renderer" class="Symfony\Bundle\MakerBundle\Renderer\FormTypeRenderer">
       <argument type="service" id="maker.generator"/>
     </service>
-    <service id="maker.security_controller_builder" class="Symfony\Bundle\MakerBundle\Security\SecurityControllerBuilder">
-      <argument type="service" id="maker.php_compat_util"/>
-    </service>
+    <service id="maker.security_controller_builder" class="Symfony\Bundle\MakerBundle\Security\SecurityControllerBuilder"/>
     <service id="maker.php_compat_util" class="Symfony\Bundle\MakerBundle\Util\PhpCompatUtil">
       <argument type="service" id="maker.file_manager"/>
     </service>
-    <service id="maker.template_component_generator" class="Symfony\Bundle\MakerBundle\Util\TemplateComponentGenerator">
-      <argument type="service" id="maker.php_compat_util"/>
-    </service>
+    <service id="maker.template_component_generator" class="Symfony\Bundle\MakerBundle\Util\TemplateComponentGenerator"/>
     <service id="maker.maker.make_authenticator" class="Symfony\Bundle\MakerBundle\Maker\MakeAuthenticator">
       <tag name="maker.command"/>
       <argument type="service" id="maker.file_manager"/>
@@ -6186,7 +6179,7 @@
     </service>
     <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator">
       <tag name="ea.field_configurator"/>
-      <argument type="service" id="assets.packages"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Asset\AssetPackage"/>
     </service>
     <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator">
       <tag name="ea.field_configurator"/>
@@ -6249,6 +6242,10 @@
     </service>
     <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator">
       <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Asset\AssetPackage" class="EasyCorp\Bundle\EasyAdminBundle\Asset\AssetPackage">
+      <tag name="assets.package" package="easyadmin.assets.package"/>
+      <argument type="service" id="request_stack"/>
     </service>
     <service id="sonata.exporter.writer.csv" class="Sonata\Exporter\Writer\CsvWriter">
       <tag name="sonata.exporter.writer"/>
@@ -6897,7 +6894,7 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.t.rhOvS" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.ADQUvoH" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AccountAddressController::add" type="service_closure" id=".service_locator.wzqJDwK"/>
@@ -7980,12 +7977,12 @@
       <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.t.rhOvS"/>
+      <argument type="service" id=".service_locator.ADQUvoH"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.t.rhOvS"/>
+      <argument type="service" id=".service_locator.ADQUvoH"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface">
       <argument type="collection"/>
@@ -8862,7 +8859,7 @@
     <service id="Sonata\Exporter\Exporter" alias="sonata.exporter.exporter"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.t.rhOvS"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.ADQUvoH"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
@@ -8886,7 +8883,7 @@
     <service id=".service_locator.6rNHno." alias=".service_locator.riFbGaB"/>
     <service id=".service_locator.ACQ5gDh" alias=".service_locator.k4SrBM8"/>
     <service id=".service_locator.ktF.0rV" alias=".service_locator.HvdMD1H"/>
-    <service id=".service_locator.3xmBkfM" alias=".service_locator.t.rhOvS"/>
+    <service id=".service_locator.3xmBkfM" alias=".service_locator.ADQUvoH"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
     <service id=".service_locator.Pxcf3XG" alias=".service_locator.CG_9Cpp"/>
     <service id=".service_locator.qBCHs1a" alias=".service_locator.QXcJQkF"/>

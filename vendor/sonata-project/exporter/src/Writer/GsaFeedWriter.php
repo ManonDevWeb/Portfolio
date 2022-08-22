@@ -22,14 +22,6 @@ final class GsaFeedWriter implements WriterInterface
 {
     public const LIMIT_SIZE = 31_457_280;
 
-    private \SplFileInfo $folder;
-
-    private string $dtd;
-
-    private string $datasource;
-
-    private string $feedtype;
-
     private int $bufferPart;
 
     /**
@@ -47,12 +39,12 @@ final class GsaFeedWriter implements WriterInterface
      * @param string       $datasource A datasouce
      * @param string       $feedtype   A feedtype (full|incremental|metadata-and-url)
      */
-    public function __construct(\SplFileInfo $folder, string $dtd, string $datasource, string $feedtype)
-    {
-        $this->folder = $folder;
-        $this->dtd = $dtd;
-        $this->datasource = $datasource;
-        $this->feedtype = $feedtype;
+    public function __construct(
+        private \SplFileInfo $folder,
+        private string $dtd,
+        private string $datasource,
+        private string $feedtype
+    ) {
         $this->bufferPart = 0;
         $this->bufferSize = 0;
     }
@@ -76,7 +68,7 @@ final class GsaFeedWriter implements WriterInterface
             $this->generateNewPart();
         }
 
-        $this->bufferSize += fwrite($this->buffer, $line);
+        $this->bufferSize += fwrite($this->getBuffer(), $line);
     }
 
     public function close(): void
@@ -104,7 +96,12 @@ final class GsaFeedWriter implements WriterInterface
             throw new \RuntimeException(sprintf('Unable to write to folder: %s', (string) $this->folder));
         }
 
-        $this->buffer = fopen(sprintf('%s/feed_%05d.xml', (string) $this->folder, $this->bufferPart), 'w');
+        $filename = sprintf('%s/feed_%05d.xml', (string) $this->folder, $this->bufferPart);
+        $buffer = fopen($filename, 'w');
+        if (false === $buffer) {
+            throw new \Exception(sprintf('Cannot open file %s.', $filename));
+        }
+        $this->buffer = $buffer;
 
         $this->bufferSize += fwrite(
             $this->buffer,
@@ -123,16 +120,33 @@ XML
         );
     }
 
+    /**
+     * @psalm-suppress InvalidPassByReference
+     *
+     * @see https://github.com/vimeo/psalm/issues/7505
+     */
     private function closeFeed(): void
     {
         fwrite(
-            $this->buffer,
+            $this->getBuffer(),
             <<<'EOF'
     </group>
 </gsafeed>
 EOF
         );
 
-        fclose($this->buffer);
+        fclose($this->getBuffer());
+    }
+
+    /**
+     * @return resource
+     */
+    private function getBuffer()
+    {
+        if (!\is_resource($this->buffer)) {
+            throw new \LogicException('You MUST open the file first');
+        }
+
+        return $this->buffer;
     }
 }

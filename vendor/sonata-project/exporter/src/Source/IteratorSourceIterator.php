@@ -15,20 +15,16 @@ namespace Sonata\Exporter\Source;
 
 /**
  * SourceIterator implementation based on Iterator.
+ *
+ * @phpstan-implements \Iterator<array<mixed>>
  */
-class IteratorSourceIterator implements SourceIteratorInterface
+class IteratorSourceIterator implements \Iterator
 {
-    /**
-     * @var \Iterator<mixed, array<mixed>>
-     */
-    protected $iterator;
-
     /**
      * @param \Iterator<mixed, array<mixed>> $iterator Iterator with string array elements
      */
-    public function __construct(\Iterator $iterator)
+    public function __construct(protected \Iterator $iterator)
     {
-        $this->iterator = $iterator;
     }
 
     final public function getIterator(): \Iterator
@@ -39,8 +35,7 @@ class IteratorSourceIterator implements SourceIteratorInterface
     /**
      * @return array<mixed>
      */
-    #[\ReturnTypeWillChange]
-    public function current()
+    public function current(): array
     {
         return $this->iterator->current();
     }
@@ -50,11 +45,7 @@ class IteratorSourceIterator implements SourceIteratorInterface
         $this->iterator->next();
     }
 
-    /**
-     * @return mixed
-     */
-    #[\ReturnTypeWillChange]
-    final public function key()
+    final public function key(): mixed
     {
         return $this->iterator->key();
     }

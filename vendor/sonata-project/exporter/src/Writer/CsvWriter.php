@@ -20,14 +20,6 @@ use Sonata\Exporter\Exception\InvalidDataFormatException;
  */
 final class CsvWriter implements TypedWriterInterface
 {
-    private string $filename;
-
-    private string $delimiter;
-
-    private string $enclosure;
-
-    private string $escape;
-
     /**
      * @var resource|null
      * @phpstan-var resource|null
@@ -35,34 +27,21 @@ final class CsvWriter implements TypedWriterInterface
      */
     private $file;
 
-    private bool $showHeaders;
-
     private int $position;
-
-    private bool $withBom;
-
-    private string $terminate;
 
     /**
      * @throws \RuntimeException
      */
     public function __construct(
-        string $filename,
-        string $delimiter = ',',
-        string $enclosure = '"',
-        string $escape = '\\',
-        bool $showHeaders = true,
-        bool $withBom = false,
-        string $terminate = "\n"
+        private string $filename,
+        private string $delimiter = ',',
+        private string $enclosure = '"',
+        private string $escape = '\\',
+        private bool $showHeaders = true,
+        private bool $withBom = false,
+        private string $terminate = "\n"
     ) {
-        $this->filename = $filename;
-        $this->delimiter = $delimiter;
-        $this->enclosure = $enclosure;
-        $this->escape = $escape;
-        $this->showHeaders = $showHeaders;
-        $this->terminate = $terminate;
         $this->position = 0;
-        $this->withBom = $withBom;
 
         if (is_file($filename)) {
             throw new \RuntimeException(sprintf('The file %s already exist', $filename));
@@ -81,25 +60,35 @@ final class CsvWriter implements TypedWriterInterface
 
     public function open(): void
     {
-        $this->file = fopen($this->filename, 'w', false);
+        $file = fopen($this->filename, 'w', false);
+        if (false === $file) {
+            throw new \Exception(sprintf('Cannot open file %s.', $this->filename));
+        }
+        $this->file = $file;
+
         if ("\n" !== $this->terminate) {
             stream_filter_register('filterTerminate', CsvWriterTerminate::class);
             stream_filter_append($this->file, 'filterTerminate', \STREAM_FILTER_WRITE, ['terminate' => $this->terminate]);
         }
         if (true === $this->withBom) {
-            fprintf($this->file, \chr(0xEF).\chr(0xBB).\chr(0xBF));
+            fprintf($this->getFile(), \chr(0xEF).\chr(0xBB).\chr(0xBF));
         }
     }
 
+    /**
+     * @psalm-suppress InvalidPassByReference
+     *
+     * @see https://github.com/vimeo/psalm/issues/7505
+     */
     public function close(): void
     {
-        fclose($this->file);
+        fclose($this->getFile());
     }
 
     public function write(array $data): void
     {
         if (0 === $this->position && $this->showHeaders) {
-            fputcsv($this->file, array_keys($data), $this->delimiter, $this->enclosure, $this->escape);
+            fputcsv($this->getFile(), array_keys($data), $this->delimiter, $this->enclosure, $this->escape);
 
             ++$this->position;
         }
@@ -115,12 +104,24 @@ final class CsvWriter implements TypedWriterInterface
             EXCEPTION);
         }
 
-        $result = @fputcsv($this->file, $data, $this->delimiter, $this->enclosure, $this->escape);
+        $result = @fputcsv($this->getFile(), $data, $this->delimiter, $this->enclosure, $this->escape);
 
-        if (!$result) {
+        if (false === $result) {
             throw new InvalidDataFormatException();
         }
 
         ++$this->position;
+    }
+
+    /**
+     * @return resource
+     */
+    private function getFile()
+    {
+        if (!\is_resource($this->file)) {
+            throw new \LogicException('You MUST open the file first');
+        }
+
+        return $this->file;
     }
 }

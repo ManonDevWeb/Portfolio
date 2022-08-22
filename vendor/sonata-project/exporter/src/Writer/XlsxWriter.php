@@ -28,10 +28,6 @@ final class XlsxWriter implements TypedWriterInterface
 {
     private string $filename;
 
-    private bool $showHeaders;
-
-    private bool $showFilters;
-
     private ?Spreadsheet $spreadsheet = null;
 
     private ?Worksheet $worksheet = null;
@@ -42,8 +38,11 @@ final class XlsxWriter implements TypedWriterInterface
      * @throws \LogicException
      * @throws \InvalidArgumentException
      */
-    public function __construct(string $filename, bool $showHeaders = true, bool $showFilters = true)
-    {
+    public function __construct(
+        string $filename,
+        private bool $showHeaders = true,
+        private bool $showFilters = true
+    ) {
         if (!class_exists(Spreadsheet::class)) {
             throw new \LogicException('You need the "phpoffice/spreadsheet" package in order to use the XLSX export.');
         }
@@ -53,8 +52,6 @@ final class XlsxWriter implements TypedWriterInterface
         }
 
         $this->filename = $filename;
-        $this->showHeaders = $showHeaders;
-        $this->showFilters = $showFilters;
         $this->position = 1;
     }
 
@@ -81,11 +78,11 @@ final class XlsxWriter implements TypedWriterInterface
     public function close(): void
     {
         if ($this->showHeaders && $this->showFilters) {
-            $this->worksheet->setAutoFilter($this->worksheet->calculateWorksheetDimension());
-            $this->worksheet->setSelectedCellByColumnAndRow(1, 1);
+            $this->getWorksheet()->setAutoFilter($this->getWorksheet()->calculateWorksheetDimension());
+            $this->getWorksheet()->setSelectedCellByColumnAndRow(1, 1);
         }
 
-        $excelWriter = IOFactory::createWriter($this->spreadsheet, 'Xlsx');
+        $excelWriter = IOFactory::createWriter($this->getSpreadsheet(), 'Xlsx');
         $excelWriter->save($this->filename);
     }
 
@@ -104,14 +101,14 @@ final class XlsxWriter implements TypedWriterInterface
             $dataValue = $this->getDataValue($value);
 
             if (null !== $dataFormat) {
-                $this->worksheet->getStyleByColumnAndRow($column, $this->position)
+                $this->getWorksheet()->getStyleByColumnAndRow($column, $this->position)
                     ->getNumberFormat()
                     ->setFormatCode($dataFormat);
             }
 
             $dataType = $this->getDataType($value);
 
-            $this->worksheet->setCellValueExplicitByColumnAndRow($column, $this->position, $dataValue, $dataType);
+            $this->getWorksheet()->setCellValueExplicitByColumnAndRow($column, $this->position, $dataValue, $dataType);
 
             ++$column;
         }
@@ -127,7 +124,7 @@ final class XlsxWriter implements TypedWriterInterface
         $column = 1;
 
         foreach (array_keys($data) as $value) {
-            $this->worksheet->setCellValueExplicitByColumnAndRow($column, $this->position, $value, DataType::TYPE_STRING);
+            $this->getWorksheet()->setCellValueExplicitByColumnAndRow($column, $this->position, $value, DataType::TYPE_STRING);
 
             ++$column;
         }
@@ -135,10 +132,8 @@ final class XlsxWriter implements TypedWriterInterface
 
     /**
      * Get the type of the Spreadsheet cell.
-     *
-     * @param mixed $value
      */
-    private function getDataType($value): string
+    private function getDataType(mixed $value): string
     {
         if (null === $value) {
             return DataType::TYPE_NULL;
@@ -161,12 +156,8 @@ final class XlsxWriter implements TypedWriterInterface
 
     /**
      * Get the value of the Spreadsheet cell. DateTime fields must be converted in order to work properly.
-     *
-     * @param mixed $value
-     *
-     * @return mixed
      */
-    private function getDataValue($value)
+    private function getDataValue(mixed $value): mixed
     {
         if (null === $value) {
             return null;
@@ -183,10 +174,8 @@ final class XlsxWriter implements TypedWriterInterface
 
     /**
      * Get the format of the spreadsheet cell.
-     *
-     * @param mixed $value
      */
-    private function getDataFormat($value): ?string
+    private function getDataFormat(mixed $value): ?string
     {
         $dateTime = $this->getDateTime($value);
 
@@ -199,10 +188,8 @@ final class XlsxWriter implements TypedWriterInterface
 
     /**
      * Check if the field is a DateTime.
-     *
-     * @param mixed $value
      */
-    private function getDateTime($value): ?\DateTimeInterface
+    private function getDateTime(mixed $value): ?\DateTimeInterface
     {
         if (\is_string($value)) {
             $dateTime = \DateTime::createFromFormat(\DateTimeInterface::RFC1123, $value);
@@ -213,5 +200,23 @@ final class XlsxWriter implements TypedWriterInterface
         }
 
         return null;
+    }
+
+    private function getWorksheet(): Worksheet
+    {
+        if (null === $this->worksheet) {
+            throw new \LogicException('You MUST open the worksheet first');
+        }
+
+        return $this->worksheet;
+    }
+
+    private function getSpreadsheet(): Spreadsheet
+    {
+        if (null === $this->spreadsheet) {
+            throw new \LogicException('You MUST open the spreadsheet first');
+        }
+
+        return $this->spreadsheet;
     }
 }
