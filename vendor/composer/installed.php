@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '331e18db2ab07cb966c0efe2cf9a28f8492bf3db',
+        'reference' => '070a6624d999f46f3e5d5ef4ccbd7af08d0bd0a7',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '331e18db2ab07cb966c0efe2cf9a28f8492bf3db',
+            'reference' => '070a6624d999f46f3e5d5ef4ccbd7af08d0bd0a7',
             'dev_requirement' => false,
         ),
         'doctrine/annotations' => array(
@@ -991,6 +991,15 @@
             'aliases' => array(),
             'reference' => '7ae4ff28ac1b6d6d55591999026040d58b8a3967',
             'dev_requirement' => true,
+        ),
+        'symfony/messenger' => array(
+            'pretty_version' => 'v6.0.11',
+            'version' => '6.0.11.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/messenger',
+            'aliases' => array(),
+            'reference' => '6f21a0bf8c11a08c396acb53282400deffa88933',
+            'dev_requirement' => false,
         ),
         'symfony/mime' => array(
             'pretty_version' => 'v6.0.11',

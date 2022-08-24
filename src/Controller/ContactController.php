@@ -50,12 +50,15 @@ class ContactController extends AbstractController
             // **Recuperer array avec les admin et en extraire les noms et les emails pour faire une boucle et leur envoyer le mail de contact
             //$admins = $this->entityManager->getRepository(User::class)->findByRole('ROLE_ADMIN');
 
+            $emailMarta = 'formationwebosengo@gmail.com';
+            $emailManon = 'lamanon206@gmail.com';
+            $emailChloe = 'cloclodevo@gmail.com';
+
             $mail->send($emailMarta, 'Marta', $object, $content);
-            $mail->send($emailColine, 'Coline', $object, $content);
             $mail->send($emailManon, 'Manon', $object, $content);
             $mail->send($emailChloe, 'Chloe', $object, $content);
 
-            $notification = "Votre inscription s'est déroulée avec succès. Vous pouvez dès à présent vous connecter à votre compte.";
+            $notification = "Le formulaire a été soumis avec succès.";
             
         }
 
