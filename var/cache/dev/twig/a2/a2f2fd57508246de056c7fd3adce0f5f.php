@@ -25,7 +25,7 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
         $this->source = $this->getSourceContext();
 
         $this->blocks = [
-            'title' => [$this, 'block_title'],
+            'carousel' => [$this, 'block_carousel'],
             'content' => [$this, 'block_content'],
         ];
     }
@@ -55,18 +55,16 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
 
     }
 
-    // line 3
-    public function block_title($context, array $blocks = [])
+    // line 2
+    public function block_carousel($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "carousel"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "carousel"));
 
-        $this->displayParentBlock("title", $context, $blocks);
-        echo "Accueil";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -75,7 +73,7 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
 
     }
 
-    // line 5
+    // line 4
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -85,15 +83,51 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 6
-        echo "    <!-- Three columns of text below the carousel -->
-    <h2>Nos meilleures ventes</h2>
-    <p>Découvrez les articles les plus vendus</p>
-    <div class=\"row\">
-        ";
-        // line 10
+        // line 5
+        echo "        <!-- BASICS -->
+
+        <div class =\"basics-container\">
+            <h2 class=\"featurette-heading text-center\"> Nos basiques </h2>
+            <div class=\"row featurette\">
+                <div class=\"col-md-12\">
+                    <div class =\"basics-pictures-container\">
+                        <a class =\"basics-pictures\" href=\"";
+        // line 12
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_product");
+        echo "\"><img src=\"";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/home-category_eyes.jpg"), "html", null, true);
+        echo "\" alt=\"yeux\" width=\"300\" height=\"300\"> </a>
+                        <img class =\"basics-pictures\" src=\"";
+        // line 13
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/home-category_lips.jpg"), "html", null, true);
+        echo "\" alt=\"levres\" width=\"300\" height=\"300\">
+                        <img class =\"basics-pictures\" src=\"";
+        // line 14
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/home-category_nails.jpg"), "html", null, true);
+        echo "\" alt=\"ongles\" width=\"300\" height=\"300\">
+                    </div>
+                    <div class=\" category-name-container\">
+                    
+                        <h5> YEUX  </h5>
+                        <h5> LEVRES </h5>
+                        <h5> ONGLES </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BESTSELLERS -->
+     
+        <div class=\"container-bestsellers\">
+            
+            <div class=\"row\">
+                <div class=\"title-bestsellers col-md-3 product-item\">
+                    <h2 class=\"text-center\"> <span id=\"nos-produits\"> Nos produits </span> <br> <span id=\"bestsellers\"> bestsellers</span></h2>
+                </div>
+
+                ";
+        // line 34
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 10, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 34, $this->source); })()));
         $context['loop'] = [
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -108,14 +142,15 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-            // line 11
-            echo "            <div class=\"col-md-4\">
+            // line 35
+            echo "                    <div class=\"col-md-3\">
+                        ";
+            // line 36
+            $this->loadTemplate("product/single_product.html.twig", "home/index.html.twig", 36)->display($context);
+            // line 37
+            echo "                    </div>
+        
                 ";
-            // line 12
-            $this->loadTemplate("product/single_product.html.twig", "home/index.html.twig", 12)->display($context);
-            // line 13
-            echo "            </div>
-        ";
             ++$context['loop']['index0'];
             ++$context['loop']['index'];
             $context['loop']['first'] = false;
@@ -128,51 +163,34 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 15
-        echo "    </div><!-- /.row -->
+        // line 40
+        echo "            </div>
+        </div> 
 
-
-    <!-- START THE FEATURETTES -->
-
-    <hr class=\"featurette-divider\">
-
-    <div class=\"row featurette\">
-        <div class=\"col-md-7\">
-            <h2 class=\"featurette-heading\">First featurette heading. <span class=\"text-muted\">It’ll blow your mind.</span></h2>
-            <p class=\"lead\">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <!-- PRESENTATION -->
+        <div class=\"presentation-container\">
+            <h2 class=\"featurette-heading text-center presentation-title\"> Qui sommes-nous ?</h2>
+            <div class=\"row featurette\">
+                
+                <div class=\"col-md-7 order-md-2\">
+                <h3 class=\"presentation-subtitle\"> Trois basiques, que du naturel  </h3>
+                    <p class=\"lead presentation-text\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ligula diam, venenatis vel erat sit amet, iaculis iaculis mi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas ante justo, tincidunt nec accumsan eu, pulvinar et massa. Nunc convallis urna a diam sollicitudin pharetra. Morbi a risus vel libero euismod tristique non in nisi. Curabitur ultrices diam arcu, vel bibendum orci aliquam sit amet. Maecenas nec orci posuere, auctor dui id, vehicula libero. Sed tempus felis vel mi tristique mollis. Suspendisse blandit elit enim. Donec et velit sed ante ornare ornare. Nulla lacinia augue eu mauris luctus mattis.</p>
+                </div>
+                <div class=\"col-md-5 order-md-1\">
+                    <img src=\"";
+        // line 53
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/deco-leafverte.png"), "html", null, true);
+        echo "\" alt=\"\" width=\"500\" height=\"500\">
+                    <img id = \"deco-gold\" src=\"";
+        // line 54
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/deco-gold.jpg"), "html", null, true);
+        echo "\" alt=\"\" width=\"250\" height=\"500\">
+                </div>
+            </div>
         </div>
-        <div class=\"col-md-5\">
-            <svg class=\"bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto\" width=\"500\" height=\"500\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: 500x500\"><title>Placeholder</title><rect width=\"100%\" height=\"100%\" fill=\"#eee\"/><text x=\"50%\" y=\"50%\" fill=\"#aaa\" dy=\".3em\">500x500</text></svg>
+
         </div>
-    </div>
-
-    <hr class=\"featurette-divider\">
-
-    <div class=\"row featurette\">
-        <div class=\"col-md-7 order-md-2\">
-            <h2 class=\"featurette-heading\">Oh yeah, it’s that good. <span class=\"text-muted\">See for yourself.</span></h2>
-            <p class=\"lead\">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class=\"col-md-5 order-md-1\">
-            <svg class=\"bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto\" width=\"500\" height=\"500\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: 500x500\"><title>Placeholder</title><rect width=\"100%\" height=\"100%\" fill=\"#eee\"/><text x=\"50%\" y=\"50%\" fill=\"#aaa\" dy=\".3em\">500x500</text></svg>
-        </div>
-    </div>
-
-    <hr class=\"featurette-divider\">
-
-    <div class=\"row featurette\">
-        <div class=\"col-md-7\">
-            <h2 class=\"featurette-heading\">And lastly, this one. <span class=\"text-muted\">Checkmate.</span></h2>
-            <p class=\"lead\">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class=\"col-md-5\">
-            <svg class=\"bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto\" width=\"500\" height=\"500\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: 500x500\"><title>Placeholder</title><rect width=\"100%\" height=\"100%\" fill=\"#eee\"/><text x=\"50%\" y=\"50%\" fill=\"#aaa\" dy=\".3em\">500x500</text></svg>
-        </div>
-    </div>
-
-    <hr class=\"featurette-divider\">
-
-    <!-- /END THE FEATURETTES -->
+        
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -194,70 +212,75 @@ class __TwigTemplate_cc1256d07a6545161326058abc2d9bc9 extends Template
 
     public function getDebugInfo()
     {
-        return array (  132 => 15,  117 => 13,  115 => 12,  112 => 11,  95 => 10,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
+        return array (  186 => 54,  182 => 53,  167 => 40,  151 => 37,  149 => 36,  146 => 35,  129 => 34,  106 => 14,  102 => 13,  96 => 12,  87 => 5,  77 => 4,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'base.html.twig' %}
-
-{% block title %}{{parent()}}Accueil{% endblock %}
+        return new Source("{% extends \"base.html.twig\" %}
+{% block carousel %}{% endblock carousel %}
 
 {% block content %}
-    <!-- Three columns of text below the carousel -->
-    <h2>Nos meilleures ventes</h2>
-    <p>Découvrez les articles les plus vendus</p>
-    <div class=\"row\">
-        {% for product in products %}
-            <div class=\"col-md-4\">
-                {% include 'product/single_product.html.twig' %}
+        <!-- BASICS -->
+
+        <div class =\"basics-container\">
+            <h2 class=\"featurette-heading text-center\"> Nos basiques </h2>
+            <div class=\"row featurette\">
+                <div class=\"col-md-12\">
+                    <div class =\"basics-pictures-container\">
+                        <a class =\"basics-pictures\" href=\"{{path('app_product')}}\"><img src=\"{{asset('assets/img/home-category_eyes.jpg') }}\" alt=\"yeux\" width=\"300\" height=\"300\"> </a>
+                        <img class =\"basics-pictures\" src=\"{{asset('assets/img/home-category_lips.jpg') }}\" alt=\"levres\" width=\"300\" height=\"300\">
+                        <img class =\"basics-pictures\" src=\"{{asset('assets/img/home-category_nails.jpg') }}\" alt=\"ongles\" width=\"300\" height=\"300\">
+                    </div>
+                    <div class=\" category-name-container\">
+                    
+                        <h5> YEUX  </h5>
+                        <h5> LEVRES </h5>
+                        <h5> ONGLES </h5>
+                    </div>
+                </div>
             </div>
-        {% endfor %}
-    </div><!-- /.row -->
-
-
-    <!-- START THE FEATURETTES -->
-
-    <hr class=\"featurette-divider\">
-
-    <div class=\"row featurette\">
-        <div class=\"col-md-7\">
-            <h2 class=\"featurette-heading\">First featurette heading. <span class=\"text-muted\">It’ll blow your mind.</span></h2>
-            <p class=\"lead\">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
         </div>
-        <div class=\"col-md-5\">
-            <svg class=\"bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto\" width=\"500\" height=\"500\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: 500x500\"><title>Placeholder</title><rect width=\"100%\" height=\"100%\" fill=\"#eee\"/><text x=\"50%\" y=\"50%\" fill=\"#aaa\" dy=\".3em\">500x500</text></svg>
+        <!-- BESTSELLERS -->
+     
+        <div class=\"container-bestsellers\">
+            
+            <div class=\"row\">
+                <div class=\"title-bestsellers col-md-3 product-item\">
+                    <h2 class=\"text-center\"> <span id=\"nos-produits\"> Nos produits </span> <br> <span id=\"bestsellers\"> bestsellers</span></h2>
+                </div>
+
+                {% for product in products %}
+                    <div class=\"col-md-3\">
+                        {% include \"product/single_product.html.twig\" %}
+                    </div>
+        
+                {% endfor %}
+            </div>
+        </div> 
+
+        <!-- PRESENTATION -->
+        <div class=\"presentation-container\">
+            <h2 class=\"featurette-heading text-center presentation-title\"> Qui sommes-nous ?</h2>
+            <div class=\"row featurette\">
+                
+                <div class=\"col-md-7 order-md-2\">
+                <h3 class=\"presentation-subtitle\"> Trois basiques, que du naturel  </h3>
+                    <p class=\"lead presentation-text\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ligula diam, venenatis vel erat sit amet, iaculis iaculis mi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas ante justo, tincidunt nec accumsan eu, pulvinar et massa. Nunc convallis urna a diam sollicitudin pharetra. Morbi a risus vel libero euismod tristique non in nisi. Curabitur ultrices diam arcu, vel bibendum orci aliquam sit amet. Maecenas nec orci posuere, auctor dui id, vehicula libero. Sed tempus felis vel mi tristique mollis. Suspendisse blandit elit enim. Donec et velit sed ante ornare ornare. Nulla lacinia augue eu mauris luctus mattis.</p>
+                </div>
+                <div class=\"col-md-5 order-md-1\">
+                    <img src=\"{{asset('assets/img/deco-leafverte.png') }}\" alt=\"\" width=\"500\" height=\"500\">
+                    <img id = \"deco-gold\" src=\"{{asset('assets/img/deco-gold.jpg') }}\" alt=\"\" width=\"250\" height=\"500\">
+                </div>
+            </div>
         </div>
-    </div>
 
-    <hr class=\"featurette-divider\">
-
-    <div class=\"row featurette\">
-        <div class=\"col-md-7 order-md-2\">
-            <h2 class=\"featurette-heading\">Oh yeah, it’s that good. <span class=\"text-muted\">See for yourself.</span></h2>
-            <p class=\"lead\">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
         </div>
-        <div class=\"col-md-5 order-md-1\">
-            <svg class=\"bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto\" width=\"500\" height=\"500\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: 500x500\"><title>Placeholder</title><rect width=\"100%\" height=\"100%\" fill=\"#eee\"/><text x=\"50%\" y=\"50%\" fill=\"#aaa\" dy=\".3em\">500x500</text></svg>
-        </div>
-    </div>
+        
+{% endblock content %}
 
-    <hr class=\"featurette-divider\">
 
-    <div class=\"row featurette\">
-        <div class=\"col-md-7\">
-            <h2 class=\"featurette-heading\">And lastly, this one. <span class=\"text-muted\">Checkmate.</span></h2>
-            <p class=\"lead\">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class=\"col-md-5\">
-            <svg class=\"bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto\" width=\"500\" height=\"500\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: 500x500\"><title>Placeholder</title><rect width=\"100%\" height=\"100%\" fill=\"#eee\"/><text x=\"50%\" y=\"50%\" fill=\"#aaa\" dy=\".3em\">500x500</text></svg>
-        </div>
-    </div>
 
-    <hr class=\"featurette-divider\">
-
-    <!-- /END THE FEATURETTES -->
-{% endblock %}
 
 ", "home/index.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\home\\index.html.twig");
     }
