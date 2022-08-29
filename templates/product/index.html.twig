@@ -1,13 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}}Nos produits{% endblock %}
+{% block title %}{{parent()}} - Nos produits{% endblock %}
 
 
 {% block content %}
     <div class="row mt-5">
         {# Filtre #}
         <div class="col-md-3">
-            <h3>Filtrer</h3>
             {{ form(form) }}
         </div>
         {# Affichage des produits #}

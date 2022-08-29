@@ -1,6 +1,9 @@
+
 <div class="product-item text-center">
-    <a href="{{path('app_oneproduct', { 'slug' : product.slug }) }}"><img src="/uploads/{{product.illustration}}" alt="{{product.name}}" class="img-fluid"></a>
-    <a href="{{path('app_oneproduct', { 'slug' : product.slug }) }}"><h3>{{ product.name}}</h3></a>
-    <span class="product-subtitle">{{product.subtitle}}</span>
-    <span class="product-price">{{(product.price /100)|number_format(2,',','.')}} €</span>
+    <a href="{{path('app_oneproduct', {'slug' : product.slug})}}"><img src="/assets/images/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid" id="product-home"></a>
+    <h5 class="bestsellers-color ">{{product.name}}</h5>
+    {# <span class="product-subtitle product-subtitle-bestsellers">{{product.subtitle}}</span> #}
+    <span class="product-price bestsellers-color ">{{ ((product.price) / 100) |number_format(2)}} € </span>
+    <br>
+    <a href="{{path('app_add_to_cart', {'id':product.id})}}" class="btn btn-bestsellers"> Acheter</a>
 </div>
