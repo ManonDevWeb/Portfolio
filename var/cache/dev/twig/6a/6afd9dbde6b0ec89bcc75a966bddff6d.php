@@ -66,7 +66,7 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
         $this->displayParentBlock("title", $context, $blocks);
-        echo "Nos produits";
+        echo " - Nos produits";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -90,21 +90,20 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
         ";
         // line 9
         echo "        <div class=\"col-md-3\">
-            <h3>Filtrer</h3>
             ";
-        // line 11
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 11, $this->source); })()), 'form');
+        // line 10
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 10, $this->source); })()), 'form');
         echo "
         </div>
         ";
-        // line 14
+        // line 13
         echo "        <div class=\"col-md-9\">
             <h1>Nos produits</h1>
             <div class=\"row\">
                 ";
-        // line 17
+        // line 16
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 17, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 16, $this->source); })()));
         $context['loop'] = [
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -119,12 +118,21 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-            // line 18
+            // line 17
             echo "                    <div class=\"col-md-4\">
                         ";
+            // line 18
+            $this->loadTemplate("product/single_product.html.twig", "product/index.html.twig", 18)->display($context);
             // line 19
+<<<<<<< HEAD
             $this->loadTemplate("product/single_product.html.twig", "product/index.html.twig", 19)->display($context);
             // line 20
+=======
+            echo "                        ";
+            // line 26
+            echo "                        ";
+            // line 27
+>>>>>>> main
             echo "                    </div>
                 ";
             ++$context['loop']['index0'];
@@ -139,7 +147,11 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
+<<<<<<< HEAD
         // line 22
+=======
+        // line 29
+>>>>>>> main
         echo "            </div>
         </div>
     </div>
@@ -168,21 +180,24 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
 
     public function getDebugInfo()
     {
+<<<<<<< HEAD
         return array (  143 => 22,  128 => 20,  126 => 19,  123 => 18,  106 => 17,  101 => 14,  96 => 11,  92 => 9,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+=======
+        return array (  146 => 29,  131 => 27,  129 => 26,  127 => 19,  125 => 18,  122 => 17,  105 => 16,  100 => 13,  95 => 10,  92 => 9,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+>>>>>>> main
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}}Nos produits{% endblock %}
+{% block title %}{{parent()}} - Nos produits{% endblock %}
 
 
 {% block content %}
     <div class=\"row mt-5\">
         {# Filtre #}
         <div class=\"col-md-3\">
-            <h3>Filtrer</h3>
             {{ form(form) }}
         </div>
         {# Affichage des produits #}
