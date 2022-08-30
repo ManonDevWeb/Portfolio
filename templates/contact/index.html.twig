@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block content %}
+    <h1 class="mt-5">Contact</h1>
+
+    {% if notification %}
+        <div class="alert alert-info">{{ notification }}</div>
+    {% endif %}
+
+    {{ form_start(contactForm) }}
+        <div class="row mt-4">
+            <div class="col-12 col-md-6">{{ form_row(contactForm.firstname) }}</div>
+            <div class="col-12 col-md-6">{{ form_row(contactForm.lastname) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-12">{{ form_row(contactForm.email) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-12">{{ form_row(contactForm.message) }}</div>
+        </div>
+        {# To render all the fields that haven't been rendered manually#}
+        {{ form_rest(contactForm) }}
+    {{ form_end(contactForm) }}
+
+{% endblock %}

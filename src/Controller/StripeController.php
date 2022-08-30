@@ -34,9 +34,7 @@ class StripeController extends AbstractController
         if (!$order) {
             //redirection vers la sélection transporteur et adresse
             $this->redirectToRoute('app_order');
-        } else {
-            //dd($order);
-            
+        } else {            
             foreach ($order->getOrderDetails()->getValues() as $product){
                 $product_object = $entityManager->getRepository(Product::class)->findOneByName($product->getProduct());
                 $products_for_stripe[] = [
@@ -64,8 +62,6 @@ class StripeController extends AbstractController
                 'quantity' => 1,
             ];
 
-            //dd($products_for_stripe);
-
             //Après avoir installé Stripe
             Stripe::setApiKey('sk_test_51L5REXLRjiZIOMs1zmLrHD7iHsjh7KXKpK2ETvPu90x2JX975JmoG89QTXn0owbQek3dix62hN6bHalLK1xCP93z004se3cjQh');
             
@@ -84,12 +80,7 @@ class StripeController extends AbstractController
             $order->setStripeSessionId($checkout_session->id);
             $entityManager->flush();
                 
-            // $response = new JsonResponse(['id' => $checkout_session->id]);
-            // return $response;
-            return $this->redirect($checkout_session->url);
-            
-            //dump($checkout_session->id);
-            //dd($checkout_session);
+            return $this->redirect($checkout_session->url);  
         }
     }
 }

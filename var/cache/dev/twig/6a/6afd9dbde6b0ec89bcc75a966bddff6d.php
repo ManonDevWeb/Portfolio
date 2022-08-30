@@ -124,10 +124,15 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
             // line 18
             $this->loadTemplate("product/single_product.html.twig", "product/index.html.twig", 18)->display($context);
             // line 19
+<<<<<<< HEAD
+            $this->loadTemplate("product/single_product.html.twig", "product/index.html.twig", 19)->display($context);
+            // line 20
+=======
             echo "                        ";
             // line 26
             echo "                        ";
             // line 27
+>>>>>>> main
             echo "                    </div>
                 ";
             ++$context['loop']['index0'];
@@ -142,7 +147,11 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
+<<<<<<< HEAD
+        // line 22
+=======
         // line 29
+>>>>>>> main
         echo "            </div>
         </div>
     </div>
@@ -171,7 +180,11 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
 
     public function getDebugInfo()
     {
+<<<<<<< HEAD
+        return array (  143 => 22,  128 => 20,  126 => 19,  123 => 18,  106 => 17,  101 => 14,  96 => 11,  92 => 9,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+=======
         return array (  146 => 29,  131 => 27,  129 => 26,  127 => 19,  125 => 18,  122 => 17,  105 => 16,  100 => 13,  95 => 10,  92 => 9,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+>>>>>>> main
     }
 
     public function getSourceContext()
@@ -194,14 +207,6 @@ class __TwigTemplate_93aae5f6062ad6cc1d2a5d2e9ad74bcb extends Template
                 {% for product in products %}
                     <div class=\"col-md-4\">
                         {% include 'product/single_product.html.twig' %}
-                        {# <div class=\"product-item text-center\">
-                            <a href=\"{{path('app_oneproduct', { 'slug' : product.slug }) }}\"><img src=\"uploads/{{product.illustration}}\" alt=\"{{product.name}}\" class=\"img-fluid\"></a>
-                            <a href=\"{{path('app_oneproduct', { 'slug' : product.slug }) }}\"><h3>{{ product.name}}</h3></a>
-                            <span class=\"product-subtitle\">{{product.subtitle}}</span>
-                            
-                            <span class=\"product-price\">{{(product.price /100)|number_format(2,',','.')}} €</span>
-                        </div> #}
-                        {# {{dump(product)}} #}
                     </div>
                 {% endfor %}
             </div>

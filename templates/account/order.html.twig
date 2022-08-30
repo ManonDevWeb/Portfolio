@@ -24,7 +24,6 @@
             </thead>
             <tbody>                
                 {% for order in orders %}
-                    {# {{ dump(order) }} #}
                     <tr>
                         <td><span class="badge badge-secondary">{{ order.reference }}</span></td>
                         <td>{{ order.createdAt|date('d/m/Y') }}</td>

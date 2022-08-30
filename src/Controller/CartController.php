@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Classe\Cart;
-use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -33,7 +32,6 @@ class CartController extends AbstractController
     public function add(Cart $cart, $id): Response
     {
         $cart->add($id);
-        //dd($id);
         return $this->redirectToRoute('app_cart');
     }
 
@@ -42,7 +40,6 @@ class CartController extends AbstractController
     public function remove(Cart $cart): Response
     {
         $cart->remove();
-        //dd($id);
         return $this->redirectToRoute('app_product');
     }
 
@@ -51,7 +48,6 @@ class CartController extends AbstractController
     public function delete(Cart $cart, $id): Response
     {
         $cart->delete($id);
-        //dd($id);
         return $this->redirectToRoute('app_cart');
     }
 
@@ -60,7 +56,6 @@ class CartController extends AbstractController
     public function decrease(Cart $cart, $id): Response
     {
         $cart->decrease($id);
-        //dd($id);
         return $this->redirectToRoute('app_cart');
     }
 }
