@@ -87,16 +87,23 @@ class __TwigTemplate_74e7596b37ecad5154d7ba0b4f2c0c6b extends Template
 
         // line 6
         echo "
-    <h1 class=\"mt-5\">Inscription</h1>
+    <h1 class=\"mt-5 top-title-registrer\">Inscription</h1>
     ";
         // line 8
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 8, $this->source); })()), 'form');
         echo "
 
-<a href=\"";
-        // line 10
+    <div class=\"link-login\"> 
+        <a href=\"";
+        // line 11
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
-        echo "\"> Me connecter si je suis deja inscrit </a>
+        echo "\" > Me connecter si je suis deja inscrit </a>
+    </div>
+
+    <img id = \"deco-register\" src=\"";
+        // line 14
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/deco-blanckandwhite.jpg"), "html", null, true);
+        echo "\" alt=\"\" width=\"500\" height=\"540\">
 
 ";
         
@@ -119,7 +126,7 @@ class __TwigTemplate_74e7596b37ecad5154d7ba0b4f2c0c6b extends Template
 
     public function getDebugInfo()
     {
-        return array (  98 => 10,  93 => 8,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
+        return array (  105 => 14,  99 => 11,  93 => 8,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -130,10 +137,14 @@ class __TwigTemplate_74e7596b37ecad5154d7ba0b4f2c0c6b extends Template
 
 {% block content %}
 
-    <h1 class=\"mt-5\">Inscription</h1>
+    <h1 class=\"mt-5 top-title-registrer\">Inscription</h1>
     {{form(form)}}
 
-<a href=\"{{ path('app_login') }}\"> Me connecter si je suis deja inscrit </a>
+    <div class=\"link-login\"> 
+        <a href=\"{{ path('app_login') }}\" > Me connecter si je suis deja inscrit </a>
+    </div>
+
+    <img id = \"deco-register\" src=\"{{asset('assets/img/deco-blanckandwhite.jpg') }}\" alt=\"\" width=\"500\" height=\"540\">
 
 {% endblock %}
 ", "register/index.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\register\\index.html.twig");

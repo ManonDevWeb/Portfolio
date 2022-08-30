@@ -4,9 +4,13 @@
 
 {% block content %}
 
-    <h1 class="mt-5">Inscription</h1>
+    <h1 class="mt-5 top-title-registrer">Inscription</h1>
     {{form(form)}}
 
-<a href="{{ path('app_login') }}"> Me connecter si je suis deja inscrit </a>
+    <div class="link-login"> 
+        <a href="{{ path('app_login') }}" > Me connecter si je suis deja inscrit </a>
+    </div>
+
+    <img id = "deco-register" src="{{asset('assets/img/deco-blanckandwhite.jpg') }}" alt="" width="500" height="540">
 
 {% endblock %}

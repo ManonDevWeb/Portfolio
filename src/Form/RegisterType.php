@@ -19,25 +19,25 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('firstname', TextType::class, [
-                'label' => 'Votre prénom',
+                'label' => 'Nom',
                 'constraints'=> new Length([
                     'min' => 2,
                     'max' => 30]),
-                'attr' => ['placeholder'=>'Pierre']
+                // 'attr' => ['placeholder'=>'Pierre']
             ])
             ->add('lastname', TextType::class, [
-                'label' => 'Votre Nom',
+                'label' => 'Prénom',
                 'constraints'=> new Length([
                     'min' => 2,
                     'max' => 30]),
-                'attr' => ['placeholder'=>'Dupont']
+                // 'attr' => ['placeholder'=>'Dupont']
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Votre email',
                 'constraints'=> new Length([
                     'min' => 8,
                     'max' => 60]),
-                'attr' => ['placeholder'=>'pierre.dupont@example.com']
+                // 'attr' => ['placeholder'=>'pierre.dupont@example.com']
             ])
             ->add('password', RepeatedType::class, [
                 'type'=> PasswordType::class,
@@ -47,8 +47,8 @@ class RegisterType extends AbstractType
                 'constraints'=> new Length([
                     'min' => 8,
                     'max' => 60]),
-                'first_options'=>['label'=> 'Mot de passe', 'attr' => ['placeholder'=>'**********']],
-                'second_options'=>['label'=> 'Confirmez votre mot de passe', 'attr' => ['placeholder'=>'**********']]
+                'first_options'=>['label'=> 'Mot de passe'],
+                'second_options'=>['label'=> 'Confirmez votre mot de passe']
             ])
             //
 

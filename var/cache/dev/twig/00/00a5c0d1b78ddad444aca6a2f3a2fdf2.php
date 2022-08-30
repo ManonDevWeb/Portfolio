@@ -66,7 +66,7 @@ class __TwigTemplate_467fb998667df0a878b057dd4acee4a2 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
         $this->displayParentBlock("title", $context, $blocks);
-        echo "Se connecter";
+        echo "- Se connecter";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -115,14 +115,14 @@ class __TwigTemplate_467fb998667df0a878b057dd4acee4a2 extends Template
         }
         // line 18
         echo "
-            <h1 class=\"h3 mb-3 font-weight-normal\">Connexion</h1>
+            <h1 class=\"h3 mb-3 title-login\">Connexion</h1>
             <label for=\"inputEmail\">Votre email</label>
-            <input type=\"email\" placeholder='pierre.dupont@example.com' value=\"";
+            <input type=\"email\" value=\"";
         // line 21
         echo twig_escape_filter($this->env, (isset($context["last_username"]) || array_key_exists("last_username", $context) ? $context["last_username"] : (function () { throw new RuntimeError('Variable "last_username" does not exist.', 21, $this->source); })()), "html", null, true);
         echo "\" name=\"email\" id=\"inputEmail\" class=\"form-control\" autocomplete=\"email\" required autofocus>
             <label for=\"inputPassword\">Votre mot de passe</label>
-            <input type=\"password\" placeholder='*********' name=\"password\" id=\"inputPassword\" class=\"form-control\" autocomplete=\"current-password\" required>
+            <input type=\"password\" name=\"password\" id=\"inputPassword\" class=\"form-control\" autocomplete=\"current-password\" required>
 
             <input type=\"hidden\" name=\"_csrf_token\" value=\"";
         // line 25
@@ -133,14 +133,18 @@ class __TwigTemplate_467fb998667df0a878b057dd4acee4a2 extends Template
         // line 37
         echo "            <br>
 
-            <button class=\"btn btn-lg btn-success btn-sm\" type=\"submit\">Se connecter</button>
+            <button class=\"btn btn-login\" type=\"submit\">Se connecter</button>
             <hr>
-            <p class=\"text-center\">Ou <a href=\"";
+            <p class=\"text-center link-register\">Ou <a href=\"";
         // line 41
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         echo "\">créer un compte</a>.</p>
         </form>
     </div>
+    <img id = \"deco-login\" src=\"";
+        // line 44
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/img/deco-blanckandwhite.jpg"), "html", null, true);
+        echo "\" alt=\"\" width=\"600\" height=\"450\">
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -162,14 +166,14 @@ class __TwigTemplate_467fb998667df0a878b057dd4acee4a2 extends Template
 
     public function getDebugInfo()
     {
-        return array (  140 => 41,  134 => 37,  129 => 25,  122 => 21,  117 => 18,  109 => 15,  106 => 14,  104 => 13,  101 => 12,  95 => 10,  93 => 9,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+        return array (  146 => 44,  140 => 41,  134 => 37,  129 => 25,  122 => 21,  117 => 18,  109 => 15,  106 => 14,  104 => 13,  101 => 12,  95 => 10,  93 => 9,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}}Se connecter{% endblock %}
+{% block title %}{{parent()}}- Se connecter{% endblock %}
 
 
 {% block content %}
@@ -185,11 +189,11 @@ class __TwigTemplate_467fb998667df0a878b057dd4acee4a2 extends Template
                 </div>
             {% endif %}
 
-            <h1 class=\"h3 mb-3 font-weight-normal\">Connexion</h1>
+            <h1 class=\"h3 mb-3 title-login\">Connexion</h1>
             <label for=\"inputEmail\">Votre email</label>
-            <input type=\"email\" placeholder='pierre.dupont@example.com' value=\"{{ last_username }}\" name=\"email\" id=\"inputEmail\" class=\"form-control\" autocomplete=\"email\" required autofocus>
+            <input type=\"email\" value=\"{{ last_username }}\" name=\"email\" id=\"inputEmail\" class=\"form-control\" autocomplete=\"email\" required autofocus>
             <label for=\"inputPassword\">Votre mot de passe</label>
-            <input type=\"password\" placeholder='*********' name=\"password\" id=\"inputPassword\" class=\"form-control\" autocomplete=\"current-password\" required>
+            <input type=\"password\" name=\"password\" id=\"inputPassword\" class=\"form-control\" autocomplete=\"current-password\" required>
 
             <input type=\"hidden\" name=\"_csrf_token\" value=\"{{ csrf_token('authenticate') }}\">
 
@@ -205,11 +209,12 @@ class __TwigTemplate_467fb998667df0a878b057dd4acee4a2 extends Template
             #}
             <br>
 
-            <button class=\"btn btn-lg btn-success btn-sm\" type=\"submit\">Se connecter</button>
+            <button class=\"btn btn-login\" type=\"submit\">Se connecter</button>
             <hr>
-            <p class=\"text-center\">Ou <a href=\"{{ path('app_register') }}\">créer un compte</a>.</p>
+            <p class=\"text-center link-register\">Ou <a href=\"{{ path('app_register') }}\">créer un compte</a>.</p>
         </form>
     </div>
+    <img id = \"deco-login\" src=\"{{asset('assets/img/deco-blanckandwhite.jpg') }}\" alt=\"\" width=\"600\" height=\"450\">
 {% endblock %}
 ", "security/login.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\security\\login.html.twig");
     }

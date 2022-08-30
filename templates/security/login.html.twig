@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}}Se connecter{% endblock %}
+{% block title %}{{parent()}}- Se connecter{% endblock %}
 
 
 {% block content %}
@@ -16,11 +16,11 @@
                 </div>
             {% endif %}
 
-            <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+            <h1 class="h3 mb-3 title-login">Connexion</h1>
             <label for="inputEmail">Votre email</label>
-            <input type="email" placeholder='pierre.dupont@example.com' value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
             <label for="inputPassword">Votre mot de passe</label>
-            <input type="password" placeholder='*********' name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
@@ -36,9 +36,10 @@
             #}
             <br>
 
-            <button class="btn btn-lg btn-success btn-sm" type="submit">Se connecter</button>
+            <button class="btn btn-login" type="submit">Se connecter</button>
             <hr>
-            <p class="text-center">Ou <a href="{{ path('app_register') }}">créer un compte</a>.</p>
+            <p class="text-center link-register">Ou <a href="{{ path('app_register') }}">créer un compte</a>.</p>
         </form>
     </div>
+    <img id = "deco-login" src="{{asset('assets/img/deco-blanckandwhite.jpg') }}" alt="" width="600" height="450">
 {% endblock %}
