@@ -6,12 +6,12 @@
 {% block content %}
     <div class="row mt-5">
         {# Filtre #}
-        <div class="col-md-3">
+        <div class="col-md-3 filter">
             {{ form(form) }}
         </div>
         {# Affichage des produits #}
-        <div class="col-md-9">
-            <h1>Nos produits</h1>
+        <div class="col-md-9 ">
+            <h1 class = "top-title-product"> Nos produits </h1>
             <div class="row">
                 {% for product in products %}
                     <div class="col-md-4">
@@ -23,7 +23,7 @@
                             
                             <span class="product-price">{{(product.price /100)|number_format(2,',','.')}} €</span>
                         </div> #}
-                        {# {{dump(product)}} #}
+                        
                     </div>
                 {% endfor %}
             </div>

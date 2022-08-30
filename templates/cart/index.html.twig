@@ -1,14 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}}Mon panier{% endblock %}
+{% block title %}{{parent()}}- Mon panier{% endblock %}
 
 {% block content %}
-    <h1>Mon panier</h1>
-    Retrouvez l'ensemble des produits que vous avez ajoutés au panier.
-    {# {{ dump(cart) }} #}
+    <h1 class = "top-title-cart">Mon panier</h1>
 
     {# Si le panier est vide, on n'affiche pas le tableau mais un texte disant que le panier est vide #}
     {% if cart|length > 0 %}
+        <div class="recap-cart">
         <table class="table mt-3">
             <thead>
                 <tr>
@@ -25,10 +24,10 @@
                 {% for prod in cart %}
                     <tr>
                         <th>
-                            <img src="uploads/{{ prod.product.illustration }}" height="75px" alt="{{ prod.product.name }}">
+                            <img src="/assets/images/{{ prod.product.illustration }}" height="75px" alt="{{ prod.product.name }}">
                         </th>
                         <td>
-                            {{ prod.product.name }}<br>
+                            <span class ="font-weight-bold">{{ prod.product.name }}</span><br>
                             <small>{{ prod.product.subtitle }}</small>
                         </td>
                         <td>
@@ -50,14 +49,15 @@
                         </td>
                     </tr>
                     {% set total = total + (prod.product.price * prod.quantity) %}
+        </div>
                 {% endfor %}
             </tbody>
             
         </table>
-        <div class="text-right mb-5">
+        <div class="text-center mb-5">
             <b>Nombre d'articles : </b>{{ cart|length }}<br>
             <b>Total de mon panier : </b>{{ (total /100)|number_format(2,',','.') }} €<br>
-            <a href="{{ path('app_order') }}" class="btn btn-success mt-3">Valider mon panier</a>
+            <a href="{{ path('app_order') }}" class="btn btn-mcmc btn-cart mt-3">Valider mon panier</a>
         </div>
         {% else %}
             <hr>

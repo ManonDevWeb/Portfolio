@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}}S'inscrire{% endblock %}
+{% block title %}{{parent()}}- Inscription {% endblock %}
 
 {% block content %}
 
     <h1 class="mt-5">Inscription</h1>
     {{form(form)}}
+
+<a href="{{ path('app_login') }}"> Me connecter si je suis deja inscrit </a>
 
 {% endblock %}
