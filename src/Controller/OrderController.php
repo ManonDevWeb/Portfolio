@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Classe\Cart;
 use App\Entity\Order;
-use DateTimeImmutable;
 use App\Form\OrderType;
 use App\Entity\OrderDetails;
 use Doctrine\ORM\EntityManagerInterface;
@@ -42,9 +41,6 @@ class OrderController extends AbstractController
 
 
     #[Route('/commande/recapitulatif', name: 'app_order_recap', methods:['POST'])]
-    /**
-     * @Route
-     */
     //Créer la commande en bd
     public function add(Cart $cart, Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -56,7 +52,6 @@ class OrderController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            //dd($form->getData());
 
             $date = new \DateTimeImmutable();
             $carriers = $form->get('carriers')->getData();
@@ -71,9 +66,7 @@ class OrderController extends AbstractController
             $delivery_content .= '<br>'.$delivery->getAddress();
             $delivery_content .= '<br>'.$delivery->getPostal().' - '.$delivery->getCity();
             $delivery_content .= '<br>'.$delivery->getCountry();
-            //dd($delivery_content);
             
-            //dd($carriers);
             //Enregistrer ma commande entité Order()
             $order = new Order();
 
@@ -83,14 +76,14 @@ class OrderController extends AbstractController
 
             $order->setUser($this->getUser());
             $order->setCreatedAt($date);
+
             //On stocke le transporteur
             $order->setCarrierName($carriers->getName());
             $order->setCarrierPrice($carriers->getPrice());
-
             $order->setDelivery($delivery_content);
+
             //La commande n'est pas encore payée
             $order->setIsPaid(0);
-
 
             //On veut persister
             $this->entityManager->persist($order);
@@ -106,12 +99,8 @@ class OrderController extends AbstractController
                 $orderDetails->setQuantity($product['quantity']);
                 $orderDetails->setPrice($product['product']->getPrice());
                 $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
-                //dd($product);
                 $this->entityManager->persist($orderDetails);
             }
-
-            //dd($order);
-            //dd($orderDetails);
 
             //Enregistrer dans la bd
             $this->entityManager->flush();

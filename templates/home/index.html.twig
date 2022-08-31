@@ -1,65 +1,63 @@
-{% extends "base.html.twig" %}
-{% block carousel %}{% endblock carousel %}
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Accueil{% endblock %}
+
+{% block carousel %}
+{% endblock %}
 
 {% block content %}
-        <!-- BASICS -->
-
-        <div class ="basics-container">
-            <h2 class="featurette-heading text-center"> Nos basiques </h2>
-            <div class="row featurette">
-                <div class="col-md-12">
-                    <div class ="basics-pictures-container">
-                        <a class ="basics-pictures" href="{{path('app_product')}}"><img src="{{asset('assets/img/home-category_eyes.jpg') }}" alt="yeux" width="300" height="300"> </a>
-                        <img class ="basics-pictures" src="{{asset('assets/img/home-category_lips.jpg') }}" alt="levres" width="300" height="300">
-                        <img class ="basics-pictures" src="{{asset('assets/img/home-category_nails.jpg') }}" alt="ongles" width="300" height="300">
-                    </div>
-                    <div class=" category-name-container">
-                    
-                        <h5> YEUX  </h5>
-                        <h5> LEVRES </h5>
-                        <h5> ONGLES </h5>
-                    </div>
-                </div>
+    <!-- Three columns of text below the carousel -->
+    <h2 class="mt-5">Nos meilleures ventes</h2>
+    <p>Découvrez les articles les plus vendus</p>
+    <div class="row">
+        {% for product in products %}
+            <div class="col-md-4">
+                {% include 'product/single_product.html.twig' %}
             </div>
+        {% endfor %}
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
         </div>
-        <!-- BESTSELLERS -->
-     
-        <div class="container-bestsellers">
-            
-            <div class="row">
-                <div class="title-bestsellers col-md-3 product-item">
-                    <h2 class="text-center"> <span id="nos-produits"> Nos produits </span> <br> <span id="bestsellers"> bestsellers</span></h2>
-                </div>
-
-                {% for product in products %}
-                    <div class="col-md-3">
-                        {% include "product/single_product.html.twig" %}
-                    </div>
-        
-                {% endfor %}
-            </div>
-        </div> 
-
-        <!-- PRESENTATION -->
-        <div class="presentation-container">
-            <h2 class="featurette-heading text-center presentation-title"> Qui sommes-nous ?</h2>
-            <div class="row featurette">
-                
-                <div class="col-md-7 order-md-2">
-                <h3 class="presentation-subtitle"> Trois basiques, que du naturel  </h3>
-                    <p class="lead presentation-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ligula diam, venenatis vel erat sit amet, iaculis iaculis mi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas ante justo, tincidunt nec accumsan eu, pulvinar et massa. Nunc convallis urna a diam sollicitudin pharetra. Morbi a risus vel libero euismod tristique non in nisi. Curabitur ultrices diam arcu, vel bibendum orci aliquam sit amet. Maecenas nec orci posuere, auctor dui id, vehicula libero. Sed tempus felis vel mi tristique mollis. Suspendisse blandit elit enim. Donec et velit sed ante ornare ornare. Nulla lacinia augue eu mauris luctus mattis.</p>
-                </div>
-                <div class="col-md-5 order-md-1">
-                    <img src="{{asset('assets/img/deco-leafverte.png') }}" alt="" width="500" height="500">
-                    <img id = "deco-gold" src="{{asset('assets/img/deco-gold.jpg') }}" alt="" width="250" height="500">
-                </div>
-            </div>
+        <div class="col-md-5">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
         </div>
+    </div>
 
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
         </div>
-        
-{% endblock content %}
+        <div class="col-md-5 order-md-1">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+        </div>
+    </div>
 
+    <hr class="featurette-divider">
 
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+        </div>
+    </div>
 
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+{% endblock %}
 

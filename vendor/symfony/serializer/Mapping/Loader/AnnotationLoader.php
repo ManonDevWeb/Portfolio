@@ -100,7 +100,12 @@ class AnnotationLoader implements LoaderInterface
                 continue;
             }
 
+<<<<<<< HEAD
             if (0 === stripos($method->name, 'get') && $method->getNumberOfRequiredParameters()) {
+=======
+            $getAccessor = preg_match('/^(get|)(.+)$/i', $method->name);
+            if ($getAccessor && 0 !== $method->getNumberOfRequiredParameters()) {
+>>>>>>> main
                 continue; /*  matches the BC behavior in `Symfony\Component\Serializer\Normalizer\ObjectNormalizer::extractAttributes` */
             }
 

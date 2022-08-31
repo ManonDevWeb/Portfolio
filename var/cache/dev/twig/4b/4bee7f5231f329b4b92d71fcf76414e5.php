@@ -118,7 +118,7 @@ class __TwigTemplate_54cdfed162f0999ac05c93a526b0f5e7 extends Template
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account_order");
         echo "\">compte</a>.
     </p>
-    ";
+";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -161,7 +161,6 @@ class __TwigTemplate_54cdfed162f0999ac05c93a526b0f5e7 extends Template
         <hr>
         Pour suivre votre commande, rendez-vous dans votre <a href=\"{{ path('app_account_order') }}\">compte</a>.
     </p>
-    {# {{ dump(order) }} #}
 {% endblock %}
 ", "order_success/index.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\order_success\\index.html.twig");
     }

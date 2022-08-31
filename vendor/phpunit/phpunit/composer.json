@@ -49,6 +49,12 @@
         "sebastian/type": "^3.0",
         "sebastian/version": "^3.0.2"
     },
+<<<<<<< HEAD
+=======
+    "require-dev": {
+        "phpspec/prophecy-phpunit": "^2.0.1"
+    },
+>>>>>>> main
     "config": {
         "platform": {
             "php": "7.3.0"

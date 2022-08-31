@@ -28,6 +28,7 @@ If you don't use `Symfony Flex`_, you must enable the bundle manually in the app
     return [
         // ...
         Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
+        Sonata\Exporter\Bridge\Symfony\SonataExporterBundle::class => ['all' => true],
     ];
 
 Configuration

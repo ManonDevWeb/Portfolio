@@ -219,10 +219,9 @@ class __TwigTemplate_5229b4bbdbe12049d5cfa1f7e0b690e0 extends Template
         // line 61
         echo twig_escape_filter($this->env, (isset($context["reference"]) || array_key_exists("reference", $context) ? $context["reference"] : (function () { throw new RuntimeError('Variable "reference" does not exist.', 61, $this->source); })()), "html", null, true);
         echo "\" method=\"POST\">
-                ";
-        // line 63
-        echo "                <button type=\"submit\" class=\"btn btn-success btn-block mt-3\" id=\"checkout-button\">Payer : ";
-        echo twig_escape_filter($this->env, twig_number_format_filter($this->env, ((twig_get_attribute($this->env, $this->source, (isset($context["carrier"]) || array_key_exists("carrier", $context) ? $context["carrier"] : (function () { throw new RuntimeError('Variable "carrier" does not exist.', 63, $this->source); })()), "price", [], "any", false, false, false, 63) / 100) + ((isset($context["total"]) || array_key_exists("total", $context) ? $context["total"] : (function () { throw new RuntimeError('Variable "total" does not exist.', 63, $this->source); })()) / 100)), 2, ",", "."), "html", null, true);
+                <button type=\"submit\" class=\"btn btn-success btn-block mt-3\" id=\"checkout-button\">Payer : ";
+        // line 62
+        echo twig_escape_filter($this->env, twig_number_format_filter($this->env, ((twig_get_attribute($this->env, $this->source, (isset($context["carrier"]) || array_key_exists("carrier", $context) ? $context["carrier"] : (function () { throw new RuntimeError('Variable "carrier" does not exist.', 62, $this->source); })()), "price", [], "any", false, false, false, 62) / 100) + ((isset($context["total"]) || array_key_exists("total", $context) ? $context["total"] : (function () { throw new RuntimeError('Variable "total" does not exist.', 62, $this->source); })()) / 100)), 2, ",", "."), "html", null, true);
         echo " €</button>
             </form>
 
@@ -249,7 +248,7 @@ class __TwigTemplate_5229b4bbdbe12049d5cfa1f7e0b690e0 extends Template
 
     public function getDebugInfo()
     {
-        return array (  224 => 63,  220 => 61,  215 => 59,  210 => 57,  206 => 56,  202 => 54,  196 => 53,  194 => 52,  188 => 49,  182 => 46,  177 => 44,  173 => 43,  165 => 40,  156 => 37,  151 => 36,  149 => 35,  137 => 26,  133 => 25,  129 => 24,  121 => 19,  111 => 11,  101 => 10,  81 => 7,  70 => 4,  60 => 3,  37 => 1,);
+        return array (  224 => 62,  220 => 61,  215 => 59,  210 => 57,  206 => 56,  202 => 54,  196 => 53,  194 => 52,  188 => 49,  182 => 46,  177 => 44,  173 => 43,  165 => 40,  156 => 37,  151 => 36,  149 => 35,  137 => 26,  133 => 25,  129 => 24,  121 => 19,  111 => 11,  101 => 10,  81 => 7,  70 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -315,7 +314,6 @@ class __TwigTemplate_5229b4bbdbe12049d5cfa1f7e0b690e0 extends Template
             <strong>Total : </strong>{{ ((carrier.price / 100) + (total /100))|number_format(2,',','.') }} € <br>
 
             <form action=\"/commande/create-session/{{ reference }}\" method=\"POST\">
-                {# <a href=\"{{ path('app_stripe_create_session') }}\" class=\"btn btn-success btn-block mt-3\" id=\"checkout-button\">Payer : {{ (carrier.price + (total /100))|number_format(2,',','.') }} €</a> #}
                 <button type=\"submit\" class=\"btn btn-success btn-block mt-3\" id=\"checkout-button\">Payer : {{ ((carrier.price / 100) + (total /100))|number_format(2,',','.') }} €</button>
             </form>
 

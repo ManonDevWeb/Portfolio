@@ -99,7 +99,7 @@ class __TwigTemplate_23f6f6aec9d10545145d634d800d15c5 extends Template
     <a href=\"";
         // line 10
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account");
-        echo "\">Retour</a>
+        echo "\"><i class=\"fas fa-arrow-left\"></i> Retour</a>
     <hr>
 
     ";
@@ -196,7 +196,7 @@ class __TwigTemplate_23f6f6aec9d10545145d634d800d15c5 extends Template
     <a href=\"{{ path('app_account_address_add') }}\" class=\"btn btn-info btn-sm float-right mt-3\">Ajouter une adresse</a>
     <h1 class=\"mt-5\">Mes adresses</h1>
     Bienvenue, {{app.user.firstname}}.<br>C'est dans cet espace que vous allez pouvoir gérer vos adresses. <br>
-    <a href=\"{{ path('app_account') }}\">Retour</a>
+    <a href=\"{{ path('app_account') }}\"><i class=\"fas fa-arrow-left\"></i> Retour</a>
     <hr>
 
     {# Compter le nombre d'adresses de l'utilisateur connecté #}
