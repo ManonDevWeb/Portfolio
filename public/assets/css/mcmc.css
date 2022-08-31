@@ -19,15 +19,15 @@
     --pink-color: #E89AAA; 
 }
 
-h2 {
+h1, h2 {
    font-family: 'Didot';
 } 
 
-h3, h5, .navbar, .footer-custom {
+h3, h5, .navbar, .footer-custom, .filter, .link-login  {
     font-family: 'Montserrat';
 }
 
-body {
+body, label {
     position: relative;
     font-family: 'Code Source';
 }
@@ -125,62 +125,6 @@ body {
 }
 
 
-/* PRODUCTS */
-
-.product-item .product-subtitle{
-    font-size: 14px;
-    display: block;
-    margin-bottom: 10px;
-}
-
-.product-item .product-price {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.product_container{
-    margin-bottom: 150px;
-}
-
-.product-page-price{
-    font-size: 19px;
-    font-weight: bold;
-}
-
-.row {
-    margin-bottom: 150px;
-}
-
-.cart-icon{
-    height: 20px;
-    padding-left: 20px;
-}
-
-.block-small {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.row {
-    margin-bottom: 0;
-}
-
-.form-check {
-    background-color: pink;
-    padding: 20px 65px;
-    margin-top: 7px;
-}
-
-.col-form-label {
-    font-weight: bold;
-}
-
-.order-summary{
-    background-color: pink;
-    padding: 20px;
-    margin-top: 22px;
-}
-
 /* ////////////////////////////////////// HOME /////////////////////////////////////////////// */
 
 /* BASICS */
@@ -229,7 +173,7 @@ background-color: var(--green-color);
 }
 
 .bestsellers-color {
-    color: white ;
+    color: black;
     margin-top: 5%;
 } 
 
@@ -237,7 +181,7 @@ background-color: var(--green-color);
     max-width: 60%;
 }
 
-.btn-bestsellers {
+.btn-mcmc {
     background-color: var(--blue-color);
     color: white;
     width: 40%;
@@ -259,6 +203,7 @@ background-color: var(--green-color);
 #product-home {
    border:1px solid black; 
    background-color: black;
+   color: black;
 }
 
 /* PRESENTATION */
@@ -286,3 +231,184 @@ background-color: var(--green-color);
     z-index: 2;
 }
 
+/*************************** PRODUCTS *****************************/
+
+.top-title-product, .top-title-cart, .top-title-registrer, .title-login{
+    margin-left: 25%;
+    background-color: var(--gold-color);
+    padding-left: 1%;
+}
+
+.top-title-product {
+    width: 19%;
+}
+
+.product-item .product-subtitle{
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.product-item .product-price {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.product_container{
+    margin-bottom: 150px;
+}
+
+.product-page-price{
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.row {
+    margin-bottom: 150px;
+}
+
+.cart-icon{
+    height: 20px;
+    padding-left: 20px;
+}
+
+.row {
+    margin-bottom: 0;
+}
+
+.form-check {
+    background-color: var(--gold-color);
+    padding: 20px 65px;
+    margin-top: 7px;
+}
+
+.col-form-label {
+    font-weight: bold;
+}
+
+.order-summary{
+    background-color: pink;
+    padding: 20px;
+    margin-top: 22px;
+}
+
+.filter {
+    padding: 2%;
+    margin-top: 5%;
+}
+
+/*************************** CART *****************************/
+
+table {
+    background-color: var(--lightpink-color);
+} 
+
+.top-title-cart {
+    width: 14%;
+    margin-bottom: 3%;
+    margin-left: 40%;
+}
+
+.recap-cart {
+margin: 2%;
+background-color: var(--lightpink-color);
+padding-bottom: 1px;
+}
+
+.btn-cart {
+    width: 20%;
+}
+
+/*************************** REGISTER *****************************/
+
+.top-title-registrer {
+    width: 13%;
+    margin-left: 42%;
+    margin-bottom: 5%;
+}
+
+#register {
+    background-color: var(--blue-color);
+    margin-left: 35%;
+    margin-right: 35%;   
+    padding: 1%;
+    border-radius: 10px;
+}
+
+.link-login {
+    color: black;
+    text-align: center;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.link-login > a {
+    color: black;
+}
+
+.link-login > a:hover {
+    color: var(--blue-color);
+}
+
+label {
+    color: white;
+}
+
+#register_submit {
+    background-color: var(--gold-color);
+    border: var(--gold-color);
+    font-weight: bold;
+    margin-left: 40%;
+    margin-top: 2%;
+    font-size: 18px;
+}
+
+#deco-register {
+    position: absolute;
+    left: 600px;
+    top: 180px;
+    z-index: -1; 
+}
+
+/*************************** LOGIN *****************************/
+
+.title-login {
+    width: 24%;
+    margin-left: 42%;
+    margin-bottom: 3%;
+}
+
+.block-small {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--blue-color);
+    border-radius: 10px;
+    padding: 1%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+.btn-login {
+    background-color: var(--gold-color);
+    border: var(--gold-color);
+    font-weight: bold;
+    margin-left: 40%;
+    margin-top: 2%;
+    font-size: 18px;
+    color: white;
+}
+
+.link-register  > a {
+    color: black;
+}
+
+.link-register  > a:hover {
+    color: var(--green-color);
+}
+
+#deco-login {
+    position: absolute;
+    left: 550px;
+    top: 150px;
+     z-index: -1; 
+}

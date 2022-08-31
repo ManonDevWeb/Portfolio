@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{parent()}}S'inscrire{% endblock %}
+{% block title %}{{parent()}}- Inscription {% endblock %}
 
 {% block content %}
 
-    <h1 class="mt-5">Inscription</h1>
-
-    {% if notification %}
-        <div class="alert alert-info">{{ notification }}</div>
-    {% endif %}
-    
-    <hr>
+    <h1 class="mt-5 top-title-registrer">Inscription</h1>
     {{form(form)}}
+
+    <div class="link-login"> 
+        <a href="{{ path('app_login') }}" > Me connecter si je suis deja inscrit </a>
+    </div>
+
+    <img id = "deco-register" src="{{asset('assets/img/deco-blanckandwhite.jpg') }}" alt="" width="500" height="540">
 
 {% endblock %}
