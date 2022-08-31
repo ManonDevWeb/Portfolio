@@ -279,9 +279,6 @@ class __TwigTemplate_ca9cd241d21b118038b8a5ade52338e2 extends Template
         
 {% endblock content %}
 
-
-
-
-", "home/index.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\home\\index.html.twig");
+", "home/index.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\home\\index.html.twig");
     }
 }

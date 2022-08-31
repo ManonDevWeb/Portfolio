@@ -92,7 +92,7 @@ class __TwigTemplate_8d4f6c18c259b27495b499850a263339 extends Template
     </style>
 
     <div class=\"example-wrapper\">
-        <h1>Modifier mon mot de passe</h1>
+        <h1 class=\"mt-5\">Modifier mon mot de passe</h1>
         ";
         // line 13
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 13, $this->source); })()), "user", [], "any", false, false, false, 13), "firstname", [], "any", false, false, false, 13), "html", null, true);
@@ -158,7 +158,7 @@ class __TwigTemplate_8d4f6c18c259b27495b499850a263339 extends Template
     </style>
 
     <div class=\"example-wrapper\">
-        <h1>Modifier mon mot de passe</h1>
+        <h1 class=\"mt-5\">Modifier mon mot de passe</h1>
         {{app.user.firstname}},<br>C'est dans cet espace que vous allez pouvoir modifier votre mot de passe.
 
         <hr>
@@ -171,6 +171,6 @@ class __TwigTemplate_8d4f6c18c259b27495b499850a263339 extends Template
         {{ form(form) }}<br>
 
     </div>
-{% endblock %}", "account/password.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\account\\password.html.twig");
+{% endblock %}", "account/password.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\account\\password.html.twig");
     }
 }

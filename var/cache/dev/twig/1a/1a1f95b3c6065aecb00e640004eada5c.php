@@ -108,7 +108,7 @@ class __TwigTemplate_dc00c02e069cc5fb1a7a91f86f5509a7 extends Template
         // line 13
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_order");
         echo "\" class=\"btn btn-danger\">Réessayer le paiement</a>
-    ";
+";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -147,8 +147,7 @@ class __TwigTemplate_dc00c02e069cc5fb1a7a91f86f5509a7 extends Template
         Une confirmation d'erreur vient de vous être envoyée par email à l'adresse <strong>{{ order.user.email }}</strong>.
     </p>
     <a href=\"{{ path('app_order') }}\" class=\"btn btn-danger\">Réessayer le paiement</a>
-    {# {{ dump(order) }} #}
 {% endblock %}
-", "order_cancel/index.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\order_cancel\\index.html.twig");
+", "order_cancel/index.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\order_cancel\\index.html.twig");
     }
 }

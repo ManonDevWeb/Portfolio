@@ -216,6 +216,6 @@ class __TwigTemplate_467fb998667df0a878b057dd4acee4a2 extends Template
     </div>
     <img id = \"deco-login\" src=\"{{asset('assets/img/deco-blanckandwhite.jpg') }}\" alt=\"\" width=\"600\" height=\"450\">
 {% endblock %}
-", "security/login.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\security\\login.html.twig");
+", "security/login.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\security\\login.html.twig");
     }
 }

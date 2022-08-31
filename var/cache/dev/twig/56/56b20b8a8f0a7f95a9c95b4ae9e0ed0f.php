@@ -81,6 +81,6 @@ class __TwigTemplate_14761b51cbd5cdac491a64ec78adbb3b extends Template
 {% for encore_asset in assets %}
     {{ ea_call_function_if_exists('encore_entry_link_tags', encore_asset.value, encore_asset.webpackPackageName, encore_asset.webpackEntrypointName, encore_asset.htmlAttributes) }}
 {% endfor %}
-", "@EasyAdmin/includes/_encore_link_tags.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\vendor\\easycorp\\easyadmin-bundle\\src\\Resources\\views\\includes\\_encore_link_tags.html.twig");
+", "@EasyAdmin/includes/_encore_link_tags.html.twig", "C:\\xampp\\htdocs\\mcmc\\vendor\\easycorp\\easyadmin-bundle\\src\\Resources\\views\\includes\\_encore_link_tags.html.twig");
     }
 }

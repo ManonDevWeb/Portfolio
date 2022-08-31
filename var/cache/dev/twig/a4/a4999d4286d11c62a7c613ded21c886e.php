@@ -70,6 +70,6 @@ class __TwigTemplate_fb9628c7021529082b80af197325ccbc extends Template
 
     public function getSourceContext()
     {
-        return new Source("{% extends '@EasyAdmin/page/content.html.twig' %}", "admin/index.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\admin\\index.html.twig");
+        return new Source("{% extends '@EasyAdmin/page/content.html.twig' %}", "admin/index.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\admin\\index.html.twig");
     }
 }

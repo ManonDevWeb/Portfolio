@@ -75,7 +75,7 @@ class __TwigTemplate_1d30a18f22c954aa40569487784023b9 extends Template
 
     }
 
-    // line 6
+    // line 5
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -85,7 +85,7 @@ class __TwigTemplate_1d30a18f22c954aa40569487784023b9 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 7
+        // line 6
         echo "    <h2 class=\"mt-5\">Je passe ma commande</h2>
     <p>Choisissez vos préférences avant de passer votre commande sur MCMC.</p>
     <hr>
@@ -93,29 +93,29 @@ class __TwigTemplate_1d30a18f22c954aa40569487784023b9 extends Template
 
         <div class=\"col-12 col-md-6\">
             ";
-        // line 13
+        // line 12
         ob_start();
-        // line 14
+        // line 13
         echo "                ";
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 14, $this->source); })()), 'form_start', ["action" => $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_order_recap")]);
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 13, $this->source); })()), 'form_start', ["action" => $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_order_recap")]);
         echo "
                     ";
-        // line 15
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 15, $this->source); })()), "addresses", [], "any", false, false, false, 15), 'label', ["label" => "Choisissez votre adresse de livraison"]);
+        // line 14
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 14, $this->source); })()), "addresses", [], "any", false, false, false, 14), 'label', ["label" => "Choisissez votre adresse de livraison"]);
         echo "
                     <a href=\"";
-        // line 16
+        // line 15
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account_address_add");
         echo "\" class=\"btn btn-info\">Ajouter une nouvelle adresse</a>
                 ";
-        // line 17
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 17, $this->source); })()), 'form_end');
+        // line 16
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 16, $this->source); })()), 'form_end');
         echo "
             ";
         $context["formHtml"] = ('' === $tmp = ob_get_clean()) ? '' : new Markup($tmp, $this->env->getCharset());
-        // line 19
+        // line 18
         echo "            ";
-        echo twig_replace_filter((isset($context["formHtml"]) || array_key_exists("formHtml", $context) ? $context["formHtml"] : (function () { throw new RuntimeError('Variable "formHtml" does not exist.', 19, $this->source); })()), ["[br]" => "<br>"]);
+        echo twig_replace_filter((isset($context["formHtml"]) || array_key_exists("formHtml", $context) ? $context["formHtml"] : (function () { throw new RuntimeError('Variable "formHtml" does not exist.', 18, $this->source); })()), ["[br]" => "<br>"]);
         echo "
         </div>
 
@@ -125,11 +125,11 @@ class __TwigTemplate_1d30a18f22c954aa40569487784023b9 extends Template
             </div>
             <div class=\"order-summary\">
                 ";
-        // line 27
+        // line 26
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["cart"]) || array_key_exists("cart", $context) ? $context["cart"] : (function () { throw new RuntimeError('Variable "cart" does not exist.', 27, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["cart"]) || array_key_exists("cart", $context) ? $context["cart"] : (function () { throw new RuntimeError('Variable "cart" does not exist.', 26, $this->source); })()));
         foreach ($context['_seq'] as $context["key"] => $context["prod"]) {
-            // line 28
+            // line 27
             echo "                    <div class=\"row ";
             if (($context["key"] > 0)) {
                 echo "mt-2";
@@ -137,26 +137,26 @@ class __TwigTemplate_1d30a18f22c954aa40569487784023b9 extends Template
             echo "\">
                         <div class=\"col-12 col-md-2\">
                             <img src=\"uploads/";
-            // line 30
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["prod"], "product", [], "any", false, false, false, 30), "illustration", [], "any", false, false, false, 30), "html", null, true);
+            // line 29
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["prod"], "product", [], "any", false, false, false, 29), "illustration", [], "any", false, false, false, 29), "html", null, true);
             echo "\" height=\"75px\" alt=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["prod"], "product", [], "any", false, false, false, 30), "name", [], "any", false, false, false, 30), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["prod"], "product", [], "any", false, false, false, 29), "name", [], "any", false, false, false, 29), "html", null, true);
             echo "\">
                         </div>
                         <div class=\"col-12 col-md-8 my-auto\">
                             ";
-            // line 33
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["prod"], "product", [], "any", false, false, false, 33), "name", [], "any", false, false, false, 33), "html", null, true);
+            // line 32
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["prod"], "product", [], "any", false, false, false, 32), "name", [], "any", false, false, false, 32), "html", null, true);
             echo "<br>
                             <small>";
-            // line 34
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["prod"], "product", [], "any", false, false, false, 34), "subtitle", [], "any", false, false, false, 34), "html", null, true);
+            // line 33
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["prod"], "product", [], "any", false, false, false, 33), "subtitle", [], "any", false, false, false, 33), "html", null, true);
             echo "</small>
                         </div>
                         <div class=\"col-12 col-md-2 my-auto\">
                             x ";
-            // line 37
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["prod"], "quantity", [], "any", false, false, false, 37), "html", null, true);
+            // line 36
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["prod"], "quantity", [], "any", false, false, false, 36), "html", null, true);
             echo "
                         </div>
                     </div>
@@ -165,7 +165,7 @@ class __TwigTemplate_1d30a18f22c954aa40569487784023b9 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['key'], $context['prod'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 41
+        // line 40
         echo "            </div>
         </div>
     </div>
@@ -190,7 +190,7 @@ class __TwigTemplate_1d30a18f22c954aa40569487784023b9 extends Template
 
     public function getDebugInfo()
     {
-        return array (  169 => 41,  159 => 37,  153 => 34,  149 => 33,  141 => 30,  133 => 28,  129 => 27,  117 => 19,  112 => 17,  108 => 16,  104 => 15,  99 => 14,  97 => 13,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+        return array (  169 => 40,  159 => 36,  153 => 33,  149 => 32,  141 => 29,  133 => 27,  129 => 26,  117 => 18,  112 => 16,  108 => 15,  104 => 14,  99 => 13,  97 => 12,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -198,7 +198,6 @@ class __TwigTemplate_1d30a18f22c954aa40569487784023b9 extends Template
         return new Source("{% extends 'base.html.twig' %}
 
 {% block title %}{{parent()}}Valider ma commande{% endblock %}
-
 
 {% block content %}
     <h2 class=\"mt-5\">Je passe ma commande</h2>
@@ -239,6 +238,6 @@ class __TwigTemplate_1d30a18f22c954aa40569487784023b9 extends Template
         </div>
     </div>
 {% endblock %}
-", "order/index.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\order\\index.html.twig");
+", "order/index.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\order\\index.html.twig");
     }
 }

@@ -98,6 +98,6 @@ class __TwigTemplate_8435aafa4eecfa075265661f843923eb extends Template
     <span class=\"product-price bestsellers-color \">{{ ((product.price) / 100) |number_format(2)}} € </span>
     <br>
     <a href=\"{{path('app_add_to_cart', {'id':product.id})}}\" class=\"btn btn-mcmc\"> Acheter</a>
-</div>", "product/single_product.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\product\\single_product.html.twig");
+</div>", "product/single_product.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\product\\single_product.html.twig");
     }
 }

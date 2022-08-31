@@ -123,28 +123,26 @@ class __TwigTemplate_2c92681142306a2fb6fc34c29caa2660 extends Template
             $context['_seq'] = twig_ensure_traversable((isset($context["orders"]) || array_key_exists("orders", $context) ? $context["orders"] : (function () { throw new RuntimeError('Variable "orders" does not exist.', 26, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["order"]) {
                 // line 27
-                echo "                    ";
-                // line 28
                 echo "                    <tr>
                         <td><span class=\"badge badge-secondary\">";
-                // line 29
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["order"], "reference", [], "any", false, false, false, 29), "html", null, true);
+                // line 28
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["order"], "reference", [], "any", false, false, false, 28), "html", null, true);
                 echo "</span></td>
                         <td>";
+                // line 29
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["order"], "createdAt", [], "any", false, false, false, 29), "d/m/Y"), "html", null, true);
+                echo "</td>
+                        <td>";
                 // line 30
-                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["order"], "createdAt", [], "any", false, false, false, 30), "d/m/Y"), "html", null, true);
+                echo twig_escape_filter($this->env, twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["order"], "orderDetails", [], "any", false, false, false, 30)), "html", null, true);
                 echo "</td>
                         <td>";
                 // line 31
-                echo twig_escape_filter($this->env, twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["order"], "orderDetails", [], "any", false, false, false, 31)), "html", null, true);
-                echo "</td>
-                        <td>";
-                // line 32
-                echo twig_escape_filter($this->env, twig_number_format_filter($this->env, ((twig_get_attribute($this->env, $this->source, $context["order"], "carrierPrice", [], "any", false, false, false, 32) + twig_get_attribute($this->env, $this->source, $context["order"], "getTotal", [], "any", false, false, false, 32)) / 100), 2, ",", ","), "html", null, true);
+                echo twig_escape_filter($this->env, twig_number_format_filter($this->env, ((twig_get_attribute($this->env, $this->source, $context["order"], "carrierPrice", [], "any", false, false, false, 31) + twig_get_attribute($this->env, $this->source, $context["order"], "getTotal", [], "any", false, false, false, 31)) / 100), 2, ",", ","), "html", null, true);
                 echo " €</td>
                         <td class=\"text-right\"><a href=\"";
-                // line 33
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account_order_show", ["reference" => twig_get_attribute($this->env, $this->source, $context["order"], "reference", [], "any", false, false, false, 33)]), "html", null, true);
+                // line 32
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_account_order_show", ["reference" => twig_get_attribute($this->env, $this->source, $context["order"], "reference", [], "any", false, false, false, 32)]), "html", null, true);
                 echo "\">Voir ma commande</a></td>
                     </tr>
                 ";
@@ -152,7 +150,7 @@ class __TwigTemplate_2c92681142306a2fb6fc34c29caa2660 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['order'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 36
+            // line 35
             echo "            </tbody>
         </table>
     ";
@@ -177,7 +175,7 @@ class __TwigTemplate_2c92681142306a2fb6fc34c29caa2660 extends Template
 
     public function getDebugInfo()
     {
-        return array (  156 => 36,  147 => 33,  143 => 32,  139 => 31,  135 => 30,  131 => 29,  128 => 28,  126 => 27,  122 => 26,  109 => 15,  105 => 13,  102 => 12,  97 => 9,  93 => 8,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
+        return array (  154 => 35,  145 => 32,  141 => 31,  137 => 30,  133 => 29,  129 => 28,  126 => 27,  122 => 26,  109 => 15,  105 => 13,  102 => 12,  97 => 9,  93 => 8,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -208,7 +206,6 @@ class __TwigTemplate_2c92681142306a2fb6fc34c29caa2660 extends Template
             </thead>
             <tbody>                
                 {% for order in orders %}
-                    {# {{ dump(order) }} #}
                     <tr>
                         <td><span class=\"badge badge-secondary\">{{ order.reference }}</span></td>
                         <td>{{ order.createdAt|date('d/m/Y') }}</td>
@@ -221,6 +218,6 @@ class __TwigTemplate_2c92681142306a2fb6fc34c29caa2660 extends Template
         </table>
     {% endif %}
 {% endblock %}
-", "account/order.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\account\\order.html.twig");
+", "account/order.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\account\\order.html.twig");
     }
 }

@@ -211,6 +211,6 @@ class __TwigTemplate_a3e96a60e643f454f4b87edf55d560ac extends Template
     
 
 {% endblock %}
-", "product/index.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\product\\index.html.twig");
+", "product/index.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\product\\index.html.twig");
     }
 }

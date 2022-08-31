@@ -1,7 +1,3 @@
 <?php //%5BC%5DSymfony%255CComponent%255CForm%255CClearableErrorsInterface
 
-<<<<<<< HEAD
-return [PHP_INT_MAX, 1661164431];
-=======
-return [PHP_INT_MAX, 1661412440];
->>>>>>> main
+return [PHP_INT_MAX, 1661932051];

@@ -162,6 +162,6 @@ class __TwigTemplate_52e406cf7aef3b98f412571f44e7ba01 extends Template
 
     </div>
 {% endblock %}
-", "account/index.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\account\\index.html.twig");
+", "account/index.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\account\\index.html.twig");
     }
 }

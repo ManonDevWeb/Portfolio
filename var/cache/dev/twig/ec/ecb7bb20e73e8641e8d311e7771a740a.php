@@ -574,6 +574,6 @@ class __TwigTemplate_86727e08da024c6ddf6efb0a522a543b extends Template
 <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>
 <script src=\"{{asset(\"assets/js/bootstrap.bundle.js\")}}\"></script>
 </body>
-</html>", "base.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\base.html.twig");
+</html>", "base.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\base.html.twig");
     }
 }

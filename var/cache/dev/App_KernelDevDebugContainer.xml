@@ -9239,8 +9239,6 @@
     <service id="messenger.default_bus" alias="debug.traced.messenger.bus.default" public="true"/>
     <service id="Symfony\Component\Messenger\MessageBusInterface" alias="debug.traced.messenger.bus.default"/>
     <service id="Symfony\Component\Notifier\NotifierInterface" alias="notifier"/>
-    <service id="Symfony\Component\Notifier\ChatterInterface" alias="chatter"/>
-    <service id="Symfony\Component\Notifier\TexterInterface" alias="texter"/>
     <service id="Symfony\Component\Mime\MimeTypesInterface" alias="mime_types"/>
     <service id="Symfony\Component\Mime\MimeTypeGuesserInterface" alias="mime_types"/>
     <service id="sensio_framework_extra.converter.doctrine.orm.expression_language" alias="sensio_framework_extra.converter.doctrine.orm.expression_language.default"/>

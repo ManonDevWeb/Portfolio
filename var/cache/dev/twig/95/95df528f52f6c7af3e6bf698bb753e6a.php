@@ -147,6 +147,6 @@ class __TwigTemplate_74e7596b37ecad5154d7ba0b4f2c0c6b extends Template
     <img id = \"deco-register\" src=\"{{asset('assets/img/deco-blanckandwhite.jpg') }}\" alt=\"\" width=\"500\" height=\"540\">
 
 {% endblock %}
-", "register/index.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\register\\index.html.twig");
+", "register/index.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\register\\index.html.twig");
     }
 }

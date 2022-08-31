@@ -305,6 +305,6 @@ class __TwigTemplate_817fcfd54d1e1a912b713e8f6844d802 extends Template
             <p><b>Votre panier est vide.</b></p>
         {% endif %}
 {% endblock %}
-", "cart/index.html.twig", "C:\\xampp\\htdocs\\symfony\\mcmc\\templates\\cart\\index.html.twig");
+", "cart/index.html.twig", "C:\\xampp\\htdocs\\mcmc\\templates\\cart\\index.html.twig");
     }
 }
