@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <title>To-Do List</title>
+    </head>
+
+    <body>
+        
+        <main id="app">
+            
+            <section class="todo-list">
+                
+                
+                <h2>To-do List</h2>
+                
+                <div class="all-todos">
+                    <div 
+                        v-for="todo in todos" 
+                        class="single-todo"
+                        :class="{done : todo.done}"
+                        @click="todo.done = !todo.done">
+                        <p>- {{todo.text}}</p>
+                    </div>
+                </div>
+
+                <button class="clear" @click="todos=[]" v-if="todos.length">Effacer</button>
+
+                <input type="text" placeholder="Ajouter une tâche" v-model="newTodo.text">
+                <button class="add" @click="addTodo()">Ajouter</button>
+
+                <div class="instructions">
+                    Instructions:
+                    <ul>
+                        <li>Cliquer sur le texte de la tache à effectuer pour changer son état</li>
+                        <li>Utiliser le bouton effacer pour supprimer toutes les taches</li>
+                        <li>Utiliser le champ de saisie pour ajouter de nouvelles tâches</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+        <script src="https://unpkg.com/vue@3"></script>
+        <script src="script.js"></script>
+    </body>
+
+</html>

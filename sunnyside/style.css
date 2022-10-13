@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,600&family=Fraunces:ital,wght@0,900;1,700&display=swap');
+
+body{
+    background-color: rgb(207, 207, 207);
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* FONT-FAMILY */
+    #titre, #contact, h2, .learn, h3, h4, .prenom{
+        font-family: Fraunces;
+    }
+
+    li, .textegris, #textegraphic, #textephotography, .texteTemoignages, #basdepage {
+        font-family: Barlow;
+    }
+
+p {
+    line-height: 1.5em;
+}
+
+
+
+#global {
+    width: 1440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+/* HEADER*/
+
+    #header {
+        background-image: url(images/desktop/image-header.jpg); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        height: 700px;
+        width: 100%;
+    }
+
+    #logoetmenu {
+        display: flex;
+        justify-content: space-between;
+        height: 15%;
+    }
+
+    #logoheader{
+        display: flex;
+        align-items: center;
+        margin-left: 2%;
+        width: 25%;
+    }
+
+    /* MENU DE NAVIGATION*/
+        nav {
+            width: 30%;
+            padding-right: 4%;
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        li {
+            padding : 2%;
+        }
+
+        nav a{
+            display: block; /*Toute la surface sera cliquable*/
+            text-decoration: none;
+            color: white;
+            border-bottom: 2px solid transparent;/*Évite le décalage des éléments sous le menu à cause de la bordure en :hover*/
+            padding: 10px 0px;/*Agrandit le menu et espace la bordure du texte*/
+        }
+
+        #contact{
+            color : black;
+            text-transform: uppercase;
+            background-color: white;
+            border-radius: 20px; 
+            padding: 15%;
+        }
+
+    #titre, h4{  
+        word-spacing: 1rem;
+        letter-spacing: 0.3em;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    #titre {
+        color : white;
+        font-size: 140%;
+    }
+
+    #fleche {
+        text-align: center;
+        margin-top: 5%;
+    }
+
+/*LIGNE 1 et 2*/
+
+    .ligne{
+        display: flex;
+        width: 100%;
+    }
+
+    h2{
+        font-size: 250%;
+    }
+
+    #ligne1, #ligne2{
+        height: 600px;
+    }
+
+    #transform, #stand{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        padding: 9%;
+    }
+
+    .textegris {
+        color: hsl(212, 27%, 65%);
+        font-size: 18px;
+        margin-top: 0;
+        text-align: justify;
+    }
+
+    .learn{
+        text-transform: uppercase;
+        font-weight: bold;
+        align-self: flex-start;
+        margin-bottom: -7px;
+        margin-left: 5px;
+        z-index: 1;
+    }
+
+    #jaune, #rouge{
+        align-self: flex-start;
+        height: 10px;
+        width: 130px;
+        border-radius: 10px;
+    }
+
+    #jaune{
+        background-color:hsl(51, 100%, 49%);
+    }
+
+    #rouge{
+       background-color: hsl(7, 99%, 70%);
+    }
+
+    #oeuf, #verre {
+        width: 50%;
+    }
+
+/* LIGNE3 */
+
+    h3{
+        font-size: 180%;
+        margin-bottom: 1%;
+    }
+
+    #cerise, #orange{
+        display: flex;
+        flex-direction: column;    
+        width: 50%;
+        height: 600px;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    #cerise {
+        background-image: url(images/desktop/image-graphic-design.jpg);
+        color: hsl(167, 40%, 24%);
+    }
+
+    #orange{
+        background-image: url(images/desktop/image-photography.jpg);
+        color: hsl(198, 62%, 26%);
+    }
+
+    #textegraphic, #textephotography{
+        font-size: 18px;
+        width: 55%;
+        text-align: center;
+        margin-bottom: 10%;
+    }
+
+/* LIGNE4 TEMOIGNAGES */
+
+    #temoignagesContainer{
+        padding: 10%;
+    }
+
+    .photo {
+        width: 20%;
+        border-radius: 50%;
+        margin-bottom: 8%;
+    }
+
+    h4{
+        text-transform: uppercase;
+        color: hsl(232, 10%, 55%);
+        font-size: 120%;
+        margin-top: 7%;
+    }
+
+    #temoignages{
+        display: flex;
+    }
+
+    .texteTemoignages {
+        text-align: center;
+        padding:3%;
+        color: hsl(212, 27%, 65%);
+        font-size: 18px;
+    }
+    
+    .prenomEtFonction{
+        margin-top: 20%;
+    }
+
+    .prenom{
+        color: black;
+    }
+
+    .fonction {
+        font-size: small;
+    }
+
+    #thomas{
+        width: 20%;
+    }
+
+/* LIGNE 5 */
+
+    #ligne5{
+        height :450px;
+    }
+
+/* FOOTER */
+    footer{
+        background-color: hsl(168, 34%, 41%);
+        height:300px;
+        width: 100%;
+        display:flex ;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    #sunnyside{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2%;
+    }
+
+    #logobdp{
+        opacity: 0.4;
+        margin: 10% 0;
+        text-align: center;
+    }
+
+    #basdepage {
+        font-size: 18px;
+        text-align: center;
+        word-spacing: 2.5rem;
+        color: hsl(212, 27%, 19%)
+    }
+
+    #social {
+        display: flex;
+        justify-content: space-between;
+        width: 60%;
+        margin-top: 30%;
+    }
+
