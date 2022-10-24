@@ -1,2 +1,2 @@
-Calculatrice fonctionnelle utilisant l'algorithmie <br>
+Calculatrice fonctionnelle 
 Langage utilisé : HTML/CSS/JS
