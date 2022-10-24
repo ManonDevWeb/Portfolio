@@ -1,0 +1,414 @@
+/* Importation police titre */
+@import url('https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap');
+
+/* Importation police sous-titre */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&display=swap%27");
+
+/* Importation police texte */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,600&family=Fraunces:ital,opsz,wght@0,9..144,900;1,9..144,700&family=Source+Code+Pro:ital,wght@1,200&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap');
+
+
+/* VARIABLES COULEUR */
+:root {
+    --green-color: #4D5234;
+    --blue-color: #4B8C71;
+    --gold-color: #E5AF2A;
+    --lightpink-color: #FED5CD;
+    --pink-color: #E89AAA; 
+}
+
+h1, h2 {
+   font-family: 'Didot';
+} 
+
+h3, h5, .navbar, .footer-custom, .filter, .link-login  {
+    font-family: 'Montserrat';
+}
+
+body, label {
+    position: relative;
+    font-family: 'Code Source';
+}
+
+/*  NAVBAR */
+
+.navbar-item-custom, .navbar-item-custom a{
+    color:black !important;
+}
+
+/* CONTAINER MARKETING */
+
+.container {
+    color: black;
+}
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.marketing h2 {
+    font-weight: 400;
+}
+.marketing .col-lg-4 p {
+    margin-right: .75rem;
+    margin-left: .75rem;
+}
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
+}
+
+/* FOOTER */
+
+.footer-custom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    color: white;
+    background-color: var(--gold-color);
+    padding: 10% 0;
+    width: 100%;
+    height: 500px;
+}
+
+.container-pictures-total {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.container-pictures {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2%;
+    height: 150px;
+    background-color: white;
+    width: 10%;
+    border: solid 3px var(--blue-color);
+    border-radius: 10px;
+    padding: 5px;
+    font-family: source;
+    line-height: 0.9em;
+}
+
+.img-lock {
+    margin-bottom: 10%;
+}
+
+.container-pictures > small {
+    color: black;
+    text-decoration: underline;
+    font-size: 15px;
+}
+
+.social-network {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 3%;
+    width: 50%;
+}
+
+.social-text {
+    font-size: 22px;
+}
+
+.footer-legal >p >a {
+    color: white;
+}
+
+
+/* ////////////////////////////////////// HOME /////////////////////////////////////////////// */
+
+/* BASICS */
+
+.basics-container { 
+    margin-bottom: 3%;
+}
+
+.basics-pictures-container, .category-name-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.basics-pictures {
+    margin-top: 3%;
+} 
+
+.category-name-container {
+    margin-top: 1%;
+}
+
+/* BESTSELLERS */
+
+.container-bestsellers {
+background-color: var(--green-color);
+} 
+
+.title-bestsellers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+#nos-produits {
+    font-weight: bold;
+    font-size: 40px;
+}
+
+#bestsellers {
+    background-color: var(--gold-color);
+    font-family: 'Montserrat' !important;
+    font-size: 29px;
+    padding: 1px 10px 1px 10px;
+    font-size: 40px;
+}
+
+.bestsellers-color {
+    color: black;
+    margin-top: 5%;
+} 
+
+.img-fluid {
+    max-width: 60%;
+}
+
+.btn-mcmc {
+    background-color: var(--blue-color);
+    color: white;
+    width: 40%;
+    margin-top: 5%;
+    font-weight: bold;
+}
+
+.product-item h5{
+    text-transform: uppercase;
+    font-size: 15px;
+    margin-bottom: 1px;
+}
+
+.product-item {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#product-home {
+   border:1px solid black; 
+   background-color: black;
+   color: black;
+}
+
+/* PRESENTATION */
+
+.presentation-container{
+    margin-bottom: 3%;
+}
+
+.presentation-title {
+    margin: 3%;
+}
+
+.presentation-subtitle {
+    width: 20%;
+}
+
+.presentation-text {
+    width: 50%;
+    margin-top: 5%;
+}
+
+#deco-gold {
+    position: absolute;
+    left: 300px;
+    z-index: 2;
+}
+
+/*************************** PRODUCTS *****************************/
+
+.top-title-product, .top-title-cart, .top-title-registrer, .title-login{
+    margin-left: 25%;
+    background-color: var(--gold-color);
+    padding-left: 1%;
+}
+
+.top-title-product {
+    width: 19%;
+}
+
+.product-item .product-subtitle{
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.product-item .product-price {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.product_container{
+    margin-bottom: 150px;
+}
+
+.product-page-price{
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.row {
+    margin-bottom: 150px;
+}
+
+.cart-icon{
+    height: 20px;
+    padding-left: 20px;
+}
+
+.row {
+    margin-bottom: 0;
+}
+
+.form-check {
+    background-color: var(--gold-color);
+    padding: 20px 65px;
+    margin-top: 7px;
+}
+
+.col-form-label {
+    font-weight: bold;
+}
+
+.order-summary{
+    background-color: pink;
+    padding: 20px;
+    margin-top: 22px;
+}
+
+.filter {
+    padding: 2%;
+    margin-top: 5%;
+}
+
+/*************************** CART *****************************/
+
+table {
+    background-color: var(--lightpink-color);
+} 
+
+.top-title-cart {
+    width: 14%;
+    margin-bottom: 3%;
+    margin-left: 40%;
+}
+
+.recap-cart {
+margin: 2%;
+background-color: var(--lightpink-color);
+padding-bottom: 1px;
+}
+
+.btn-cart {
+    width: 20%;
+}
+
+/*************************** REGISTER *****************************/
+
+.top-title-registrer {
+    width: 13%;
+    margin-left: 42%;
+    margin-bottom: 5%;
+}
+
+#register {
+    background-color: var(--blue-color);
+    margin-left: 35%;
+    margin-right: 35%;   
+    padding: 1%;
+    border-radius: 10px;
+}
+
+.link-login {
+    color: black;
+    text-align: center;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.link-login > a {
+    color: black;
+}
+
+.link-login > a:hover {
+    color: var(--blue-color);
+}
+
+label {
+    color: white;
+}
+
+#register_submit {
+    background-color: var(--gold-color);
+    border: var(--gold-color);
+    font-weight: bold;
+    margin-left: 40%;
+    margin-top: 2%;
+    font-size: 18px;
+}
+
+#deco-register {
+    position: absolute;
+    left: 600px;
+    top: 180px;
+    z-index: -1; 
+}
+
+/*************************** LOGIN *****************************/
+
+.title-login {
+    width: 24%;
+    margin-left: 42%;
+    margin-bottom: 3%;
+}
+
+.block-small {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--blue-color);
+    border-radius: 10px;
+    padding: 1%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+.btn-login {
+    background-color: var(--gold-color);
+    border: var(--gold-color);
+    font-weight: bold;
+    margin-left: 40%;
+    margin-top: 2%;
+    font-size: 18px;
+    color: white;
+}
+
+.link-register  > a {
+    color: black;
+}
+
+.link-register  > a:hover {
+    color: var(--green-color);
+}
+
+#deco-login {
+    position: absolute;
+    left: 550px;
+    top: 150px;
+     z-index: -1; 
+}
